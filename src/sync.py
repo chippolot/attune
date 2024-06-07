@@ -2,10 +2,12 @@ import subprocess
 import os
 import shutil
 
+from config import get_repo_file_path
+
 def sync(args):
     # Sync repo using git
     print("\nSyncing attune repo...")
-    script_dir = os.path.dirname(os.path.abspath(__file__))
+    script_dir = os.path.dirname(get_repo_file_path())
     try:
         result = subprocess.run(['git', 'pull'], cwd=script_dir, check=True, text=True, capture_output=True)
         print(result.stdout)
