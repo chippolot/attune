@@ -4,6 +4,7 @@ import shutil
 
 from config import get_repo_file_path
 from fonts import get_font_ids, get_font_config
+from themes import get_active_theme_name, set_theme, get_default_theme_name
 
 def install_winget_prereq(app_desc, app_name, pkg_id):
     if shutil.which(app_name) is None:
@@ -47,6 +48,11 @@ def sync(args):
     # Install fonts
     for id in get_font_ids():
         install_font_prereq(id)
+
+    # Apply default theme if none is set
+    if get_active_theme_name() == None:
+        print("\nNo theme set. Setting default theme...")
+        set_theme(get_default_theme_name())
 
     # Done!
     print("\nSync complete!")

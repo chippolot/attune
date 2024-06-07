@@ -1,5 +1,6 @@
 import json
 import os
+import argparse
 
 from config import get_or_create_config, save_config, get_repo_file_path
 from windows import set_wallpaper, set_windows_mode
@@ -33,7 +34,10 @@ def list_themes(args):
         print('- ' + key)
 
 def set_theme(args):
-    theme_name = args.theme_name
+    if isinstance(args, argparse.Namespace):
+        theme_name = args.theme_name
+    else:
+        theme_name = args
 
     # Validate theme name and get config
     theme = get_theme_config(theme_name)
@@ -85,16 +89,30 @@ def set_theme(args):
     config = get_or_create_config()
     if not 'theme' in config:
         config['theme'] = {}
-    config['theme']['active'] = args.theme_name
+    config['theme']['active'] = theme_name
     save_config(config)
     print(f"Set active theme to: {theme_name}")
     return
 
-def active_theme(args):
+def get_active_theme_name():
     config = get_or_create_config()
     if 'theme' in config:
         theme = config['theme']
         if 'active' in theme: 
-            print(f"Active Theme: {theme['active']}")
-            return
-    print("No active theme set")
+            return theme['active']
+    return None
+
+def get_default_theme_name():
+    config = get_or_create_config()
+    if 'theme' in config:
+        theme = config['theme']
+        if 'default' in theme: 
+            return theme['default']
+    return None
+
+def active_theme(args):
+    active_theme_name = get_active_theme_name()
+    if active_theme_name != None:
+        print(f"Active Theme: {active_theme_name}")
+    else:
+        print("No active theme set")
