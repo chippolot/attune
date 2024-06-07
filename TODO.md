@@ -11,9 +11,12 @@
 - [ ] Themes
     - [ ] Add rider theme support
     - [x] Add terminal theme support
+    - [ ] Add slack theme support
     - [ ] Add font support
       - [x] VSCode
       - [x] Terminal
       - [ ] Rider
+    - [ ] Reload prompt after changing
+    - [ ] More Themes
 - [ ] Sync Config
     - [ ] Add ability to sync config up to repo (or other repo?)

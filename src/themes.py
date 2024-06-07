@@ -4,10 +4,10 @@ import argparse
 
 from config import get_or_create_config, save_config, get_repo_file_path
 from windows import set_wallpaper, set_windows_mode
-from dotfiles import replace_dotfile_line, DotfileSource
 from vscode import set_vscode_theme, set_vscode_font
-from terminal import set_terminal_profile_param, set_terminal_color_scheme
+from terminal import set_terminal_profile_param, set_terminal_color_scheme, set_terminal_theme
 from fonts import get_font_config
+from prompt import set_prompt_theme
 from dict import get_dict_value
 
 
@@ -83,12 +83,7 @@ def set_theme(args):
         prompt_path = os.path.abspath(
             get_repo_file_path(f"themes/prompts/{prompt_file}", validate=True)
         )
-        replace_dotfile_line(
-            DotfileSource.ATTUNE,
-            ".env",
-            r"export OMP_THEME=.*",
-            f'export OMP_THEME="{prompt_path}"',
-        )
+        set_prompt_theme(prompt_path)
 
     # Set VSCode Color Theme
     code_theme_name = get_theme_param(theme_name, "code.color_theme.name")
@@ -119,14 +114,24 @@ def set_theme(args):
             set_terminal_profile_param("font.size", term_font_size)
 
     # Set Terminal Color Scheme
-    term_theme_name = get_theme_param(theme_name, "terminal.color_scheme.name")
+    term_scheme_name = get_theme_param(theme_name, "terminal.color_scheme.name")
+    if term_scheme_name != None:
+        print(f"Seting terminal color scheme to: {term_scheme_name}")
+        term_scheme_file = get_theme_param(theme_name, "terminal.color_scheme.file")
+        term_scheme_path = None
+        if term_scheme_file != None:
+            term_scheme_path = get_repo_file_path(f"themes/terminal/{term_scheme_file}", validate=True)
+        set_terminal_color_scheme(term_scheme_name, term_scheme_path)
+    
+    # Set Terminal Theme
+    term_theme_name = get_theme_param(theme_name, "terminal.theme.name")
     if term_theme_name != None:
-        print(f"Seting terminal color scheme to: {term_theme_name}")
-        term_theme_file = get_theme_param(theme_name, "terminal.color_scheme.file")
-        term_theme_path = get_repo_file_path(
-            f"themes/terminal/{term_theme_file}", validate=True
-        )
-        set_terminal_color_scheme(term_theme_name, term_theme_path)
+        print(f"Seting terminal theme to: {term_theme_name}")
+        term_theme_file = get_theme_param(theme_name, "terminal.theme.file")
+        term_theme_path = None
+        if term_theme_file != None:
+            term_theme_path = get_repo_file_path(f"themes/terminal/{term_theme_file}", validate=True)
+        set_terminal_theme(term_theme_name, term_theme_path)
 
     # Set Other Terminal Params
     set_terminal_theme_setting("opacity", theme_name, "terminal.opacity")
@@ -139,6 +144,7 @@ def set_theme(args):
         config["theme"] = {}
     config["theme"]["active"] = theme_name
     save_config(config)
+
     print(f"Set active theme to: {theme_name}")
     return
 

@@ -1,13 +1,16 @@
 {
     "defaults": {
         "terminal": {
-            "opacity": 97,
+            "opacity": 100,
             "useAcrylic": false,
-            "cursorShape": "vintage"
+            "cursorShape": "vintage",
+            "theme": {
+                "name": "dark"
+            }
         }
     },
     "themes": {
-        "default": {
+        "forest-floor": {
             "prompt": "json.omp.json",
             "background": "ferns-green.jpg",
             "display_mode": "dark",
@@ -24,10 +27,40 @@
             "terminal": {
                 "color_scheme": {
                     "name": "SeaShells",
-                    "file": "seashells.json"
+                    "file": "seashells.scheme.json"
                 },
                 "font": {
                     "id": "FiraMono",
+                    "size": 10
+                },
+                "opacity": 97
+            }
+        },
+        "rose-pine-dawn": {
+            "prompt": "M365Princess.omp.json",
+            "background": "simple-pastel-by-triarts-from-freepik.jpg",
+            "display_mode": "light",
+            "code": {
+                "color_theme": {
+                    "name": "Rosé Pine Dawn",
+                    "extension": "mvllow.rose-pine"
+                },
+                "font": {
+                    "id": "Meslo",
+                    "size": 14
+                }
+            },
+            "terminal": {
+                "color_scheme": {
+                    "name": "rose-pine-dawn",
+                    "file": "rose-pine-dawn.scheme.json"
+                },
+                "theme": {
+                    "name": "rose-pine-dawn",
+                    "file": "rose-pine-dawn.theme.json"
+                },
+                "font": {
+                    "id": "Meslo",
                     "size": 10
                 }
             }

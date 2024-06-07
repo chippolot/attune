@@ -1,8 +1,7 @@
 {
-    
-    "Go-Mono": {
-        "pkg": "Go-Mono",
-        "family": "GoMono Nerd Font Mono"
+    "Meslo": {
+        "pkg": "Meslo",
+        "family": "MesloLGLDZ Nerd Font"
     },
     "CascadiaMono": {
         "pkg": "CascadiaMono",
@@ -10,7 +9,7 @@
     },
     "JetBrainsMono": {
         "pkg": "JetBrainsMono",
-        "family": "JetBrainsMono NF"
+        "family": "JetBrainsMono NFM"
     },
     "FiraMono": {
         "pkg": "FiraMono",

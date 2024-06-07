@@ -2,6 +2,7 @@ import ctypes
 import os
 import winreg
 import subprocess
+import time
 
 def set_wallpaper(image_path):
     # Absolute path to the image
@@ -24,16 +25,35 @@ def set_wallpaper(image_path):
     
 def set_windows_mode(dark_mode):
     try:
-        # Open the registry key
-        key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", 0, winreg.KEY_SET_VALUE)
+        # Function to set the theme mode in the registry
+        def set_mode(value):
+            key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", 0, winreg.KEY_SET_VALUE)
+            winreg.SetValueEx(key, "AppsUseLightTheme", 0, winreg.REG_DWORD, value)
+            winreg.SetValueEx(key, "SystemUsesLightTheme", 0, winreg.REG_DWORD, value)
+            winreg.CloseKey(key)
         
-        # Set the value to 0 to enable dark mode or 1 to enable light mode
-        value = 0 if dark_mode else 1
-        winreg.SetValueEx(key, "AppsUseLightTheme", 0, winreg.REG_DWORD, value)
-        winreg.SetValueEx(key, "SystemUsesLightTheme", 0, winreg.REG_DWORD, value)
-        
-        # Close the registry key
-        winreg.CloseKey(key)
+        # Toggle theme mode to force UI refresh
+        set_mode(0 if dark_mode else 1)
+        time.sleep(0.1)  # Short delay to ensure the setting is applied
+        set_mode(1 if dark_mode else 0)
+        time.sleep(0.1)  # Short delay to ensure the setting is applied
+        set_mode(0 if dark_mode else 1)
+
+        # Broadcast a WM_SETTINGCHANGE message to update the UI
+        HWND_BROADCAST = 0xFFFF
+        WM_SETTINGCHANGE = 0x1A
+        SMTO_ABORTIFHUNG = 0x0002
+
+        ctypes.windll.user32.SendMessageTimeoutW(
+            HWND_BROADCAST,
+            WM_SETTINGCHANGE,
+            0,
+            "ImmersiveColorSet",
+            SMTO_ABORTIFHUNG,
+            100,
+            ctypes.byref(ctypes.c_ulong())
+        )
+
     except Exception as e:
         print(f"Failed to set Windows mode to {'dark' if dark_mode else 'light'}: {e}")
 
