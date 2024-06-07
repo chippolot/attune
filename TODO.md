@@ -1,6 +1,7 @@
 # TODO
 - [ ] Readme
 - [ ] Sync Command
+    - [ ] Apply default theme if none is set
     - [ ] Patch in attune configs to user configs
     - [ ] Copy dotfiles from repo to attune config
     - [ ] Install VSCode if not present
