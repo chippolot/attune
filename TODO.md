@@ -4,6 +4,7 @@
     - [ ] Patch in attune configs to user configs
     - [ ] Copy dotfiles from repo to attune config
     - [ ] Install VSCode if not present
+    - [ ] Patch default attune config on top of user config 
 - [ ] Themes
     - [ ] Add rider theme support
     - [ ] Add terminal theme support
