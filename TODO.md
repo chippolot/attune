@@ -5,5 +5,6 @@
     - [ ] Install VSCode if not present
 - [ ] Themes
     - [ ] Add rider theme support
+    - [ ] Add terminal theme support
 - [ ] Sync Config
     - [ ] Add ability to sync config up to repo (or other repo?)
