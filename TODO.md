@@ -10,10 +10,10 @@
         - [x] Don't attempt to install fonts which are already installed
 - [ ] Themes
     - [ ] Add rider theme support
-    - [ ] Add terminal theme support
+    - [x] Add terminal theme support
     - [ ] Add font support
       - [x] VSCode
-      - [ ] Terminal
+      - [x] Terminal
       - [ ] Rider
 - [ ] Sync Config
     - [ ] Add ability to sync config up to repo (or other repo?)

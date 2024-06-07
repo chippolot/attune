@@ -7,5 +7,13 @@
     "CascadiaMono": {
         "pkg": "CascadiaMono",
         "family": "CaskaydiaMono NF"
+    },
+    "JetBrainsMono": {
+        "pkg": "JetBrainsMono",
+        "family": "JetBrainsMono NF"
+    },
+    "FiraMono": {
+        "pkg": "FiraMono",
+        "family": "FiraMono Nerd Font"
     }
 }

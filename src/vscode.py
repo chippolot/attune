@@ -3,21 +3,23 @@ import json
 import subprocess
 
 def get_settings_path():
-    path = os.path.join(os.path.expanduser("~"), 'AppData', 'Roaming', 'Code', 'User', 'settings.json')
+    path = os.path.join(
+        os.path.expanduser("~"), 
+        'AppData', 
+        'Roaming', 
+        'Code', 
+        'User', 
+        'settings.json')
     os.makedirs(os.path.dirname(path), exist_ok=True)
     return path
 
 def get_settings():
-    # Path to the VSCode settings file
-    vscode_settings_path = get_settings_path()
-    
-    # Load the current settings if the file exists, otherwise start with an empty dictionary
-    if os.path.exists(vscode_settings_path):
-        with open(vscode_settings_path, 'r') as file:
+    settings_path = get_settings_path()
+    if os.path.exists(settings_path):
+        with open(settings_path, 'r') as file:
             settings = json.load(file)
     else:
         settings = {}
-
     return settings
 
 def save_settings(settings): 

@@ -1,14 +1,35 @@
 {
-    "default": {
-        "prompt": "json.omp.json",
-        "background": "ferns-green.jpg",
-        "display_mode": "dark",
-        "code": {
-            "name": "Material Deep Ocean+",
-            "extension": "melihmutlu.material-deep-ocean",
-            "font": {
-                "id": "CascadiaMono",
-                "size": 14
+    "defaults": {
+        "terminal": {
+            "opacity": 97,
+            "useAcrylic": false,
+            "cursorShape": "vintage"
+        }
+    },
+    "themes": {
+        "default": {
+            "prompt": "json.omp.json",
+            "background": "ferns-green.jpg",
+            "display_mode": "dark",
+            "code": {
+                "color_theme": {
+                    "name": "Material Deep Ocean+",
+                    "extension": "melihmutlu.material-deep-ocean"
+                },
+                "font": {
+                    "id": "FiraMono",
+                    "size": 14
+                }
+            },
+            "terminal": {
+                "color_scheme": {
+                    "name": "SeaShells",
+                    "file": "seashells.json"
+                },
+                "font": {
+                    "id": "FiraMono",
+                    "size": 10
+                }
             }
         }
     }
