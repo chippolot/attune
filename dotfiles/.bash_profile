@@ -1,4 +1,4 @@
-cd {{default_shell_directory}}
+cd {{config.shell.default_dir}}
 
 # Don't put duplicate lines in the history
 export HISTCONTROL=ignoreboth:erasedups
@@ -44,7 +44,7 @@ fi
 eval "$(oh-my-posh init bash --config $OMP_THEME)"
 
 # Add to PATH
-export PATH="$PATH:$HOME/.local/bin:$HOME/AppData/Local/Programs/Microsoft VS Code/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/AppData/Local/Programs/Microsoft VS Code/bin:{{paths.repo}}"
 
 # Aliases
 if [ -f ~/.bash_aliases ]; then

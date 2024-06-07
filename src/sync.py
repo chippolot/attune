@@ -7,7 +7,7 @@ from config import get_repo_file_path
 def sync(args):
     # Sync repo using git
     print("\nSyncing attune repo...")
-    script_dir = os.path.dirname(get_repo_file_path())
+    script_dir = os.path.dirname(get_repo_file_path(""))
     try:
         result = subprocess.run(['git', 'pull'], cwd=script_dir, check=True, text=True, capture_output=True)
         print(result.stdout)
@@ -28,3 +28,6 @@ def sync(args):
             print(f"An error occurred while installing 'oh-my-posh': {e.stderr}")
     else:
         print("'oh-my-posh' is already installed.")
+
+    # Done!
+    print("\nSync complete!")

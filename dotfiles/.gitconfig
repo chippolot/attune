@@ -1,6 +1,6 @@
 [user]
-	name = {{git.name}}
-	email = {{git.email}}
+	name = {{config.git.name}}
+	email = {{config.git.email}}
 
 [core]
   editor = vim
