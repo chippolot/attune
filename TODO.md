@@ -1,4 +1,5 @@
 # TODO
+- [ ] Readme
 - [ ] Sync Command
     - [ ] Patch in attune configs to user configs
     - [ ] Copy dotfiles from repo to attune config
