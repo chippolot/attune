@@ -8,6 +8,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 
 from sync import sync
 from themes import list_themes, set_theme, active_theme
+from config import edit_config
 
 def theme(args):
     print(f"Applying theme: {args.theme_name}")
@@ -16,8 +17,7 @@ def main():
     parser = argparse.ArgumentParser(description="A CLI tool to sync programming environments and themes.")
     subparsers = parser.add_subparsers(dest="command")
 
-    # Theme subcommand
-# Theme subcommand with its own subcommands
+    # Theme subcommand with its own subcommands
     parser_theme = subparsers.add_parser('theme', help="Manage themes")
     theme_subparsers = parser_theme.add_subparsers(dest="theme_command")
 
@@ -34,6 +34,10 @@ def main():
     # Sync subcommand
     parser_sync = subparsers.add_parser('sync', help="Sync the application")
     parser_sync.set_defaults(func=sync)
+
+    # Config subcommand
+    parser_config = subparsers.add_parser('config', help="Opens the user config file for editing")
+    parser_config.set_defaults(func=edit_config)
 
     args = parser.parse_args()
     if args.command == "theme" and args.theme_command is None:

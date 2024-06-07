@@ -39,4 +39,4 @@ export EDITOR="code"
 eval "$(oh-my-posh init bash --config $OMP_THEME)"
 
 # Add to PATH
-export PATH="$PATH:/c/Program Files/Microsoft VS Code/bin:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/AppData/Local/Programs/Microsoft VS Code/bin"

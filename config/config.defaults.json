@@ -1,7 +1,9 @@
 {
+    "theme": {
+        "default": "json"
+    },
     "shell": {
-        "default_dir": "~/",
-        "theme": "json"
+        "default_dir": "~/"
     },
     "git": {
         "name": "",

@@ -3,7 +3,6 @@ import os
 import shutil
 
 def sync(args):
-
     # Sync repo using git
     print("\nSyncing attune repo...")
     script_dir = os.path.dirname(os.path.abspath(__file__))
