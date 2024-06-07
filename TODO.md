@@ -7,7 +7,7 @@
     - [x] Install VSCode if not present
     - [ ] Patch default attune config on top of user config
     - [x] Get nerd fonts (oh-my-posh font install --user "Family")
-        - [ ] Don't attempt to install fonts which are already installed
+        - [x] Don't attempt to install fonts which are already installed
 - [ ] Themes
     - [ ] Add rider theme support
     - [ ] Add terminal theme support

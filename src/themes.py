@@ -49,7 +49,7 @@ def set_theme(args):
     # Set Background
     if 'background' in theme:
         background_file = theme['background']
-        print(f"Seting background to: '{background_file}'")
+        print(f"Seting desktop background to: '{background_file}'")
         background_path = get_repo_file_path(f'themes/backgrounds/{background_file}', validate=True)
         set_wallpaper(background_path)
 
@@ -57,7 +57,7 @@ def set_theme(args):
     if 'display_mode' in theme:
         display_mode = theme['display_mode']
         if display_mode in ['light', 'dark']:
-            print(f"Seting display mode to: '{display_mode}'")
+            print(f"Seting OS display mode to: '{display_mode}'")
             set_windows_mode(display_mode == 'dark')
         else:
             print(f"Invalid display mode: {display_mode}")
@@ -65,7 +65,7 @@ def set_theme(args):
     # Set Oh My Posh Theme
     if 'prompt' in theme:
         prompt_file = theme['prompt']
-        print(f"Seting prompt theme to: '{prompt_file}'")
+        print(f"Seting oh-my-posh prompt theme to: '{prompt_file}'")
         prompt_path = os.path.abspath(get_repo_file_path(f'themes/prompts/{prompt_file}', validate=True))
         replace_dotfile_line(DotfileSource.ATTUNE, '.env', r'export OMP_THEME=.*', f'export OMP_THEME="{prompt_path}"')
 
@@ -73,7 +73,7 @@ def set_theme(args):
     # Set VSCode Theme
     if 'code' in theme:
         code_theme = theme['code']
-        print(f"Seting code to: '{code_theme['name']}'")
+        print(f"Seting vscode theme to: '{code_theme['name']}'")
         set_vscode_theme(code_theme['name'], code_theme.get('extension'))
         
         if 'font' in code_theme:

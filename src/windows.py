@@ -1,6 +1,7 @@
 import ctypes
 import os
 import winreg
+import subprocess
 
 def set_wallpaper(image_path):
     # Absolute path to the image
@@ -35,3 +36,27 @@ def set_windows_mode(dark_mode):
         winreg.CloseKey(key)
     except Exception as e:
         print(f"Failed to set Windows mode to {'dark' if dark_mode else 'light'}: {e}")
+
+
+def is_font_installed(font_family):
+    # PowerShell command to check installed fonts
+    ps_command = f"""
+    [System.Reflection.Assembly]::LoadWithPartialName("System.Drawing") | Out-Null
+    $fonts = (New-Object System.Drawing.Text.InstalledFontCollection).Families
+    $font_names = $fonts | ForEach-Object {{ $_.Name }}
+    $font_names -contains '{font_family}'
+    """
+    
+    try:
+        # Run the PowerShell command
+        result = subprocess.run(["powershell", "-Command", ps_command], capture_output=True, text=True)
+        
+        # Check the output
+        output = result.stdout.strip()
+        if output.lower() == 'true':
+            return True
+        else:
+            return False
+    except subprocess.CalledProcessError as e:
+        print(f"An error occurred: {e}")
+        return False
