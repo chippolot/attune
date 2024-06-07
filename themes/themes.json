@@ -2,6 +2,7 @@
     "default": {
         "prompt": "json.omp.json",
         "background": "ferns-green.jpg",
-        "display_mode": "dark"
+        "display_mode": "dark",
+        "code": "Material Deep Ocean+"
     }
 }

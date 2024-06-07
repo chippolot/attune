@@ -4,6 +4,7 @@ import os
 from config import get_or_create_config, save_config, get_repo_file_path
 from windows import set_wallpaper, set_windows_mode
 from dotfiles import replace_dotfile_line, DotfileSource
+from vscode import set_vscode_theme
 
 def get_themes_config():
     themes_path = get_repo_file_path('themes/themes.json')
@@ -63,7 +64,13 @@ def set_theme(args):
         prompt_path = os.path.abspath(get_repo_file_path(f'themes/prompts/{prompt_file}', validate=True))
         replace_dotfile_line(DotfileSource.ATTUNE, '.env', r'export OMP_THEME=.*', f'export OMP_THEME="{prompt_path}"')
 
-    
+
+    # Set VSCode Theme
+    if 'code' in theme:
+        code_theme = theme['code']
+        print(f"Seting code to: '{code_theme}'")
+        set_vscode_theme(code_theme)
+
     # Set active theme name and save config
     config = get_or_create_config()
     if not 'theme' in config:
