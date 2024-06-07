@@ -4,10 +4,15 @@
     - [ ] Apply default theme if none is set
     - [ ] Patch in attune configs to user configs
     - [ ] Copy dotfiles from repo to attune config
-    - [ ] Install VSCode if not present
-    - [ ] Patch default attune config on top of user config 
+    - [x] Install VSCode if not present
+    - [ ] Patch default attune config on top of user config
+    - [x] Get nerd fonts (oh-my-posh font install --user "Family")
 - [ ] Themes
     - [ ] Add rider theme support
     - [ ] Add terminal theme support
+    - [ ] Add font support
+      - [x] VSCode
+      - [ ] Terminal
+      - [ ] Rider
 - [ ] Sync Config
     - [ ] Add ability to sync config up to repo (or other repo?)

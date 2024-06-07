@@ -1,0 +1,11 @@
+{
+    
+    "Go-Mono": {
+        "pkg": "Go-Mono",
+        "family": "GoMono Nerd Font Mono"
+    },
+    "CascadiaMono": {
+        "pkg": "CascadiaMono",
+        "family": "CaskaydiaMono Nerd Font"
+    }
+}

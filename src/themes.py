@@ -4,7 +4,8 @@ import os
 from config import get_or_create_config, save_config, get_repo_file_path
 from windows import set_wallpaper, set_windows_mode
 from dotfiles import replace_dotfile_line, DotfileSource
-from vscode import set_vscode_theme
+from vscode import set_vscode_theme, set_vscode_font
+from fonts import get_font_config
 
 def get_themes_config():
     themes_path = get_repo_file_path('themes/themes.json')
@@ -68,8 +69,17 @@ def set_theme(args):
     # Set VSCode Theme
     if 'code' in theme:
         code_theme = theme['code']
-        print(f"Seting code to: '{code_theme}'")
-        set_vscode_theme(code_theme)
+        print(f"Seting code to: '{code_theme['name']}'")
+        set_vscode_theme(code_theme['name'], code_theme.get('extension'))
+        
+        if 'font' in code_theme:
+            font = code_theme['font']
+            font_id = font.get("id")
+            font_config = get_font_config(font_id, validate=True)
+            if font_config != None:
+                font_family = font_config.get("family") 
+                font_size = font.get("size")
+                set_vscode_font(font_family, font_size)
 
     # Set active theme name and save config
     config = get_or_create_config()

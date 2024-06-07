@@ -3,6 +3,13 @@
         "prompt": "json.omp.json",
         "background": "ferns-green.jpg",
         "display_mode": "dark",
-        "code": "Material Deep Ocean+"
+        "code": {
+            "name": "Material Deep Ocean+",
+            "extension": "melihmutlu.material-deep-ocean",
+            "font": {
+                "id": "CascadiaMono",
+                "size": 14
+            }
+        }
     }
 }
