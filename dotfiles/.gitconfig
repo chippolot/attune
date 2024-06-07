@@ -1,0 +1,60 @@
+[user]
+	name = {{git.name}}
+	email = {{git.email}}
+
+[core]
+  editor = vim
+
+[push]
+    default = simple
+
+[color]
+    ui = true
+
+[alias]
+
+    ch = checkout
+    chff = !sh -c 'git fetch origin $1:$1 && git checkout $1' -
+    chcs = "checkout ':(exclude)*.cs'"
+    dt = difftool
+    cm = commit
+    cma = "commit -a"
+    st = status
+    ps = push
+    p = pull
+    a = add
+    aa = "add --all"
+    ai = "add --interactive"
+    b = branch
+    f = fetch
+    rb = rebase
+    mkbr = !sh -c 'git ch -b $1 && git push origin -u $1' -
+    rmbr = !sh -c 'git branch -D $1 && git push origin --delete $1' -
+    sui = submodule update --init --recursive
+    
+    # log output:
+    #
+    # cf http://stackoverflow.com/questions/1057564/pretty-git-branch-graphs
+    lg1 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+    lg2 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(bold white)— %an%C(reset)' --abbrev-commit
+    lg = !"git lg1"
+    clean-local = "!git fetch -p && for branch in `git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done"
+    rmbr-local = "!git branch | grep -E '$1' | xargs -r -n 1 git branch -d;"
+
+[difftool]
+    prompt = false
+
+[merge]
+    prompt = false
+    keepBackup = false
+    keepTemporaries = false
+    renameLimit = 6000
+
+[credential]
+	helper = manager
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

@@ -1,0 +1,14 @@
+{
+    "shell": {
+        "default_dir": "~/",
+        "theme": "json"
+    },
+    "git": {
+        "name": "",
+        "email": ""
+    },
+    "dotfiles": {
+        "extensions": {
+        }
+    }
+}
