@@ -8,6 +8,7 @@
     - [ ] Patch default attune config on top of user config
     - [x] Get nerd fonts (oh-my-posh font install --user "Family")
         - [x] Don't attempt to install fonts which are already installed
+    - [ ] Version dotfiles and reload if changed
 - [ ] Themes
     - [ ] Add rider theme support
     - [x] Add terminal theme support
@@ -20,3 +21,6 @@
     - [ ] More Themes
 - [ ] Sync Config
     - [ ] Add ability to sync config up to repo (or other repo?)
+- [ ] General
+    - [ ] Multiplatform
+    - [ ] Release to public?
