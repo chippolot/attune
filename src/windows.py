@@ -34,10 +34,6 @@ def set_windows_mode(dark_mode):
         
         # Toggle theme mode to force UI refresh
         set_mode(0 if dark_mode else 1)
-        time.sleep(0.1)  # Short delay to ensure the setting is applied
-        set_mode(1 if dark_mode else 0)
-        time.sleep(0.1)  # Short delay to ensure the setting is applied
-        set_mode(0 if dark_mode else 1)
 
         # Broadcast a WM_SETTINGCHANGE message to update the UI
         HWND_BROADCAST = 0xFFFF
@@ -53,6 +49,11 @@ def set_windows_mode(dark_mode):
             100,
             ctypes.byref(ctypes.c_ulong())
         )
+
+        # Restart Windows Explorer to apply changes across all monitors
+        subprocess.run(["taskkill", "/F", "/IM", "explorer.exe"], check=True, stdout=subprocess.DEVNULL)
+        time.sleep(0.25)  # Short delay to ensure Explorer process is killed
+        subprocess.run(["start", "explorer.exe"], shell=True, check=True, stdout=subprocess.DEVNULL)
 
     except Exception as e:
         print(f"Failed to set Windows mode to {'dark' if dark_mode else 'light'}: {e}")

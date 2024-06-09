@@ -55,7 +55,7 @@ def set_theme(args):
     # Validate theme name and get config
     if not theme_name in get_theme_names():
         print(f"Invalid theme name: {theme_name}")
-        list_themes()
+        list_themes(None)
         return
 
     # Set Background
@@ -145,7 +145,7 @@ def set_theme(args):
     config["theme"]["active"] = theme_name
     save_config(config)
 
-    print(f"Set active theme to: {theme_name}")
+    print(f"Set active theme to: {theme_name}\n")
     return
 
 
