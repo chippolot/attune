@@ -2,7 +2,7 @@ import os
 import re
 from pathlib import Path
 from enum import Enum
-from config import get_repo_file_path, get_attune_path
+from config import get_repo_file_path, get_attune_file_path
 
 class DotfileSource(Enum):
     HOME = 1
@@ -15,9 +15,9 @@ def get_or_create_dotfile_path(source: DotfileSource, filename):
         home_dir = os.path.expanduser("~")
         filepath = os.path.join(home_dir, filename)
     elif source == DotfileSource.ATTUNE:
-        filepath = os.path.join(get_attune_path(), filename)
+        filepath = get_attune_file_path(filename)
     elif source == DotfileSource.REPO:
-        filepath = get_repo_file_path(filename, f"dotfiles/{filename}")
+        filepath = get_repo_file_path(f"dotfiles/{filename}")
     else:
         raise ValueError(f"Unsupported dotfile source: {source}")
     if not os.path.exists(filepath):

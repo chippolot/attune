@@ -3,22 +3,22 @@ import os
 import json
 import shutil
 
-def get_repo_file_path(relative_path, validate=False):
+def get_repo_file_path(relative_path = "", validate=False):
     script_dir = os.path.dirname(os.path.abspath(__file__))
     path = os.path.join(script_dir, "../", relative_path)
     if validate and not os.path.exists(path):
         raise Exception(f"Invalid file path: {path}")
     return path
 
-def get_attune_path():
+def get_attune_file_path(relative_path = ""):
     home_dir = os.path.expanduser("~")
     attune_path = os.path.join(home_dir, ".attune")
     if not os.path.exists(attune_path):
         os.makedirs(attune_path)
-    return attune_path
+    return os.path.join(attune_path, relative_path)
 
 def get_config_path():
-    return os.path.join(get_attune_path(), "config.json")
+    return os.path.join(get_attune_file_path(), "config.json")
 
 def get_or_create_config():
     config_path = get_config_path()

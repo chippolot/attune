@@ -1,0 +1,2 @@
+[include]
+    path = "{{paths.config}}.gitconfig"

@@ -35,18 +35,11 @@ export LANG="en_US"
 # Default editor VSCode
 export EDITOR="code"
 
-# Prep environment variables
-if [ -f ~/.attune/.env ]; then
-    . ~/.attune/.env
-fi
-
-# Load Oh My Posh w/ active theme
-eval "$(oh-my-posh init bash --config $OMP_THEME)"
 
 # Add to PATH
-export PATH="$PATH:$HOME/.local/bin:$HOME/AppData/Local/Programs/Microsoft VS Code/bin:{{paths.repo}}"
+export PATH="$PATH:$HOME/.local/bin:$HOME/AppData/Local/Programs/Microsoft VS Code/bin"
 
 # Aliases
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f {{paths.config}}.bash_aliases ]; then
+    . {{paths.config}}.bash_aliases
 fi
