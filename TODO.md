@@ -1,20 +1,15 @@
 # TODO
-- [ ] Readme
+- [ ] README
 - [ ] Sync Command
-    - [x] Patch in attune configs to user configs
-        - [ ] Source bash_profile if it changed
-        - [ ] Add template support for config params
-    - [x] Copy dotfiles from repo to attune config
+    - [ ] Source bash_profile if it changed
     - [ ] Patch default attune config on top of user config
     - [ ] Support dotfile extensions
     - [ ] Version dotfiles and reload if changed
 - [ ] Themes
     - [ ] Add rider theme support
     - [ ] Add slack theme support
-    - [ ] Fix Rose Pine Dawn in VSCode
     - [ ] Add font support
       - [ ] Rider
-    - [ ] Reload prompt after changing
     - [ ] More Themes
 - [ ] Sync Config
     - [ ] Add ability to sync config up to repo (or other repo?)

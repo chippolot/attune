@@ -10,7 +10,6 @@
         "email": ""
     },
     "dotfiles": {
-        "extensions": {
-        }
+        "extensions": {}
     }
 }

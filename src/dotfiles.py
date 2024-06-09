@@ -4,10 +4,12 @@ from pathlib import Path
 from enum import Enum
 from config import get_repo_file_path, get_attune_file_path
 
+
 class DotfileSource(Enum):
     HOME = 1
     ATTUNE = 2
     REPO = 3
+
 
 def get_or_create_dotfile_path(source: DotfileSource, filename):
     filepath = ""
@@ -24,11 +26,12 @@ def get_or_create_dotfile_path(source: DotfileSource, filename):
         Path(filepath).touch()
     return filepath
 
+
 def replace_dotfile_line(source: DotfileSource, filename, pattern, newline):
     filepath = get_or_create_dotfile_path(source, filename)
 
-     # Read the file contents
-    with open(filepath, 'r') as file:
+    # Read the file contents
+    with open(filepath, "r", encoding="utf-8") as file:
         lines = file.readlines()
 
     # Compile the regex pattern
@@ -47,5 +50,5 @@ def replace_dotfile_line(source: DotfileSource, filename, pattern, newline):
         lines.append(newline)
 
     # Write the updated contents back to the file
-    with open(filepath, 'w') as file:
+    with open(filepath, "w", encoding="utf-8") as file:
         file.writelines(lines)

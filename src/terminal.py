@@ -19,7 +19,7 @@ def get_settings_path():
 def get_settings():
     settings_path = get_settings_path()
     if os.path.exists(settings_path):
-        with open(settings_path, "r") as file:
+        with open(settings_path, "r", encoding="utf-8") as file:
             settings = json.load(file)
     else:
         settings = {}
@@ -56,7 +56,7 @@ def set_terminal_theme(name, theme_path):
         if not os.path.exists(theme_path):
             raise FileNotFoundError(f"The file {theme_path} does not exist.")
 
-        with open(theme_path, "r") as file:
+        with open(theme_path, "r", encoding="utf-8") as file:
             theme = json.load(file)
 
         # Update existing theme
@@ -86,7 +86,7 @@ def set_terminal_color_scheme(name, color_scheme_path):
         if not os.path.exists(color_scheme_path):
             raise FileNotFoundError(f"The file {color_scheme_path} does not exist.")
 
-        with open(color_scheme_path, "r") as file:
+        with open(color_scheme_path, "r", encoding="utf-8") as file:
             color_scheme = json.load(file)
 
         settings = get_settings()

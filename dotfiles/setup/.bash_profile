@@ -4,7 +4,7 @@ load_prompt() {
 }
 attune() {
     initial_omp_theme="$OMP_THEME"
-    "{{attune_repo_path}}/attune.py" "$@"
+    "{{paths.repo}}/attune.py" "$@"
     if [ -f "{{paths.config}}.env" ]; then . "{{paths.config}}.env"; fi
     if [ "$OMP_THEME" != "$initial_omp_theme" ]; then load_prompt; fi
 }

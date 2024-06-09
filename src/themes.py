@@ -5,7 +5,11 @@ import argparse
 from config import get_or_create_config, save_config, get_repo_file_path
 from windows import set_wallpaper, set_windows_mode
 from vscode import set_vscode_theme, set_vscode_font
-from terminal import set_terminal_profile_param, set_terminal_color_scheme, set_terminal_theme
+from terminal import (
+    set_terminal_profile_param,
+    set_terminal_color_scheme,
+    set_terminal_theme,
+)
 from fonts import get_font_config
 from prompt import set_prompt_theme
 from dict import get_dict_value
@@ -14,7 +18,7 @@ from dict import get_dict_value
 def get_themes_config():
     themes_path = get_repo_file_path("themes/themes.json")
     try:
-        with open(themes_path, "r") as file:
+        with open(themes_path, "r", encoding="utf-8") as file:
             return json.load(file)
     except FileNotFoundError:
         print(f"File not found: {themes_path}")
@@ -120,9 +124,11 @@ def set_theme(args):
         term_scheme_file = get_theme_param(theme_name, "terminal.color_scheme.file")
         term_scheme_path = None
         if term_scheme_file != None:
-            term_scheme_path = get_repo_file_path(f"themes/terminal/{term_scheme_file}", validate=True)
+            term_scheme_path = get_repo_file_path(
+                f"themes/terminal/{term_scheme_file}", validate=True
+            )
         set_terminal_color_scheme(term_scheme_name, term_scheme_path)
-    
+
     # Set Terminal Theme
     term_theme_name = get_theme_param(theme_name, "terminal.theme.name")
     if term_theme_name != None:
@@ -130,7 +136,9 @@ def set_theme(args):
         term_theme_file = get_theme_param(theme_name, "terminal.theme.file")
         term_theme_path = None
         if term_theme_file != None:
-            term_theme_path = get_repo_file_path(f"themes/terminal/{term_theme_file}", validate=True)
+            term_theme_path = get_repo_file_path(
+                f"themes/terminal/{term_theme_file}", validate=True
+            )
         set_terminal_theme(term_theme_name, term_theme_path)
 
     # Set Other Terminal Params
@@ -145,6 +153,7 @@ def set_theme(args):
     config["theme"]["active"] = theme_name
     save_config(config)
 
+    os.system("cls" if os.name == "nt" else "clear")
     print(f"Set active theme to: {theme_name}\n")
     return
 

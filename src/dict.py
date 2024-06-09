@@ -1,5 +1,5 @@
 def get_dict_value(d, path, default=None):
-    keys = path.split('.')
+    keys = path.split(".")
     for key in keys:
         if isinstance(d, dict) and key in d:
             d = d[key]
@@ -7,8 +7,9 @@ def get_dict_value(d, path, default=None):
             return default
     return d
 
+
 def set_dict_value(d, path, value):
-    keys = path.split('.')
+    keys = path.split(".")
     for key in keys[:-1]:
         if key not in d or not isinstance(d[key], dict):
             d[key] = {}

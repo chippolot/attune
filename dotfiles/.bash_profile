@@ -1,4 +1,4 @@
-cd {{config.shell.default_dir}}
+cd "{{config.shell.default_dir}}"
 
 # Don't put duplicate lines in the history
 export HISTCONTROL=ignoreboth:erasedups
