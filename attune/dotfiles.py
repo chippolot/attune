@@ -1,10 +1,9 @@
 import os
 import re
-from pathlib import Path
 from enum import Enum
+from pathlib import Path
 
-
-from attune.paths import *
+from attune.paths import get_attune_file_path, get_repo_file_path
 
 
 class DotfileSource(Enum):

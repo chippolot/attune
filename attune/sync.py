@@ -1,12 +1,12 @@
-import subprocess
 import os
 import shutil
+import subprocess
 
-from attune.paths import *
-from attune.fonts import *
-from attune.themes import *
-from attune.windows import *
-from attune.template import *
+from attune.fonts import get_font_config, get_font_ids
+from attune.paths import get_attune_file_path, get_repo_file_path
+from attune.template import template_apply
+from attune.themes import get_active_theme_name, get_default_theme_name, set_theme
+from attune.windows import is_font_installed
 
 
 def patch_setup_block(file_to_patch, setup_block_file):
@@ -158,7 +158,7 @@ def sync(args):
         install_font_prereq(id)
 
     # Apply default theme if none is set
-    if get_active_theme_name() == None:
+    if get_active_theme_name() is None:
         print("\nNo theme set. Setting default theme...")
         set_theme(get_default_theme_name())
 

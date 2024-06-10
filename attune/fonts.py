@@ -1,6 +1,6 @@
 import json
 
-from attune.paths import *
+from attune.paths import get_repo_file_path
 
 
 def get_fonts_config():
@@ -16,7 +16,7 @@ def get_fonts_config():
 
 def get_font_config(font_id, validate=False):
     fonts = get_fonts_config()
-    if not font_id in fonts:
+    if font_id not in fonts:
         if validate:
             print(f"Invalid font id: {font_id}")
         return None

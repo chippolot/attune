@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 
-import sys
-import os
 
-from attune.sync import *
+from attune.sync import sync
 
 sync()
 print("Installation complete. Please restart for changes to take effect.")

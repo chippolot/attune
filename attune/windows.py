@@ -1,8 +1,8 @@
 import ctypes
 import os
-import winreg
 import subprocess
 import time
+import winreg
 
 
 def set_wallpaper(image_path):

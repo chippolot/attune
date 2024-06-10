@@ -1,10 +1,10 @@
-import subprocess
-import os
 import json
+import os
 import shutil
+import subprocess
 
-from attune.dict import *
-from attune.paths import *
+from attune.dict import get_dict_value
+from attune.paths import get_attune_file_path, get_repo_file_path
 
 
 def get_config_path():

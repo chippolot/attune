@@ -1,7 +1,7 @@
-import os
 import json
+import os
 
-from attune.dict import *
+from attune.dict import set_dict_value
 
 
 def get_settings_path():
@@ -32,7 +32,7 @@ def save_settings(settings):
 
 
 def set_terminal_profile_param(path, value):
-    if value == None:
+    if value is None:
         return
 
     settings_path = get_settings_path()
@@ -52,7 +52,7 @@ def set_terminal_theme(name, theme_path):
     settings = get_settings()
 
     # Install / Update the theme
-    if theme_path != None:
+    if theme_path is not None:
         if not os.path.exists(theme_path):
             raise FileNotFoundError(f"The file {theme_path} does not exist.")
 
@@ -82,7 +82,7 @@ def set_terminal_theme(name, theme_path):
 
 def set_terminal_color_scheme(name, color_scheme_path):
     # Install / Update the scheme
-    if color_scheme_path != None:
+    if color_scheme_path is not None:
         if not os.path.exists(color_scheme_path):
             raise FileNotFoundError(f"The file {color_scheme_path} does not exist.")
 

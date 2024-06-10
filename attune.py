@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
 
 import argparse
-import sys
-import os
 
-from attune.sync import *
-from attune.themes import *
-from attune.config import *
+from attune.config import edit_config
+from attune.sync import sync
+from attune.themes import active_theme, list_themes, set_theme
 
 
 def theme(args):

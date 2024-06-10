@@ -1,8 +1,8 @@
-import re
 import os
+import re
 
-from attune.config import *
-from attune.paths import *
+from attune.config import get_or_create_config
+from attune.paths import get_attune_file_path, get_repo_file_path
 
 
 def flatten_dict(d, parent_key="", sep="."):
@@ -40,7 +40,7 @@ def template_apply(s):
 
     def replacer(match):
         token = match.group(1)
-        if not token in replacements:
+        if token not in replacements:
             print(f"!! Invalid template replacement token: {token}")
         replacement = replacements.get(token, match.group(0))
         if "~" in replacement:
