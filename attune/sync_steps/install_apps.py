@@ -38,7 +38,6 @@ class WindowsSyncStepInstallApps(SyncStepInstallApps):
                     text=True,
                     capture_output=True,
                 )
-                print(result.stdout)
                 if result.stderr:
                     print(result.stderr)
             except subprocess.CalledProcessError as e:
@@ -67,7 +66,6 @@ class MacSyncStepInstallApps(SyncStepInstallApps):
                     text=True,
                     capture_output=True,
                 )
-                print(result.stdout)
                 if result.stderr:
                     print(result.stderr)
             except subprocess.CalledProcessError as e:

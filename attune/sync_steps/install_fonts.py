@@ -34,6 +34,6 @@ def install_font_prereq(font_id):
     print(f"'{family}' is not installed. Installing using oh-my-posh...")
     pkg_id = config.get("pkg")
     try:
-        subprocess.run(["oh-my-posh", "font", "install", "--user", pkg_id], check=True)
+        subprocess.run(["oh-my-posh", "font", "install", "--user", pkg_id], stdout=subprocess.DEVNULL, check=True)
     except subprocess.CalledProcessError as e:
         print(f"An error occurred while installing font '{pkg_id}': {e.stderr}")
