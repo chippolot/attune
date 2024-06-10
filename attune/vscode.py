@@ -1,12 +1,30 @@
 import json
 import os
+import platform
 import subprocess
 
 
 def get_settings_path():
-    path = os.path.join(
-        os.path.expanduser("~"), "AppData", "Roaming", "Code", "User", "settings.json"
-    )
+    if platform.system() == "Windows":
+        path = os.path.join(
+            os.path.expanduser("~"),
+            "AppData",
+            "Roaming",
+            "Code",
+            "User",
+            "settings.json",
+        )
+    elif platform.system() == "Darwin":
+        path = os.path.join(
+            os.path.expanduser("~"),
+            "Library",
+            "Application Support",
+            "Code",
+            "User",
+            "settings.json",
+        )
+    else:
+        raise Exception("Unsupported platform")
     os.makedirs(os.path.dirname(path), exist_ok=True)
     return path
 

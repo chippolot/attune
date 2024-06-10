@@ -4,6 +4,9 @@ from attune.actions.set_theme.steps.set_background import SetBackgroundStep
 from attune.actions.set_theme.steps.set_display_mode import SetDisplayModeStep
 from attune.actions.set_theme.steps.set_oh_my_posh_theme import SetOhMyPoshThemeStep
 from attune.actions.set_theme.steps.set_theme_step import SetThemeStep
+from attune.actions.set_theme.steps.set_vscode_color_theme import (
+    SetVSCodeColorThemeStep,
+)
 from attune.themes import get_theme_names, list_themes
 
 
@@ -35,4 +38,5 @@ def set_theme(theme_name):
     action.register_step(SetBackgroundStep.create())
     action.register_step(SetDisplayModeStep.create())
     action.register_step(SetOhMyPoshThemeStep.create())
+    action.register_step(SetVSCodeColorThemeStep.create())
     action.run(theme_name)

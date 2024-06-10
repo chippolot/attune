@@ -12,7 +12,7 @@ class SetSystemSettingsStep(SyncStep):
         elif platform.system() == "Darwin":
             return MacSetSystemSettingsStep()
         else:
-            print("Unsupported platform")
+            raise Exception("Unsupported platform")
 
     def desc(self):
         return "Updating system settings"
