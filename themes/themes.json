@@ -16,8 +16,8 @@
             "display_mode": "dark",
             "code": {
                 "color_theme": {
-                    "name": "Material Deep Ocean+",
-                    "extension": "melihmutlu.material-deep-ocean"
+                    "name": "Material Theme DeepForest High Contrast",
+                    "extension": "Equinusocio.vsc-material-theme"
                 },
                 "font": {
                     "id": "CascadiaMono",
