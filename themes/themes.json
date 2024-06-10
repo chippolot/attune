@@ -37,7 +37,7 @@
             }
         },
         "nord": {
-            "prompt": "json.omp.json",
+            "prompt": "nordcustom.omp.json",
             "background": "nord.png",
             "display_mode": "dark",
             "code": {
