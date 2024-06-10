@@ -75,3 +75,5 @@ class MacSetTerminalThemeStep(SetTerminalThemeStep):
                     f"themes/terminal/mac/{term_theme_file}.terminal", validate=True
                 )
                 terminal.set_theme(term_theme_name, term_theme_path)
+
+        # TODO Support changing opacity
