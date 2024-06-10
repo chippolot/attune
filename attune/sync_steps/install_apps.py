@@ -72,7 +72,7 @@ class MacSyncStepInstallApps(SyncStepInstallApps):
                     print(result.stderr)
             except subprocess.CalledProcessError as e:
                 print(
-                    f"An error occurred while installing winget pkg '{app_desc}': {e.stderr}"
+                    f"An error occurred while installing brew pkg '{app_desc}': {e.stderr}"
                 )
         else:
             print(f"'{app_desc}' is already installed.")
