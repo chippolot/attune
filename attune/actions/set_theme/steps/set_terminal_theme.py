@@ -50,7 +50,7 @@ class WindowsSetTerminalThemeStep(SetTerminalThemeStep):
                     f"themes/terminal/windows/{term_theme_file}.theme.json",
                     validate=True,
                 )
-                terminal.set_theme(term_theme_name, term_theme_path)
+            terminal.set_theme(term_theme_name, term_theme_path)
 
         # Set Other Terminal Params
         terminal.set_theme_setting("opacity", theme_name, "terminal.opacity")
