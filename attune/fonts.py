@@ -1,6 +1,6 @@
 import json
 
-from config import get_repo_file_path
+from attune.config import get_repo_file_path
 
 
 def get_fonts_config():

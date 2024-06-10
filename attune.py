@@ -4,11 +4,9 @@ import argparse
 import sys
 import os
 
-sys.path.append(os.path.join(os.path.dirname(__file__), "src"))
-
-from sync import sync
-from themes import list_themes, set_theme, active_theme
-from config import edit_config
+from attune.sync import sync
+from attune.themes import list_themes, set_theme, active_theme
+from attune.config import edit_config
 
 
 def theme(args):

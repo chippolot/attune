@@ -1,7 +1,7 @@
 import re
 import os
 
-from config import get_attune_file_path, get_repo_file_path, get_or_create_config
+from attune.config import get_attune_file_path, get_repo_file_path, get_or_create_config
 
 
 def flatten_dict(d, parent_key="", sep="."):

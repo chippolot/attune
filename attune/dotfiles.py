@@ -2,7 +2,7 @@ import os
 import re
 from pathlib import Path
 from enum import Enum
-from config import get_repo_file_path, get_attune_file_path
+from attune.config import get_repo_file_path, get_attune_file_path
 
 
 class DotfileSource(Enum):

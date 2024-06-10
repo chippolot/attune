@@ -3,7 +3,7 @@ import os
 import json
 import shutil
 
-from dict import get_dict_value
+from attune.dict import get_dict_value
 
 
 def get_repo_file_path(relative_path="", validate=False):
