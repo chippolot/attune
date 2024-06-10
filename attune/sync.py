@@ -5,6 +5,7 @@ from attune.sync_steps.install_apps import SyncStepInstallApps
 from attune.sync_steps.install_fonts import SyncStepInstallFonts
 from attune.sync_steps.patch_dotfiles import SyncStepPatchDotfiles
 from attune.sync_steps.sync_step import SyncStep
+from attune.sync_steps.set_system_settings import SyncStepSetSystemSettings
 
 
 class SyncAction:
@@ -29,6 +30,7 @@ def sync(args=None):
     sync_action.register_step(SyncStepGitPull.create())
     sync_action.register_step(SyncStepPatchDotfiles.create())
     sync_action.register_step(SyncStepCopyDotfiles.create())
+    sync_action.register_step(SyncStepSetSystemSettings.create())
     sync_action.register_step(SyncStepInstallApps.create())
     sync_action.register_step(SyncStepInstallFonts.create())
     sync_action.register_step(SyncStepApplyDefaultTheme.create())
