@@ -45,10 +45,20 @@ def save_settings(settings):
 
 
 def install_vscode_extension(extension_name):
+    vscode_subprocess(["--install-extension", extension_name])
+
+
+def vscode_subprocess(args):
+    if platform.system() == "Windows":
+        cmd = "code.cmd"
+    elif platform.system() == "Darwin":
+        cmd = "code"
+    else:
+        raise Exception("Unsupported platform")
+
     try:
-        # Use the 'code' command to install the extension
         result = subprocess.run(
-            ["code.cmd", "--install-extension", extension_name],
+            [cmd] + args,
             check=True,
             text=True,
             capture_output=True,
@@ -56,7 +66,7 @@ def install_vscode_extension(extension_name):
         if result.stderr:
             print(result.stderr)
     except subprocess.CalledProcessError as e:
-        print(f"Failed to install VSCode extension {extension_name}: {e}")
+        print(f"Failed to invoke vscode command: {e}")
 
 
 def set_vscode_theme(theme_name, extension_name=None):

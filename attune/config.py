@@ -1,10 +1,10 @@
 import json
 import os
 import shutil
-import subprocess
 
 from attune.dict import get_dict_value
 from attune.paths import get_attune_file_path, get_repo_file_path
+from attune.vscode import vscode_subprocess
 
 
 def get_config_path():
@@ -36,10 +36,7 @@ def edit_config(args):
     # Force config creation
     get_or_create_config()
     config_path = get_config_path()
-    try:
-        subprocess.run(["code.cmd", config_path], check=True)
-    except subprocess.CalledProcessError as e:
-        print(f"Failed to open {config_path} with VSCode: {e}")
+    vscode_subprocess([config_path])
 
 
 def save_config(config):
