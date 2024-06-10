@@ -13,8 +13,12 @@ class SyncStepCopyDotfiles(SyncStep):
 
     def run(self):
         copy_template(
-            get_repo_file_path("dotfiles/.bash_profile", validate=True),
-            get_attune_file_path(".bash_profile"),
+            get_repo_file_path("dotfiles/.shell_profile", validate=True),
+            get_attune_file_path(".shell_profile"),
+        )
+        copy_template(
+            get_repo_file_path("dotfiles/.aliases", validate=True),
+            get_attune_file_path(".aliases"),
         )
         copy_template(
             get_repo_file_path("dotfiles/.gitconfig", validate=True),

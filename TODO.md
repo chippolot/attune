@@ -17,3 +17,5 @@
     - [ ] Release to public?
 - [ ] Multiplatform Support
     - [ ] Support for multiplatform syncing
+        - [ ] Fix brew installs in arm64
+        - [ ] Fix bash / zsh issues

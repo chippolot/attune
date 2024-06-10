@@ -1,6 +1,7 @@
 import os
 
 from attune.paths import get_repo_file_path
+from attune.shell import get_profile_filename
 from attune.sync_steps.sync_step import SyncStep
 from attune.template import template_apply
 
@@ -15,8 +16,8 @@ class SyncStepPatchDotfiles(SyncStep):
 
     def run(self):
         patch_setup_block(
-            os.path.expanduser("~/.bash_profile"),
-            get_repo_file_path("dotfiles/setup/.bash_profile", validate=True),
+            os.path.expanduser(f"~/{get_profile_filename()}"),
+            get_repo_file_path("dotfiles/setup/.shell_profile", validate=True),
         )
         patch_setup_block(
             os.path.expanduser("~/.gitconfig"),
