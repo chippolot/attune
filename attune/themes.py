@@ -6,6 +6,7 @@ from attune.config import get_or_create_config, save_config
 from attune.dict import get_dict_value
 from attune.fonts import get_font_config
 from attune.paths import get_repo_file_path
+from attune.platforms.windows import set_wallpaper, set_windows_mode
 from attune.prompt import set_prompt_theme
 from attune.terminal import (
     set_terminal_color_scheme,
@@ -13,7 +14,6 @@ from attune.terminal import (
     set_terminal_theme,
 )
 from attune.vscode import set_vscode_font, set_vscode_theme
-from attune.windows import set_wallpaper, set_windows_mode
 
 
 def get_themes_config():
