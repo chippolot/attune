@@ -2,17 +2,14 @@ import json
 import os
 import argparse
 
-from attune.config import get_or_create_config, save_config, get_repo_file_path
-from attune.windows import set_wallpaper, set_windows_mode
-from attune.vscode import set_vscode_theme, set_vscode_font
-from attune.terminal import (
-    set_terminal_profile_param,
-    set_terminal_color_scheme,
-    set_terminal_theme,
-)
-from attune.fonts import get_font_config
-from attune.prompt import set_prompt_theme
-from attune.dict import get_dict_value
+from attune.config import *
+from attune.windows import *
+from attune.vscode import *
+from attune.terminal import *
+from attune.fonts import *
+from attune.prompt import *
+from attune.dict import *
+from attune.paths import *
 
 
 def get_themes_config():

@@ -2,11 +2,11 @@ import subprocess
 import os
 import shutil
 
-from attune.config import get_repo_file_path, get_attune_file_path
-from attune.fonts import get_font_ids, get_font_config
-from attune.themes import get_active_theme_name, set_theme, get_default_theme_name
-from attune.windows import is_font_installed
-from attune.template import template_apply
+from attune.paths import *
+from attune.fonts import *
+from attune.themes import *
+from attune.windows import *
+from attune.template import *
 
 
 def patch_setup_block(file_to_patch, setup_block_file):

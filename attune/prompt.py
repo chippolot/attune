@@ -1,4 +1,4 @@
-from attune.dotfiles import replace_dotfile_line, DotfileSource
+from attune.dotfiles import *
 
 
 def set_prompt_theme(prompt_path):

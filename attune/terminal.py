@@ -1,7 +1,7 @@
 import os
 import json
 
-from attune.dict import set_dict_value
+from attune.dict import *
 
 
 def get_settings_path():

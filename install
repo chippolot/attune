@@ -3,7 +3,7 @@
 import sys
 import os
 
-from attune.sync import sync
+from attune.sync import *
 
 sync()
 print("Installation complete. Please restart for changes to take effect.")

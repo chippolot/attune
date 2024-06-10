@@ -14,5 +14,6 @@
 - [ ] Sync Config
     - [ ] Add ability to sync config up to repo (or other repo?)
 - [ ] General
-    - [ ] Multiplatform
     - [ ] Release to public?
+- [ ] Multiplatform Support
+    - [ ] Support for multiplatform syncing

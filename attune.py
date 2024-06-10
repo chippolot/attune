@@ -4,9 +4,9 @@ import argparse
 import sys
 import os
 
-from attune.sync import sync
-from attune.themes import list_themes, set_theme, active_theme
-from attune.config import edit_config
+from attune.sync import *
+from attune.themes import *
+from attune.config import *
 
 
 def theme(args):
