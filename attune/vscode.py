@@ -33,7 +33,12 @@ def get_settings():
     settings_path = get_settings_path()
     if os.path.exists(settings_path):
         with open(settings_path, "r", encoding="utf-8") as file:
-            settings = json.load(file)
+            file_contents = file.read()
+            try:
+                settings = json.loads(file_contents)
+            except json.JSONDecodeError as e:
+                print(f"Failed to decode JSON from {settings_path}: {e}")
+                settings = {}
     else:
         settings = {}
     return settings
