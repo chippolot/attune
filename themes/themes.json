@@ -12,7 +12,7 @@
     "themes": {
         "forest-floor": {
             "prompt": "json.omp.json",
-            "background": "ferns-green.jpg",
+            "background": "forest-floor.jpg",
             "display_mode": "dark",
             "code": {
                 "color_theme": {
@@ -36,9 +36,35 @@
                 "opacity": 97
             }
         },
+        "nord": {
+            "prompt": "json.omp.json",
+            "background": "nord.png",
+            "display_mode": "dark",
+            "code": {
+                "color_theme": {
+                    "name": "Nord",
+                    "extension": "arcticicestudio.nord-visual-studio-code"
+                },
+                "font": {
+                    "id": "FiraMono",
+                    "size": 13
+                }
+            },
+            "terminal": {
+                "color_scheme": {
+                    "name": "nord",
+                    "fileid": "nord"
+                },
+                "font": {
+                    "id": "FiraMono",
+                    "size": 10
+                },
+                "opacity": 94
+            }
+        },
         "rose-pine-dawn": {
             "prompt": "M365Princess.omp.json",
-            "background": "simple-pastel-by-triarts-from-freepik.jpg",
+            "background": "rose-pine-dawn.jpg",
             "display_mode": "light",
             "code": {
                 "color_theme": {
