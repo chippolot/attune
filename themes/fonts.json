@@ -7,6 +7,10 @@
         "pkg": "CascadiaMono",
         "family": "CaskaydiaMono NF"
     },
+    "CascadiaCode": {
+        "pkg": "CascadiaCode",
+        "family": "CaskaydiaCove NF"
+    },
     "JetBrainsMono": {
         "pkg": "JetBrainsMono",
         "family": "JetBrainsMono NFM"

@@ -1,7 +1,7 @@
 {
     "defaults": {
         "terminal": {
-            "opacity": 100,
+            "opacity": 94,
             "useAcrylic": false,
             "cursorShape": "vintage",
             "theme": {
@@ -32,8 +32,7 @@
                 "font": {
                     "id": "CascadiaMono",
                     "size": 10
-                },
-                "opacity": 94
+                }
             }
         },
         "nord": {
@@ -58,8 +57,7 @@
                 "font": {
                     "id": "FiraCode",
                     "size": 10
-                },
-                "opacity": 94
+                }
             }
         },
         "rose-pine-dawn": {
@@ -88,7 +86,8 @@
                 "font": {
                     "id": "Meslo",
                     "size": 10
-                }
+                },
+                "opacity": 100
             }
         },
         "blueberry-banana": {
@@ -113,8 +112,57 @@
                 "font": {
                     "id": "FiraCode",
                     "size": 10
+                }
+            }
+        },
+        "tokyo-night": {
+            "prompt": "tokyonight_storm.omp.json",
+            "background": "80s-retro-tropical-sunset-by-freepik.jpg",
+            "display_mode": "dark",
+            "code": {
+                "color_theme": {
+                    "name": "Tokyo Night",
+                    "extension": "enkia.tokyo-night"
                 },
-                "opacity": 94
+                "font": {
+                    "id": "CascadiaCode",
+                    "size": 13
+                }
+            },
+            "terminal": {
+                "color_scheme": {
+                    "name": "Tokyo Night",
+                    "fileid": "tokyo-night"
+                },
+                "font": {
+                    "id": "CascadiaCode",
+                    "size": 10
+                }
+            }
+        },
+        "kanagawa": {
+            "prompt": "emodipt-extend.omp.json",
+            "background": "kanagawa.jpg",
+            "display_mode": "dark",
+            "code": {
+                "color_theme": {
+                    "name": "Kanagawa",
+                    "extension": "qufiwefefwoyn.kanagawa"
+                },
+                "font": {
+                    "id": "CascadiaCode",
+                    "size": 13
+                }
+            },
+            "terminal": {
+                "color_scheme": {
+                    "name": "KanagawaWave",
+                    "fileid": "kanagawa"
+                },
+                "font": {
+                    "id": "CascadiaCode",
+                    "size": 10
+                }
             }
         }
     }
