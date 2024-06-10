@@ -90,6 +90,32 @@
                     "size": 10
                 }
             }
+        },
+        "blueberry-banana": {
+            "prompt": "spaceship.omp.json",
+            "background": "blueberry-banana.jpg",
+            "display_mode": "dark",
+            "code": {
+                "color_theme": {
+                    "name": "Blueberry Banana",
+                    "extension": "pshershov.blueberry-banana"
+                },
+                "font": {
+                    "id": "FiraMono",
+                    "size": 13
+                }
+            },
+            "terminal": {
+                "color_scheme": {
+                    "name": "Banana Blueberry",
+                    "fileid": "blueberry-banana"
+                },
+                "font": {
+                    "id": "FiraMono",
+                    "size": 10
+                },
+                "opacity": 94
+            }
         }
     }
 }

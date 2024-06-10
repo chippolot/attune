@@ -3,3 +3,4 @@
 * terminal.app themes: https://github.com/lysyi3m/macos-terminal-themes
 * desktop backgrounds: https://github.com/basecamp/omakub
 * seashells terminal theme: https://gist.github.com/sameerkatija/cbcd58a855f5aa28517e7694216f6b47
+* blueberry background: https://unsplash.com/photos/blueberry-fruits-eVQBXxeCre4
