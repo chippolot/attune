@@ -9,6 +9,7 @@ from attune.dict import get_dict_value
 def get_repo_file_path(relative_path="", validate=False):
     script_dir = os.path.dirname(os.path.abspath(__file__))
     path = os.path.join(script_dir, "../", relative_path)
+    path = os.path.abspath(path)
     if validate and not os.path.exists(path):
         raise Exception(f"Invalid file path: {path}")
     return path
