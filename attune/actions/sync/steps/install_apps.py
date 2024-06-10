@@ -2,16 +2,16 @@ import platform
 import shutil
 import subprocess
 
-from attune.sync_steps.sync_step import SyncStep
+from attune.actions.sync.steps.sync_step import SyncStep
 
 
-class SyncStepInstallApps(SyncStep):
+class InstallAppsStep(SyncStep):
     @staticmethod
     def create():
         if platform.system() == "Windows":
-            return WindowsSyncStepInstallApps()
+            return WindowsInstallAppsStep()
         elif platform.system() == "Darwin":
-            return MacSyncStepInstallApps()
+            return MacInstallAppsStep()
         else:
             print("Unsupported platform")
 
@@ -22,7 +22,7 @@ class SyncStepInstallApps(SyncStep):
         pass
 
 
-class WindowsSyncStepInstallApps(SyncStepInstallApps):
+class WindowsInstallAppsStep(InstallAppsStep):
     def run(self):
         self.__install("visual studio code", "code", "Microsoft.VisualStudioCode")
         self.__install("terminal", "wt", "Microsoft.WindowsTerminal")
@@ -48,7 +48,7 @@ class WindowsSyncStepInstallApps(SyncStepInstallApps):
             print(f"'{app_desc}' is already installed.")
 
 
-class MacSyncStepInstallApps(SyncStepInstallApps):
+class MacInstallAppsStep(InstallAppsStep):
     def run(self):
         self.__install("visual studio code", "code", "--cask visual-studio-code")
         self.__install(

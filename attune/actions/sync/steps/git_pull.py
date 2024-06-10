@@ -1,13 +1,13 @@
 import subprocess
 
+from attune.actions.sync.steps.sync_step import SyncStep
 from attune.paths import get_repo_file_path
-from attune.sync_steps.sync_step import SyncStep
 
 
-class SyncStepGitPull(SyncStep):
+class GitPullStep(SyncStep):
     @staticmethod
     def create():
-        return SyncStepGitPull()
+        return GitPullStep()
 
     def desc(self):
         return "Syncing attune repo"

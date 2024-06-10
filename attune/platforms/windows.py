@@ -5,7 +5,7 @@ import time
 import winreg
 
 
-def set_wallpaper(image_path):
+def set_background(image_path):
     # Absolute path to the image
     image_path = os.path.abspath(image_path)
 
@@ -27,7 +27,7 @@ def set_wallpaper(image_path):
         raise ctypes.WinError()
 
 
-def set_windows_mode(dark_mode):
+def set_display_mode(dark_mode):
     try:
         # Function to set the theme mode in the registry
         def set_mode(value):

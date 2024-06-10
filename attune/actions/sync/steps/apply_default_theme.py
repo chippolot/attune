@@ -1,11 +1,12 @@
-from attune.sync_steps.sync_step import SyncStep
-from attune.themes import get_active_theme_name, get_default_theme_name, set_theme
+from attune.actions.set_theme.set_theme import set_theme
+from attune.actions.sync.steps.sync_step import SyncStep
+from attune.themes import get_active_theme_name, get_default_theme_name
 
 
-class SyncStepApplyDefaultTheme(SyncStep):
+class ApplyDefaultThemeStep(SyncStep):
     @staticmethod
     def create():
-        return SyncStepApplyDefaultTheme()
+        return ApplyDefaultThemeStep()
 
     def desc(self):
         return "Checking active theme"

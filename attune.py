@@ -2,9 +2,10 @@
 
 import argparse
 
+from attune.actions.set_theme.set_theme import set_theme
+from attune.actions.sync.sync import sync
 from attune.config import edit_config
-from attune.sync import sync
-from attune.themes import active_theme, list_themes, set_theme
+from attune.themes import active_theme, list_themes
 
 
 def main():
@@ -26,7 +27,7 @@ def main():
     parser_theme_set.add_argument(
         "theme_name", type=str, help="The name of the theme to set as active"
     )
-    parser_theme_set.set_defaults(func=set_theme)
+    parser_theme_set.set_defaults(func=set_theme_cmd)
 
     parser_theme_active = theme_subparsers.add_parser(
         "active", help="Show the active theme"
@@ -50,6 +51,10 @@ def main():
         args.func(args)
     else:
         parser.print_help()
+
+
+def set_theme_cmd(args):
+    set_theme(args.theme_name)
 
 
 if __name__ == "__main__":

@@ -1,8 +1,8 @@
 import platform
 import subprocess
 
+from attune.actions.sync.steps.sync_step import SyncStep
 from attune.fonts import get_font_config, get_font_ids
-from attune.sync_steps.sync_step import SyncStep
 
 if platform.system() == "Windows":
     from attune.platforms.windows import is_font_installed
@@ -10,10 +10,10 @@ elif platform.system() == "Darwin":
     from attune.platforms.mac import is_font_installed
 
 
-class SyncStepInstallFonts(SyncStep):
+class InstallFontsStep(SyncStep):
     @staticmethod
     def create():
-        return SyncStepInstallFonts()
+        return InstallFontsStep()
 
     def desc(self):
         return "Checking font dependencies"
@@ -34,6 +34,10 @@ def install_font_prereq(font_id):
     print(f"'{family}' is not installed. Installing using oh-my-posh...")
     pkg_id = config.get("pkg")
     try:
-        subprocess.run(["oh-my-posh", "font", "install", "--user", pkg_id], stdout=subprocess.DEVNULL, check=True)
+        subprocess.run(
+            ["oh-my-posh", "font", "install", "--user", pkg_id],
+            stdout=subprocess.DEVNULL,
+            check=True,
+        )
     except subprocess.CalledProcessError as e:
         print(f"An error occurred while installing font '{pkg_id}': {e.stderr}")

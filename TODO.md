@@ -1,10 +1,15 @@
 # TODO
 - [ ] README
+- [ ] Argparse
+    - [ ] Make _cmd funcs for all commands in main file
 - [ ] Sync Command
     - [ ] Source bash_profile if it changed
     - [ ] Patch default attune config on top of user config
     - [ ] Support dotfile extensions
-    - [ ] Version dotfiles and reload if changed
+- [ ] Theme Command
+    - [ ] Mac: Set wallpaper
+    - [ ] Mac: Set display mode
+    - [ ] Finish impl
 - [ ] Themes
     - [ ] Add rider theme support
     - [ ] Add slack theme support
@@ -15,7 +20,3 @@
     - [ ] Add ability to sync config up to repo (or other repo?)
 - [ ] General
     - [ ] Release to public?
-- [ ] Multiplatform Support
-    - [ ] Support for multiplatform syncing
-        - [ ] Fix brew installs in arm64
-        - [ ] Fix bash / zsh issues

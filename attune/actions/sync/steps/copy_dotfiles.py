@@ -1,12 +1,12 @@
+from attune.actions.sync.steps.sync_step import SyncStep
 from attune.paths import get_attune_file_path, get_repo_file_path
-from attune.sync_steps.sync_step import SyncStep
 from attune.template import template_apply
 
 
-class SyncStepCopyDotfiles(SyncStep):
+class CopyDotfilesStep(SyncStep):
     @staticmethod
     def create():
-        return SyncStepCopyDotfiles()
+        return CopyDotfilesStep()
 
     def desc(self):
         return "Copying dotfiles"

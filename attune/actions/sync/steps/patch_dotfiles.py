@@ -1,15 +1,15 @@
 import os
 
+from attune.actions.sync.steps.sync_step import SyncStep
 from attune.paths import get_repo_file_path
 from attune.shell import get_profile_filename
-from attune.sync_steps.sync_step import SyncStep
 from attune.template import template_apply
 
 
-class SyncStepPatchDotfiles(SyncStep):
+class PatchDotfilesStep(SyncStep):
     @staticmethod
     def create():
-        return SyncStepPatchDotfiles()
+        return PatchDotfilesStep()
 
     def desc(self):
         return "Patching dotfiles with setup code"
