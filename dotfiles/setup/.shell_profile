@@ -8,5 +8,5 @@ attune() {
     if [ -f "{{paths.config}}.env" ]; then . "{{paths.config}}.env"; fi
     if [ "$OMP_THEME" != "$initial_omp_theme" ]; then load_prompt; fi
 }
-. "{{paths.config}}{{shell.profile_filename}}"
+. "{{paths.config}}.shell_profile"
 load_prompt
