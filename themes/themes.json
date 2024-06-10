@@ -37,7 +37,7 @@
             }
         },
         "nord": {
-            "prompt": "nordcustom.omp.json",
+            "prompt": "paradox_nord.omp.json",
             "background": "nord.png",
             "display_mode": "dark",
             "code": {
@@ -46,7 +46,7 @@
                     "extension": "arcticicestudio.nord-visual-studio-code"
                 },
                 "font": {
-                    "id": "FiraMono",
+                    "id": "FiraCode",
                     "size": 13
                 }
             },
@@ -56,7 +56,7 @@
                     "fileid": "nord"
                 },
                 "font": {
-                    "id": "FiraMono",
+                    "id": "FiraCode",
                     "size": 10
                 },
                 "opacity": 94

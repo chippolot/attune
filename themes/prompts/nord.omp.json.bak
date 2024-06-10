@@ -1,0 +1,86 @@
+{
+    "segments": [
+      {
+        "type": "text",
+        "style": {
+          "foreground": "#000000",
+          "background": "#00ffff",
+          "bold": true
+        },
+        "properties": {
+          "text": " %n "
+        }
+      },
+      {
+        "type": "text",
+        "style": {
+          "foreground": "#00ffff",
+          "background": "#000000",
+          "bold": true
+        },
+        "properties": {
+          "text": " "
+        }
+      },
+      {
+        "type": "path",
+        "style": {
+          "foreground": "#0000ff",
+          "background": "#000000",
+          "bold": true
+        },
+        "properties": {
+          "folder_icon": "",
+          "folder_separator_icon": "  ",
+          "path_depth": 3
+        }
+      },
+      {
+        "type": "git",
+        "style": {
+          "foreground": "#00ff00",
+          "background": "#000000",
+          "bold": true
+        },
+        "properties": {
+          "prefix": "  ",
+          "branch_max_length": 20,
+          "branch_max_length_fix": true,
+          "fetch_status": true,
+          "clean_icon": "",
+          "dirty_icon": ""
+        }
+      },
+      {
+        "type": "time",
+        "style": {
+          "foreground": "#ffffff",
+          "background": "#00ffff",
+          "bold": true
+        },
+        "properties": {
+          "time_format": "2006-01-02  15:04:05",
+          "prefix": " ",
+          "postfix": " "
+        }
+      },
+      {
+        "type": "text",
+        "style": {
+          "foreground": "#00ffff",
+          "background": "#000000",
+          "bold": true
+        },
+        "properties": {
+          "text": " %m "
+        }
+      }
+    ],
+    "final_space": true,
+    "newline": true,
+    "template": "{{ .Prompt }}\n{{ .Segments }}",
+    "properties": {
+      "newline": true
+    }
+  }
+  
