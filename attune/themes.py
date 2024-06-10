@@ -3,9 +3,6 @@ import json
 from attune.config import get_or_create_config
 from attune.dict import get_dict_value
 from attune.paths import get_repo_file_path
-from attune.terminal.terminal import (
-    set_terminal_profile_param,
-)
 
 
 def get_themes_config():
@@ -67,11 +64,3 @@ def active_theme(args):
         print(f"Active Theme: {active_theme_name}")
     else:
         print("No active theme set")
-
-
-def set_terminal_theme_setting(terminal_param_path, theme_name, config_param_path):
-    value = get_theme_param(theme_name, config_param_path)
-    if value is None:
-        return
-    print(f"Seting terminal parameter {terminal_param_path} to: {value}")
-    set_terminal_profile_param(terminal_param_path, value)

@@ -25,6 +25,7 @@ class FilterDockAppsStep(SyncStep):
 
 class MacFilterDockAppsStep(FilterDockAppsStep):
     def run(self):
+        # TODO pin apps
         dock = Dock()
         keep_apps = [
             "Finder",

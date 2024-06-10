@@ -3,17 +3,27 @@ import subprocess
 
 class Terminal:
     def set_font(self, font_family, font_size):
-        # AppleScript to set the font in Terminal
-        apple_script = f"""
-        tell application "Terminal"
-            set font name of window 1 to "{font_family}"
-            set font size of window 1 to {font_size}
-        end tell
-        """
+        # TODO Implement
+        pass
 
+    def set_theme(self, name, theme_path):
+        # TODO prevent new terminal from opening
         try:
-            # Run the AppleScript command using osascript
+            # Open the .terminal file to import the profile settings
+            subprocess.run(["open", theme_path], check=True)
+
+            # Use AppleScript to set the imported profile as the default
+            apple_script = f"""
+            tell application "Terminal"
+                set default settings to settings set "{name}"
+                set startup settings to settings set "{name}"
+                set current settings of tabs of (every window whose visible is true) to settings set "{name}"
+            end tell
+            """
             subprocess.run(["osascript", "-e", apple_script], check=True)
-            print(f"Terminal font set to {font_family} at size {font_size}.")
+
+            print(
+                f"Applied terminal profile from '{theme_path}' and set it as default."
+            )
         except subprocess.CalledProcessError as e:
             print(f"An error occurred: {e}")

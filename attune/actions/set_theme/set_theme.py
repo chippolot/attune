@@ -1,9 +1,8 @@
-import os
-
 from attune.actions.set_theme.steps.set_background import SetBackgroundStep
 from attune.actions.set_theme.steps.set_display_mode import SetDisplayModeStep
 from attune.actions.set_theme.steps.set_oh_my_posh_theme import SetOhMyPoshThemeStep
 from attune.actions.set_theme.steps.set_terminal_font import SetTerminalFontStep
+from attune.actions.set_theme.steps.set_terminal_theme import SetTerminalThemeStep
 from attune.actions.set_theme.steps.set_theme_step import SetThemeStep
 from attune.actions.set_theme.steps.set_vscode_color_theme import (
     SetVSCodeColorThemeStep,
@@ -25,7 +24,8 @@ class SetThemeAction:
     def run(self, theme_name):
         for step in self.steps:
             step.run(theme_name)
-        os.system("cls" if os.name == "nt" else "clear")
+        # TODO re-add clear once everything is working
+        # os.system("cls" if os.name == "nt" else "clear")
         print(f"Set active theme to: {theme_name}\n")
 
 
@@ -42,5 +42,6 @@ def set_theme(theme_name):
     action.register_step(SetOhMyPoshThemeStep.create())
     action.register_step(SetVSCodeColorThemeStep.create())
     action.register_step(SetVSCodeFontStep.create())
+    action.register_step(SetTerminalThemeStep.create())
     action.register_step(SetTerminalFontStep.create())
     action.run(theme_name)

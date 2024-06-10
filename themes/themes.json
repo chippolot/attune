@@ -21,13 +21,13 @@
                 },
                 "font": {
                     "id": "FiraMono",
-                    "size": 14
+                    "size": 13
                 }
             },
             "terminal": {
                 "color_scheme": {
                     "name": "SeaShells",
-                    "file": "seashells.scheme.json"
+                    "fileid": "seashells"
                 },
                 "font": {
                     "id": "FiraMono",
@@ -47,17 +47,17 @@
                 },
                 "font": {
                     "id": "Meslo",
-                    "size": 14
+                    "size": 13
                 }
             },
             "terminal": {
                 "color_scheme": {
                     "name": "rose-pine-dawn",
-                    "file": "rose-pine-dawn.scheme.json"
+                    "fileid": "rose-pine-dawn"
                 },
                 "theme": {
                     "name": "rose-pine-dawn",
-                    "file": "rose-pine-dawn.theme.json"
+                    "fileid": "rose-pine-dawn"
                 },
                 "font": {
                     "id": "Meslo",
