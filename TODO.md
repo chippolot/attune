@@ -3,12 +3,12 @@
 - [ ] Argparse
     - [ ] Make _cmd funcs for all commands in main file
 - [ ] Sync Command
+    - [ ] Install recommended vscode extensions
+        - [ ] How to make this generic?
     - [ ] Source bash_profile if it changed
     - [ ] Patch default attune config on top of user config
     - [ ] Support dotfile extensions
 - [ ] Theme Command
-    - [ ] Mac: Set wallpaper
-    - [ ] Mac: Set display mode
     - [ ] Finish impl
 - [ ] Themes
     - [ ] Add rider theme support
@@ -20,3 +20,4 @@
     - [ ] Add ability to sync config up to repo (or other repo?)
 - [ ] General
     - [ ] Release to public?
+    - [ ] Use gum to make pretty!
