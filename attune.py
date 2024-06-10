@@ -7,10 +7,6 @@ from attune.sync import sync
 from attune.themes import active_theme, list_themes, set_theme
 
 
-def theme(args):
-    print(f"Applying theme: {args.theme_name}")
-
-
 def main():
     parser = argparse.ArgumentParser(
         description="A CLI tool to sync programming environments and themes."
