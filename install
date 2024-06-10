@@ -4,4 +4,4 @@
 from attune.sync import sync
 
 sync()
-print("Installation complete. Please restart for changes to take effect.")
+print("\nInstallation complete. Please restart for changes to take effect.")
