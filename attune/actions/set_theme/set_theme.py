@@ -7,6 +7,7 @@ from attune.actions.set_theme.steps.set_theme_step import SetThemeStep
 from attune.actions.set_theme.steps.set_vscode_color_theme import (
     SetVSCodeColorThemeStep,
 )
+from attune.actions.set_theme.steps.set_vscode_font import SetVSCodeFontStep
 from attune.themes import get_theme_names, list_themes
 
 
@@ -39,4 +40,5 @@ def set_theme(theme_name):
     action.register_step(SetDisplayModeStep.create())
     action.register_step(SetOhMyPoshThemeStep.create())
     action.register_step(SetVSCodeColorThemeStep.create())
+    action.register_step(SetVSCodeFontStep.create())
     action.run(theme_name)

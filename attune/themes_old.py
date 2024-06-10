@@ -13,30 +13,12 @@ from attune.themes import (
     get_theme_param,
     set_terminal_theme_setting,
 )
-from attune.vscode import set_vscode_font, set_vscode_theme
 
 if platform.system() == "Windows":
     pass
 
 
 def set_theme(theme_name):
-    # Set VSCode Color Theme
-    code_theme_name = get_theme_param(theme_name, "code.color_theme.name")
-    code_theme_ext = get_theme_param(theme_name, "code.color_theme.extension")
-    if code_theme_name is not None:
-        print(f"Seting vscode color theme to: '{code_theme_name}'")
-        set_vscode_theme(code_theme_name, code_theme_ext)
-
-    # Set VSCode Font
-    code_font_id = get_theme_param(theme_name, "code.font.id")
-    if code_font_id is not None:
-        font_config = get_font_config(code_font_id, validate=True)
-        if font_config is not None:
-            code_font_family = font_config.get("family")
-            code_font_size = get_theme_param(theme_name, "code.font.size")
-            print(f"Seting vscode font to: '{code_font_id}', size = {code_font_size}")
-            set_vscode_font(code_font_family, code_font_size)
-
     # Set Terminal Font
     term_font_id = get_theme_param(theme_name, "terminal.font.id")
     if term_font_id is not None:
