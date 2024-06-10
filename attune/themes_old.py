@@ -21,7 +21,7 @@ def set_theme(theme_name):
         term_scheme_path = None
         if term_scheme_file is not None:
             term_scheme_path = get_repo_file_path(
-                f"themes/terminal/{term_scheme_file}", validate=True
+                f"themes/terminal/windows/{term_scheme_file}", validate=True
             )
         set_terminal_color_scheme(term_scheme_name, term_scheme_path)
 
@@ -33,7 +33,7 @@ def set_theme(theme_name):
         term_theme_path = None
         if term_theme_file is not None:
             term_theme_path = get_repo_file_path(
-                f"themes/terminal/{term_theme_file}", validate=True
+                f"themes/terminal/windows/{term_theme_file}", validate=True
             )
         set_terminal_theme(term_theme_name, term_theme_path)
 

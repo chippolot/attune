@@ -5,3 +5,6 @@ __pycache__/
 
 # User config
 config.json
+
+# Mac files
+.DS_STORE
