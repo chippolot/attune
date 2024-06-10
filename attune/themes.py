@@ -3,7 +3,7 @@ import json
 from attune.config import get_or_create_config
 from attune.dict import get_dict_value
 from attune.paths import get_repo_file_path
-from attune.terminal import (
+from attune.terminal.terminal import (
     set_terminal_profile_param,
 )
 

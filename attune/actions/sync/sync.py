@@ -1,5 +1,6 @@
 from attune.actions.sync.steps.apply_default_theme import ApplyDefaultThemeStep
 from attune.actions.sync.steps.copy_dotfiles import CopyDotfilesStep
+from attune.actions.sync.steps.filter_dock_apps import FilterDockAppsStep
 from attune.actions.sync.steps.git_pull import GitPullStep
 from attune.actions.sync.steps.install_apps import InstallAppsStep
 from attune.actions.sync.steps.install_fonts import InstallFontsStep
@@ -20,6 +21,8 @@ class SyncAction:
 
     def run(self):
         for step in self.steps:
+            if step is None:
+                continue
             print(f"\n{step.desc()}...")
             step.run()
         print("\nSync complete!")
@@ -33,5 +36,6 @@ def sync(args=None):
     action.register_step(SetSystemSettingsStep.create())
     action.register_step(InstallAppsStep.create())
     action.register_step(InstallFontsStep.create())
+    action.register_step(FilterDockAppsStep.create())
     action.register_step(ApplyDefaultThemeStep.create())
     action.run()

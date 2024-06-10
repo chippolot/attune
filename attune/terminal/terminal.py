@@ -1,7 +1,17 @@
 import json
 import os
+import platform
 
 from attune.dict import set_dict_value
+
+if platform.system() == "Windows":
+    from attune.terminal.windows_terminal import Terminal
+elif platform.system() == "Darwin":
+    from attune.terminal.mac_terminal import Terminal
+
+
+def get_terminal():
+    return Terminal()
 
 
 def get_settings_path():

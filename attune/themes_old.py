@@ -1,12 +1,9 @@
 import os
-import platform
 
 from attune.config import get_or_create_config, save_config
-from attune.fonts import get_font_config
 from attune.paths import get_repo_file_path
 from attune.terminal import (
     set_terminal_color_scheme,
-    set_terminal_profile_param,
     set_terminal_theme,
 )
 from attune.themes import (
@@ -14,22 +11,8 @@ from attune.themes import (
     set_terminal_theme_setting,
 )
 
-if platform.system() == "Windows":
-    pass
-
 
 def set_theme(theme_name):
-    # Set Terminal Font
-    term_font_id = get_theme_param(theme_name, "terminal.font.id")
-    if term_font_id is not None:
-        font_config = get_font_config(term_font_id, validate=True)
-        if font_config is not None:
-            term_font_family = font_config.get("family")
-            term_font_size = get_theme_param(theme_name, "terminal.font.size")
-            print(f"Seting terminal font to: '{term_font_id}', size = {term_font_size}")
-            set_terminal_profile_param("font.face", term_font_family)
-            set_terminal_profile_param("font.size", term_font_size)
-
     # Set Terminal Color Scheme
     term_scheme_name = get_theme_param(theme_name, "terminal.color_scheme.name")
     if term_scheme_name is not None:

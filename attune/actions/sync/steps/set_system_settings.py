@@ -52,8 +52,20 @@ class MacSetSystemSettingsStep(SetSystemSettingsStep):
         )
         subprocess.run(
             [
+                "defaults",
+                "write",
+                "NSGlobalDomain",
+                "com.apple.swipescrolldirection",
+                "-bool",
+                "false",
+            ],
+            check=True,
+        )
+        subprocess.run(
+            [
                 "/System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings",
                 "-u",
             ],
             check=True,
         )
+        subprocess.run(["killall", "SystemUIServer"], check=True)
