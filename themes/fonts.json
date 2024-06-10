@@ -14,5 +14,9 @@
     "FiraMono": {
         "pkg": "FiraMono",
         "family": "FiraMono Nerd Font"
+    },
+    "FiraCode": {
+        "pkg": "FiraCode",
+        "family": "FiraCode Nerd Font"
     }
 }

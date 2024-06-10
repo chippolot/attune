@@ -14,6 +14,8 @@ class SyncAction:
         self.steps = []
 
     def register_step(self, step):
+        if step is None:
+            return
         if isinstance(step, SyncStep):
             self.steps.append(step)
         else:

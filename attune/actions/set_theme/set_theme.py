@@ -16,6 +16,8 @@ class SetThemeAction:
         self.steps = []
 
     def register_step(self, step):
+        if step is None:
+            return
         if isinstance(step, SetThemeStep):
             self.steps.append(step)
         else:

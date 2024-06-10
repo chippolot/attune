@@ -20,7 +20,7 @@
                     "extension": "melihmutlu.material-deep-ocean"
                 },
                 "font": {
-                    "id": "FiraMono",
+                    "id": "CascadiaMono",
                     "size": 13
                 }
             },
@@ -30,10 +30,10 @@
                     "fileid": "seashells"
                 },
                 "font": {
-                    "id": "FiraMono",
+                    "id": "CascadiaMono",
                     "size": 10
                 },
-                "opacity": 97
+                "opacity": 94
             }
         },
         "nord": {
@@ -101,7 +101,7 @@
                     "extension": "pshershov.blueberry-banana"
                 },
                 "font": {
-                    "id": "FiraMono",
+                    "id": "FiraCode",
                     "size": 13
                 }
             },
@@ -111,7 +111,7 @@
                     "fileid": "blueberry-banana"
                 },
                 "font": {
-                    "id": "FiraMono",
+                    "id": "FiraCode",
                     "size": 10
                 },
                 "opacity": 94
