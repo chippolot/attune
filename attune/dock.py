@@ -20,20 +20,21 @@ class Dock:
     def clear(self):
         try:
             subprocess.run(["dockutil", "--remove", "all", "--no-restart"], check=True)
-            print("Successfully cleared the Dock.")
         except subprocess.CalledProcessError as e:
             print(f"Failed to clear the Dock: {e}")
 
     def pin_item(self, app_path):
         try:
-            subprocess.run(["dockutil", "--add", app_path, "--no-restart"], check=True)
-            print(f"Successfully pinned {app_path} to the Dock.")
+            subprocess.run(
+                ["dockutil", "--add", app_path, "--no-restart"],
+                check=True,
+                stdout=subprocess.DEVNULL,
+            )
         except subprocess.CalledProcessError as e:
             print(f"Failed to pin {app_path} to the Dock: {e}")
 
     def restart(self):
         try:
             subprocess.run(["killall", "Dock"], check=True)
-            print("Dock restarted to apply changes.")
         except subprocess.CalledProcessError as e:
             print(f"Failed to restart the Dock: {e}")

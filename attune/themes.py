@@ -1,7 +1,7 @@
 import json
 
-from attune.config import get_or_create_config
-from attune.dict import get_dict_value
+from attune.config import get_or_create_config, save_config
+from attune.dict import get_dict_value, set_dict_value
 from attune.paths import get_repo_file_path
 
 
@@ -42,20 +42,18 @@ def list_themes(args):
 
 def get_active_theme_name():
     config = get_or_create_config()
-    if "theme" in config:
-        theme = config["theme"]
-        if "active" in theme:
-            return theme["active"]
-    return None
+    return get_dict_value(config, "theme.active")
+
+
+def set_active_theme_name(theme_name):
+    config = get_or_create_config()
+    set_dict_value(config, "theme.active", theme_name)
+    save_config(config)
 
 
 def get_default_theme_name():
     config = get_or_create_config()
-    if "theme" in config:
-        theme = config["theme"]
-        if "default" in theme:
-            return theme["default"]
-    return None
+    return get_dict_value(config, "theme.default")
 
 
 def active_theme(args):

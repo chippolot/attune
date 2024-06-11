@@ -13,5 +13,7 @@ class ApplyDefaultThemeStep(SyncStep):
 
     def run(self):
         if get_active_theme_name() is None:
-            print("\nNo theme set. Setting default theme...")
+            print("No theme set. Setting default theme...")
             set_theme(get_default_theme_name())
+        else:
+            print("Theme already set.")

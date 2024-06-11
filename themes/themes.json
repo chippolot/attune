@@ -1,11 +1,19 @@
 {
     "defaults": {
+        "code": {
+            "font": {
+                "size": 13
+            }
+        },
         "terminal": {
             "opacity": 94,
             "useAcrylic": false,
             "cursorShape": "vintage",
             "theme": {
                 "name": "dark"
+            },
+            "font": {
+                "size": 12
             }
         }
     },
@@ -20,8 +28,7 @@
                     "extension": "Equinusocio.vsc-material-theme"
                 },
                 "font": {
-                    "id": "CascadiaMono",
-                    "size": 13
+                    "id": "CascadiaMono"
                 }
             },
             "terminal": {
@@ -30,8 +37,7 @@
                     "fileid": "seashells"
                 },
                 "font": {
-                    "id": "CascadiaMono",
-                    "size": 10
+                    "id": "CascadiaMono"
                 }
             }
         },
@@ -45,8 +51,7 @@
                     "extension": "arcticicestudio.nord-visual-studio-code"
                 },
                 "font": {
-                    "id": "FiraCode",
-                    "size": 13
+                    "id": "FiraCode"
                 }
             },
             "terminal": {
@@ -55,8 +60,7 @@
                     "fileid": "nord"
                 },
                 "font": {
-                    "id": "FiraCode",
-                    "size": 10
+                    "id": "FiraCode"
                 }
             }
         },
@@ -70,8 +74,7 @@
                     "extension": "mvllow.rose-pine"
                 },
                 "font": {
-                    "id": "Meslo",
-                    "size": 13
+                    "id": "Meslo"
                 }
             },
             "terminal": {
@@ -84,10 +87,9 @@
                     "fileid": "rose-pine-dawn"
                 },
                 "font": {
-                    "id": "Meslo",
-                    "size": 10
+                    "id": "Meslo"
                 },
-                "opacity": 100
+                "opacity": 120
             }
         },
         "blueberry-banana": {
@@ -100,8 +102,7 @@
                     "extension": "pshershov.blueberry-banana"
                 },
                 "font": {
-                    "id": "FiraCode",
-                    "size": 13
+                    "id": "FiraCode"
                 }
             },
             "terminal": {
@@ -110,8 +111,7 @@
                     "fileid": "blueberry-banana"
                 },
                 "font": {
-                    "id": "FiraCode",
-                    "size": 10
+                    "id": "FiraCode"
                 }
             }
         },
@@ -125,8 +125,7 @@
                     "extension": "enkia.tokyo-night"
                 },
                 "font": {
-                    "id": "CascadiaCode",
-                    "size": 13
+                    "id": "CascadiaCode"
                 }
             },
             "terminal": {
@@ -135,8 +134,7 @@
                     "fileid": "tokyo-night"
                 },
                 "font": {
-                    "id": "CascadiaCode",
-                    "size": 10
+                    "id": "CascadiaCode"
                 }
             }
         },
@@ -150,8 +148,7 @@
                     "extension": "qufiwefefwoyn.kanagawa"
                 },
                 "font": {
-                    "id": "CascadiaCode",
-                    "size": 13
+                    "id": "CascadiaCode"
                 }
             },
             "terminal": {
@@ -160,8 +157,7 @@
                     "fileid": "kanagawa"
                 },
                 "font": {
-                    "id": "CascadiaCode",
-                    "size": 10
+                    "id": "CascadiaCode"
                 }
             }
         }

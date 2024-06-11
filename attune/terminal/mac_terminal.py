@@ -3,8 +3,24 @@ import subprocess
 
 class Terminal:
     def set_font(self, font_family, font_size):
-        # TODO Implement
-        pass
+        # TODO settings are copied??
+        # TODO font sizes don't update immediately
+        applescript = f"""
+        set newFontFamily to "{font_family}"
+        set newFontSize to {font_size}
+
+        tell application "Terminal"
+            set DefaultSettingsName to name of default settings
+            set font name of default settings to newFontFamily
+            set font size of default settings to newFontSize
+
+            -- Apply the settings to all open Terminal windows
+            set current settings of tabs of (every window whose visible is true) to settings set DefaultSettingsName
+        end tell
+        """
+
+        # Run the AppleScript using osascript
+        subprocess.run(["osascript", "-e", applescript], check=True)
 
     def set_theme(self, name, theme_path):
         # TODO prevent new terminal from opening

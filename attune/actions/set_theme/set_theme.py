@@ -8,7 +8,7 @@ from attune.actions.set_theme.steps.set_vscode_color_theme import (
     SetVSCodeColorThemeStep,
 )
 from attune.actions.set_theme.steps.set_vscode_font import SetVSCodeFontStep
-from attune.themes import get_theme_names, list_themes
+from attune.themes import get_theme_names, list_themes, set_active_theme_name
 
 
 class SetThemeAction:
@@ -28,6 +28,7 @@ class SetThemeAction:
             step.run(theme_name)
         # TODO re-add clear once everything is working
         # os.system("cls" if os.name == "nt" else "clear")
+        set_active_theme_name(theme_name)
         print(f"Set active theme to: {theme_name}\n")
 
 

@@ -63,6 +63,17 @@ class MacSetSystemSettingsStep(SetSystemSettingsStep):
         )
         subprocess.run(
             [
+                "defaults",
+                "write",
+                "com.apple.dock",
+                "show-recents",
+                "-bool",
+                "false",
+            ],
+            check=True,
+        )
+        subprocess.run(
+            [
                 "/System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings",
                 "-u",
             ],

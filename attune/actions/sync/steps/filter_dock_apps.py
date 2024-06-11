@@ -26,14 +26,15 @@ class FilterDockAppsStep(SyncStep):
 class MacFilterDockAppsStep(FilterDockAppsStep):
     def run(self):
         # TODO Do not restart if nothing changed!
+        # TODO Set dock attributes (size, animate, etc)
 
         dock = Dock()
         desired_apps = [
-            "/Applications/Utilities/Terminal.app",
+            "/System/Applications/Utilities/Terminal.app",
             "/Applications/Visual Studio Code.app",
             "/Applications/Google Chrome.app",
             "~/Downloads",
-            "/Applications/System Settings.app",
+            "/System/Applications/System Settings.app",
         ]
 
         # Clear the Dock
