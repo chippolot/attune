@@ -17,7 +17,7 @@ class FilterDockAppsStep(SyncStep):
             raise Exception("Unsupported platform")
 
     def desc(self):
-        return "Updating system settings"
+        return "Setting dock apps"
 
     def run(self):
         pass
@@ -25,32 +25,23 @@ class FilterDockAppsStep(SyncStep):
 
 class MacFilterDockAppsStep(FilterDockAppsStep):
     def run(self):
-        # TODO pin apps
+        # TODO Do not restart if nothing changed!
+
         dock = Dock()
-        keep_apps = [
-            "Finder",
-            "Terminal",
-            "Visual Studio Code",
-            "Google Chrome",
-            "System Preferences",
+        desired_apps = [
+            "/Applications/Utilities/Terminal.app",
+            "/Applications/Visual Studio Code.app",
+            "/Applications/Google Chrome.app",
+            "~/Downloads",
+            "/Applications/System Settings.app",
         ]
 
-        # Load current Dock preferences
-        dock_plist = dock.load_plist()
+        # Clear the Dock
+        dock.clear()
 
-        # Filter out unwanted apps
-        original_apps = dock_plist.get("persistent-apps", [])
-        filtered_apps = dock.filter_apps(dock_plist, keep_apps)
+        # Pin specified applications to the Dock
+        for app in desired_apps:
+            dock.pin_item(app)
 
-        # Check if the app list has changed
-        if original_apps != filtered_apps:
-            dock_plist["persistent-apps"] = filtered_apps
-
-            # Save the modified preferences back to the plist file
-            dock.save_plist(dock_plist)
-
-            # Restart the Dock to apply changes
-            dock.restart()
-            print("Dock restarted with updated app list.")
-        else:
-            print("No changes to the Dock app list.")
+        # Restart the Dock to apply changes
+        dock.restart()

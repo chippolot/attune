@@ -1,30 +1,39 @@
-import os
-import plistlib
+import json
 import subprocess
 
 
 class Dock:
-    def get_plist_path(self):
-        return os.path.expanduser("~/Library/Preferences/com.apple.dock.plist")
+    def get_current_items(self):
+        try:
+            result = subprocess.run(
+                ["dockutil", "--list", "--json"], check=True, stdout=subprocess.PIPE
+            )
+            dock_items = json.loads(result.stdout)
+            current_apps = [
+                item["path"] for item in dock_items if item["tile-type"] == "file-tile"
+            ]
+            return current_apps
+        except subprocess.CalledProcessError as e:
+            print(f"Failed to get current Dock items: {e}")
+            return []
 
-    def load_plist(self):
-        plist_path = self.get_plist_path()
-        with open(plist_path, "rb") as f:
-            return plistlib.load(f)
+    def clear(self):
+        try:
+            subprocess.run(["dockutil", "--remove", "all", "--no-restart"], check=True)
+            print("Successfully cleared the Dock.")
+        except subprocess.CalledProcessError as e:
+            print(f"Failed to clear the Dock: {e}")
 
-    def save_plist(self, plist_data):
-        plist_path = self.get_plist_path()
-        with open(plist_path, "wb") as f:
-            plistlib.dump(plist_data, f)
+    def pin_item(self, app_path):
+        try:
+            subprocess.run(["dockutil", "--add", app_path, "--no-restart"], check=True)
+            print(f"Successfully pinned {app_path} to the Dock.")
+        except subprocess.CalledProcessError as e:
+            print(f"Failed to pin {app_path} to the Dock: {e}")
 
     def restart(self):
-        subprocess.run(["killall", "Dock"], check=True)
-
-    def filter_apps(self, plist_data, keep_apps):
-        persistent_apps = plist_data.get("persistent-apps", [])
-        filtered_apps = [
-            app
-            for app in persistent_apps
-            if any(app["tile-data"].get("file-label") == name for name in keep_apps)
-        ]
-        return filtered_apps
+        try:
+            subprocess.run(["killall", "Dock"], check=True)
+            print("Dock restarted to apply changes.")
+        except subprocess.CalledProcessError as e:
+            print(f"Failed to restart the Dock: {e}")

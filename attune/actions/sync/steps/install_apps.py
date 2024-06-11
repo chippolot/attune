@@ -55,6 +55,7 @@ class MacInstallAppsStep(InstallAppsStep):
             "oh-my-posh", "oh-my-posh", "jandedobbeleer/oh-my-posh/oh-my-posh"
         )
         self.__install("fontconfig", "fc-list", "fontconfig")
+        self.__install("dockutil", "dockutil", "dockutil")
 
     def __install(self, app_desc, app_name, pkg_id):
         if shutil.which(app_name) is None:
