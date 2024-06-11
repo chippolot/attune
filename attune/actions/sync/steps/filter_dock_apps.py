@@ -30,11 +30,10 @@ class MacFilterDockAppsStep(FilterDockAppsStep):
 
         dock = Dock()
         desired_apps = [
-            "/System/Applications/Utilities/Terminal.app",
+            "/Applications/iTerm.app",
             "/Applications/Visual Studio Code.app",
             "/Applications/Google Chrome.app",
-            "~/Downloads",
-            "/System/Applications/System Settings.app",
+            "/Applications/ChatGPT.app",
         ]
 
         # Clear the Dock

@@ -3,7 +3,7 @@ from pathlib import Path
 
 
 class Terminal:
-    def set_font(self, font_family, font_size):
+    def set_font(self, font_family, font_ps, font_size):
         # TODO settings are copied??
         # TODO font sizes don't update immediately
         applescript = f"""

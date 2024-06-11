@@ -1,26 +1,32 @@
 {
     "Meslo": {
         "pkg": "Meslo",
-        "family": "MesloLGLDZ Nerd Font"
+        "family": "MesloLGLDZ Nerd Font",
+        "postscript": "MesloLGLDZNF-Regular"
     },
     "CascadiaMono": {
         "pkg": "CascadiaMono",
-        "family": "CaskaydiaMono NF"
+        "family": "CaskaydiaMono NF",
+        "postscript": "CaskaydiaMonoNF-Regular"
     },
     "CascadiaCode": {
         "pkg": "CascadiaCode",
-        "family": "CaskaydiaCove NF"
+        "family": "CaskaydiaCove NF",
+        "postscript": "CaskaydiaCoveNF-Regular"
     },
     "JetBrainsMono": {
         "pkg": "JetBrainsMono",
-        "family": "JetBrainsMono NFM"
+        "family": "JetBrainsMono NFM",
+        "postscript": "JetBrainsMonoNFM-Regular"
     },
     "FiraMono": {
         "pkg": "FiraMono",
-        "family": "FiraMono Nerd Font"
+        "family": "FiraMono Nerd Font",
+        "postscript": "FiraMonoNF-Reg"
     },
     "FiraCode": {
         "pkg": "FiraCode",
-        "family": "FiraCode Nerd Font"
+        "family": "FiraCode Nerd Font",
+        "postscript": "FiraCodeNF-Reg"
     }
 }
