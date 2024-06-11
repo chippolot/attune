@@ -28,19 +28,28 @@ def set_background(image_path):
     if not os.path.exists(image_path):
         raise FileNotFoundError(f"The file {image_path} does not exist.")
 
-    # AppleScript command to set the desktop background
-    apple_script = f"""
-    tell application "System Events"
-        set picture of every desktop to "{image_path}"
-    end tell
-    """
+    # Ensure the path to PlistBuddy
+    plist_buddy_path = "/usr/libexec/PlistBuddy"
+
+    # Ensure the path to the plist file
+    plist_path = os.path.expanduser(
+        "~/Library/Application Support/com.apple.wallpaper/Store/Index.plist"
+    )
+
+    # Construct the command to set the new wallpaper path
+    plist_buddy_command = f'{plist_buddy_path} -c "set AllSpacesAndDisplays:Desktop:Content:Choices:0:Files:0:relative file://{image_path}" "{plist_path}"'
+
+    # Construct the command to restart WallpaperAgent
+    kill_wallpaper_agent_command = "killall WallpaperAgent"
 
     try:
-        # Run the AppleScript command using osascript
-        subprocess.run(["osascript", "-e", apple_script], check=True)
-        print("Desktop background set successfully.")
-    except subprocess.CalledProcessError as e:
-        print(f"An error occurred: {e}")
+        subprocess.run(plist_buddy_command, shell=True, check=True)
+        subprocess.run(kill_wallpaper_agent_command, shell=True, check=True)
+
+    except subprocess.CalledProcessError:
+        raise Exception(
+            "Failed to set desktop wallpaper.\nGo to System Settings > Wallpaper and toggle 'Show on all Spaces' and try again."
+        )
 
 
 def set_display_mode(dark_mode):

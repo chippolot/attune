@@ -1,4 +1,5 @@
 import subprocess
+from pathlib import Path
 
 
 class Terminal:
@@ -28,6 +29,8 @@ class Terminal:
             # Open the .terminal file to import the profile settings
             subprocess.run(["open", theme_path], check=True)
 
+            name = Path(theme_path).stem
+
             # Use AppleScript to set the imported profile as the default
             apple_script = f"""
             tell application "Terminal"
@@ -38,8 +41,5 @@ class Terminal:
             """
             subprocess.run(["osascript", "-e", apple_script], check=True)
 
-            print(
-                f"Applied terminal profile from '{theme_path}' and set it as default."
-            )
         except subprocess.CalledProcessError as e:
             print(f"An error occurred: {e}")

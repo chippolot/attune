@@ -1,5 +1,6 @@
 from attune.actions.sync.steps.sync_step import SyncStep
 from attune.paths import get_attune_file_path, get_repo_file_path
+from attune.shell import get_profile_filename
 from attune.template import template_apply
 
 
@@ -23,6 +24,10 @@ class CopyDotfilesStep(SyncStep):
         copy_template(
             get_repo_file_path("dotfiles/.gitconfig", validate=True),
             get_attune_file_path(".gitconfig"),
+        )
+        copy_template(
+            get_repo_file_path(f"dotfiles/{get_profile_filename()}", validate=True),
+            get_attune_file_path(get_profile_filename()),
         )
 
 
