@@ -55,9 +55,12 @@ class Terminal:
         with open(theme_path, "rb") as f:
             theme_data = plistlib.load(f)
 
-        plist_data[color_preset_key][theme_name] = theme_data
+        for key, value in theme_data.items():
+            plist_data["New Bookmarks"][0][key] = value
+            plist_data["New Bookmarks"][0][key + " (Light)"] = value
+            plist_data["New Bookmarks"][0][key + " (Dark)"] = value
 
-        # Set the new theme as default
+        plist_data[color_preset_key][theme_name] = theme_data
         plist_data["New Bookmarks"][0]["Dynamic Profiles"] = theme_name
 
         # Write the updated plist back to the file

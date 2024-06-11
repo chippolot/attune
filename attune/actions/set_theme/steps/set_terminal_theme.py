@@ -72,7 +72,8 @@ class MacSetTerminalThemeStep(SetTerminalThemeStep):
             term_theme_path = None
             if term_theme_file is not None:
                 term_theme_path = get_repo_file_path(
-                    f"themes/terminal/mac/{term_theme_file}.terminal", validate=True
+                    f"themes/terminal/iterm2/{term_theme_file}.itermcolors",
+                    validate=True,
                 )
                 terminal.set_theme(term_theme_name, term_theme_path)
 
