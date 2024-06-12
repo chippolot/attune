@@ -1,6 +1,5 @@
 # TODO
 - [ ] README
-- [ ] Gum
 - [ ] Choose fonts separately from theme
 - [ ] Sync Command
     - [ ] Install recommended vscode extensions
@@ -15,4 +14,4 @@
     - [ ] Add ability to sync config up to repo (or other repo?)
 - [ ] General
     - [ ] Release to public?
-    - [ ] Use gum to make pretty!
+- [ ] Uninstall
