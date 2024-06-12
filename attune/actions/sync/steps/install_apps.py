@@ -25,7 +25,6 @@ class InstallAppsStep(SyncStep):
 class WindowsInstallAppsStep(InstallAppsStep):
     def run(self):
         package_manager = get_package_manager()
-        package_manager.install("charmbracelet.gum")
         if module.is_enabled(module.Modules.VSCODE):
             package_manager.install("Microsoft.VisualStudioCode")
         package_manager.install("Microsoft.WindowsTerminal")
@@ -35,7 +34,6 @@ class WindowsInstallAppsStep(InstallAppsStep):
 class MacInstallAppsStep(InstallAppsStep):
     def run(self):
         package_manager = get_package_manager()
-        package_manager.install("gum")
         if module.is_enabled(module.Modules.VSCODE):
             package_manager.install("visual-studio-code", "--cask")
         package_manager.install("iterm2", "--cask")
