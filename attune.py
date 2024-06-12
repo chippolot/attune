@@ -2,10 +2,11 @@
 
 import argparse
 
+from attune import gum
 from attune.actions.set_theme.set_theme import set_theme
 from attune.actions.sync.sync import sync
 from attune.config import edit_config
-from attune.themes import active_theme, list_themes
+from attune.themes import active_theme, get_theme_names
 
 
 def main():
@@ -18,14 +19,13 @@ def main():
     parser_theme = subparsers.add_parser("theme", help="Manage themes")
     theme_subparsers = parser_theme.add_subparsers(dest="theme_command")
 
-    parser_theme_list = theme_subparsers.add_parser(
-        "list", help="List all available themes"
-    )
-    parser_theme_list.set_defaults(func=list_themes_cmd)
-
     parser_theme_set = theme_subparsers.add_parser("set", help="Set a theme as active")
     parser_theme_set.add_argument(
-        "theme_name", type=str, help="The name of the theme to set as active"
+        "theme_name",
+        type=str,
+        default=None,
+        nargs="?",
+        help="The name of the theme to set as active",
     )
     parser_theme_set.set_defaults(func=set_theme_cmd)
 
@@ -54,7 +54,10 @@ def main():
 
 
 def set_theme_cmd(args):
-    set_theme(args.theme_name)
+    theme_name = args.theme_name
+    if theme_name is None:
+        theme_name = gum.choose(get_theme_names())
+    set_theme(theme_name)
 
 
 def edit_config_cmd(args):
@@ -63,10 +66,6 @@ def edit_config_cmd(args):
 
 def sync_cmd(args):
     sync()
-
-
-def list_themes_cmd(args):
-    list_themes()
 
 
 def active_theme_cmd(args):

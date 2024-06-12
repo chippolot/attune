@@ -31,7 +31,7 @@ def get_theme_param(theme_name, path):
 
 def get_theme_names():
     themes = get_themes_config().get("themes")
-    return themes.keys()
+    return list(themes.keys())
 
 
 def list_themes():

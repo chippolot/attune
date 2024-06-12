@@ -27,6 +27,7 @@ class WindowsInstallAppsStep(InstallAppsStep):
         self.__install("visual studio code", "code", "Microsoft.VisualStudioCode")
         self.__install("terminal", "wt", "Microsoft.WindowsTerminal")
         self.__install("oh-my-posh", "oh-my-posh", "JanDeDobbeleer.OhMyPosh")
+        self.__install("gum", "gum", "charmbracelet.gum")
 
     def __install(self, app_desc, app_name, pkg_id):
         if shutil.which(app_name) is None:
@@ -56,6 +57,7 @@ class MacInstallAppsStep(InstallAppsStep):
         self.__install("oh-my-posh", "jandedobbeleer/oh-my-posh/oh-my-posh")
         self.__install("fontconfig", "fontconfig")
         self.__install("dockutil", "dockutil")
+        self.__install("gum", "gum")
 
     def __install(self, app_desc, *args):
         if not self.__is_brew_package_installed(args[-1]):

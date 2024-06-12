@@ -36,7 +36,7 @@ def set_theme(theme_name):
     # Validate theme name and get config
     if theme_name not in get_theme_names():
         print(f"Invalid theme name: {theme_name}")
-        list_themes(None)
+        list_themes()
         return
 
     action = SetThemeAction()

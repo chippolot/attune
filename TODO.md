@@ -1,5 +1,7 @@
 # TODO
 - [ ] README
+- [ ] Gum
+- [ ] Choose fonts separately from theme
 - [ ] Sync Command
     - [ ] Install recommended vscode extensions
         - [ ] How to make this generic?
