@@ -1,3 +1,4 @@
+from attune import module
 from attune.actions.set_theme.steps.set_theme_step import SetThemeStep
 from attune.themes import get_theme_param
 from attune.vscode import set_vscode_theme
@@ -9,6 +10,8 @@ class SetVSCodeColorThemeStep(SetThemeStep):
         return SetVSCodeColorThemeStep()
 
     def run(self, theme_name):
+        if not module.is_enabled(module.Modules.VSCODE):
+            return
         code_theme_name = get_theme_param(theme_name, "code.color_theme.name")
         code_theme_ext = get_theme_param(theme_name, "code.color_theme.extension")
         if code_theme_name is not None:
