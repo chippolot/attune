@@ -1,7 +1,5 @@
 # TODO
 - [ ] README
-- [ ] Argparse
-    - [ ] Make _cmd funcs for all commands in main file
 - [ ] Sync Command
     - [ ] Install recommended vscode extensions
         - [ ] How to make this generic?
