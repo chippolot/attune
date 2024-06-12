@@ -14,6 +14,10 @@ class Config:
         return os.path.join(get_attune_file_path(), "config.json")
 
     @staticmethod
+    def exists():
+        return os.path.exists(Config.path())
+
+    @staticmethod
     def load():
         config_path = Config.path()
 

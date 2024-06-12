@@ -34,6 +34,7 @@ class SyncAction:
 def sync():
     action = SyncAction()
     action.register_step(GitPullStep.create())
+    # TODO install gum here
     action.register_step(ConfigureAttuneStep.create())
     action.register_step(PatchDotfilesStep.create())
     action.register_step(CopyDotfilesStep.create())

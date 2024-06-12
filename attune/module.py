@@ -6,6 +6,11 @@ from attune.config import Config
 class Modules(StrEnum):
     GIT = "git"
     VSCODE = "vscode"
+    CHATGPT = "chatgpt"
+
+
+def get_all():
+    return [e.value for e in Modules]
 
 
 def is_enabled(module):
@@ -27,4 +32,10 @@ def disable(module):
     modules = config.get("modules", [])
     if module not in modules:
         modules.remove(module)
+    config.save()
+
+
+def clear():
+    config = Config.load()
+    config.set("modules", [])
     config.save()
