@@ -1,3 +1,6 @@
+import os
+import time
+
 from attune.actions.set_theme.steps.set_background import SetBackgroundStep
 from attune.actions.set_theme.steps.set_display_mode import SetDisplayModeStep
 from attune.actions.set_theme.steps.set_oh_my_posh_theme import SetOhMyPoshThemeStep
@@ -26,8 +29,8 @@ class SetThemeAction:
     def run(self, theme_name):
         for step in self.steps:
             step.run(theme_name)
-        # TODO re-add clear once everything is working
-        # os.system("cls" if os.name == "nt" else "clear")
+        time.sleep(1)
+        os.system("cls" if os.name == "nt" else "clear")
         set_active_theme_name(theme_name)
         print(f"Set active theme to: {theme_name}\n")
 

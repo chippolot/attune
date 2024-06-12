@@ -3,6 +3,8 @@ from attune.actions.sync.steps.sync_step import SyncStep
 from attune.config import Config
 from attune.module import Modules
 
+ALWAYS_CONFIGURE = True
+
 
 class ConfigureAttuneStep(SyncStep):
     @staticmethod
@@ -13,7 +15,7 @@ class ConfigureAttuneStep(SyncStep):
         return "Checking attune configuration"
 
     def run(self):
-        if Config.exists():
+        if Config.exists() and not ALWAYS_CONFIGURE:
             print("Already configured!")
             return
 
