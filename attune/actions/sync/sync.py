@@ -1,4 +1,5 @@
 from attune.actions.sync.steps.apply_default_theme import ApplyDefaultThemeStep
+from attune.actions.sync.steps.configure_attune import ConfigureAttuneStep
 from attune.actions.sync.steps.copy_dotfiles import CopyDotfilesStep
 from attune.actions.sync.steps.filter_dock_apps import FilterDockAppsStep
 from attune.actions.sync.steps.git_pull import GitPullStep
@@ -33,6 +34,7 @@ class SyncAction:
 def sync():
     action = SyncAction()
     action.register_step(GitPullStep.create())
+    action.register_step(ConfigureAttuneStep.create())
     action.register_step(PatchDotfilesStep.create())
     action.register_step(CopyDotfilesStep.create())
     action.register_step(SetSystemSettingsStep.create())

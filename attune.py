@@ -5,8 +5,9 @@ import argparse
 from attune import gum
 from attune.actions.set_theme.set_theme import set_theme
 from attune.actions.sync.sync import sync
-from attune.config import edit_config
+from attune.config import Config
 from attune.themes import active_theme, get_theme_names
+from attune.vscode import vscode_subprocess
 
 
 def main():
@@ -61,7 +62,9 @@ def set_theme_cmd(args):
 
 
 def edit_config_cmd(args):
-    edit_config()
+    # Force config creation
+    Config.load()
+    vscode_subprocess([Config.path()])
 
 
 def sync_cmd(args):

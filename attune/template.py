@@ -1,7 +1,7 @@
 import os
 import re
 
-from attune.config import get_or_create_config
+from attune.config import Config
 from attune.paths import get_attune_file_path, get_repo_file_path
 from attune.shell import get_profile_filename, get_shell_name
 
@@ -37,8 +37,8 @@ def template_apply(s):
     }
 
     # Flatten the user config into replacement paths
-    config = get_or_create_config()
-    config_replacements = flatten_dict(config, "config")
+    config = Config.load()
+    config_replacements = flatten_dict(config.cfg, "config")
     replacements = {**replacements, **config_replacements}
 
     def replacer(match):
