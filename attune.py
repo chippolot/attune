@@ -21,7 +21,7 @@ def main():
     parser_theme_list = theme_subparsers.add_parser(
         "list", help="List all available themes"
     )
-    parser_theme_list.set_defaults(func=list_themes)
+    parser_theme_list.set_defaults(func=list_themes_cmd)
 
     parser_theme_set = theme_subparsers.add_parser("set", help="Set a theme as active")
     parser_theme_set.add_argument(
@@ -32,17 +32,17 @@ def main():
     parser_theme_active = theme_subparsers.add_parser(
         "active", help="Show the active theme"
     )
-    parser_theme_active.set_defaults(func=active_theme)
+    parser_theme_active.set_defaults(func=active_theme_cmd)
 
     # Sync subcommand
     parser_sync = subparsers.add_parser("sync", help="Sync the application")
-    parser_sync.set_defaults(func=sync)
+    parser_sync.set_defaults(func=sync_cmd)
 
     # Config subcommand
     parser_config = subparsers.add_parser(
         "config", help="Opens the user config file for editing"
     )
-    parser_config.set_defaults(func=edit_config)
+    parser_config.set_defaults(func=edit_config_cmd)
 
     args = parser.parse_args()
     if args.command == "theme" and args.theme_command is None:
@@ -55,6 +55,22 @@ def main():
 
 def set_theme_cmd(args):
     set_theme(args.theme_name)
+
+
+def edit_config_cmd(args):
+    edit_config()
+
+
+def sync_cmd(args):
+    sync()
+
+
+def list_themes_cmd(args):
+    list_themes()
+
+
+def active_theme_cmd(args):
+    active_theme()
 
 
 if __name__ == "__main__":

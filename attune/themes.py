@@ -34,7 +34,7 @@ def get_theme_names():
     return themes.keys()
 
 
-def list_themes(args):
+def list_themes():
     print("\nThemes:")
     for key in sorted(get_theme_names()):
         print("- " + key)
@@ -56,7 +56,7 @@ def get_default_theme_name():
     return get_dict_value(config, "theme.default")
 
 
-def active_theme(args):
+def active_theme():
     active_theme_name = get_active_theme_name()
     if active_theme_name is not None:
         print(f"Active Theme: {active_theme_name}")

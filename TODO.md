@@ -8,14 +8,9 @@
     - [ ] Source bash_profile if it changed
     - [ ] Patch default attune config on top of user config
     - [ ] Support dotfile extensions
-- [ ] Theme Command
-    - [ ] Finish impl
 - [ ] Themes
     - [ ] Add rider theme support
-    - [ ] Add slack theme support
-    - [ ] Add font support
-      - [ ] Rider
-    - [ ] More Themes
+    - [ ] Add rider font support
 - [ ] Sync Config
     - [ ] Add ability to sync config up to repo (or other repo?)
 - [ ] General

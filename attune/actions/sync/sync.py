@@ -30,7 +30,7 @@ class SyncAction:
         print("\nSync complete!")
 
 
-def sync(args=None):
+def sync():
     action = SyncAction()
     action.register_step(GitPullStep.create())
     action.register_step(PatchDotfilesStep.create())

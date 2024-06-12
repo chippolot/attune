@@ -32,7 +32,7 @@ def get_config_param(config, path):
     return value
 
 
-def edit_config(args):
+def edit_config():
     # Force config creation
     get_or_create_config()
     config_path = get_config_path()
