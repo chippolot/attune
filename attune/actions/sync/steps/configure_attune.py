@@ -3,8 +3,6 @@ from attune.actions.sync.steps.sync_step import SyncStep
 from attune.config import Config
 from attune.module import Modules
 
-ALWAYS_CONFIGURE = False
-
 
 class ConfigureAttuneStep(SyncStep):
     @staticmethod
@@ -14,11 +12,16 @@ class ConfigureAttuneStep(SyncStep):
     def desc(self):
         return "Checking attune configuration"
 
+    def forceRun(self):
+        self.__runImpl()
+
     def run(self):
-        if Config.exists() and not ALWAYS_CONFIGURE:
+        if Config.exists():
             print("Already configured!")
             return
+        self.__runImpl()
 
+    def __runImpl(self):
         config = Config.load()
 
         gum.style(
@@ -38,6 +41,8 @@ class ConfigureAttuneStep(SyncStep):
             header="Which modules do you want to enable?",
             limit=None,
         )
+        if modules_to_enable is None:
+            return
         module.clear()
         for m in modules_to_enable:
             module.enable(m)
@@ -45,3 +50,5 @@ class ConfigureAttuneStep(SyncStep):
         if module.is_enabled(Modules.GIT):
             config.set("git.name", gum.input(prompt="Enter your git name: "))
             config.set("git.email", gum.input(prompt="Enter your git email: "))
+
+        print("Configuration complete! Enjoy attuning!")

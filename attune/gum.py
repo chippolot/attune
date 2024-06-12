@@ -13,7 +13,9 @@ def choose(choices, limit=1, header=None):
         ["gum", "choose"] + choices + opts, stdout=subprocess.PIPE, text=True
     )
     selected = result.stdout.strip().splitlines()
-    if limit == 1:
+    if selected is None or len(selected) == 0:
+        return None
+    elif limit == 1:
         return selected[0]
     else:
         return selected
