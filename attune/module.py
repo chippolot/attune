@@ -7,6 +7,7 @@ class Modules(StrEnum):
     GIT = "git"
     VSCODE = "vscode"
     CHATGPT = "chatgpt"
+    RIDER = "rider"
 
 
 def get_all():
