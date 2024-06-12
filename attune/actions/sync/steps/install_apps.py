@@ -1,9 +1,8 @@
 import platform
-import shutil
-import subprocess
 
 from attune import module
 from attune.actions.sync.steps.sync_step import SyncStep
+from attune.packages.packages import get_package_manager
 
 
 class InstallAppsStep(SyncStep):
@@ -25,76 +24,23 @@ class InstallAppsStep(SyncStep):
 
 class WindowsInstallAppsStep(InstallAppsStep):
     def run(self):
-        self.__install("gum", "gum", "charmbracelet.gum")
+        package_manager = get_package_manager()
+        package_manager.install("charmbracelet.gum")
         if module.is_enabled(module.Modules.VSCODE):
-            self.__install("visual studio code", "code", "Microsoft.VisualStudioCode")
-        self.__install("terminal", "wt", "Microsoft.WindowsTerminal")
-        self.__install("oh-my-posh", "oh-my-posh", "JanDeDobbeleer.OhMyPosh")
-
-    def __install(self, app_desc, app_name, pkg_id):
-        if shutil.which(app_name) is None:
-            print(f"'{app_desc}' is not installed. Installing using winget...")
-            try:
-                result = subprocess.run(
-                    ["winget", "install", "--id", pkg_id, "-e", "--source", "winget"],
-                    check=True,
-                    text=True,
-                    capture_output=True,
-                )
-                if result.stderr:
-                    print(result.stderr)
-            except subprocess.CalledProcessError as e:
-                print(
-                    f"An error occurred while installing winget pkg '{app_desc}': {e.stderr}"
-                )
-        else:
-            print(f"'{app_desc}' is already installed.")
+            package_manager.install("Microsoft.VisualStudioCode")
+        package_manager.install("Microsoft.WindowsTerminal")
+        package_manager.install("JanDeDobbeleer.OhMyPosh")
 
 
 class MacInstallAppsStep(InstallAppsStep):
     def run(self):
-        self.__install("gum", "gum")
+        package_manager = get_package_manager()
+        package_manager.install("gum")
         if module.is_enabled(module.Modules.VSCODE):
-            self.__install("visual studio code", "--cask", "visual-studio-code")
-        self.__install("iterm2", "--cask", "iterm2")
+            package_manager.install("visual-studio-code", "--cask")
+        package_manager.install("iterm2", "--cask")
         if module.is_enabled(module.Modules.CHATGPT):
-            self.__install("chatGPT", "--cask", "chatgpt")
-        self.__install("oh-my-posh", "jandedobbeleer/oh-my-posh/oh-my-posh")
-        self.__install("fontconfig", "fontconfig")
-        self.__install("dockutil", "dockutil")
-
-    def __install(self, app_desc, *args):
-        if not self.__is_brew_package_installed(args[-1]):
-            print(f"'{app_desc}' is not installed. Installing using brew...")
-            try:
-                result = subprocess.run(
-                    ["brew", "install"] + [*args],
-                    check=True,
-                    text=True,
-                    capture_output=True,
-                )
-                print(f"'{app_desc}' installed successfully.")
-                if result.stderr:
-                    print(result.stderr)
-            except subprocess.CalledProcessError as e:
-                print(
-                    f"An error occurred while installing brew pkg '{app_desc}': {e.stderr}"
-                )
-        else:
-            print(f"'{app_desc}' is already installed.")
-
-    def __is_brew_package_installed(self, package_name):
-        try:
-            result = subprocess.run(
-                ["brew", "list", package_name],
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.PIPE,
-                text=True,
-            )
-            if result.returncode == 0:
-                return True
-            else:
-                return False
-        except FileNotFoundError:
-            print("Homebrew is not installed or not found in the PATH.")
-            return False
+            package_manager.install("chatgpt", "--cask")
+        package_manager.install("jandedobbeleer/oh-my-posh/oh-my-posh")
+        package_manager.install("fontconfig")
+        package_manager.install("dockutil")

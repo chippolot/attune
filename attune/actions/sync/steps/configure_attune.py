@@ -3,7 +3,7 @@ from attune.actions.sync.steps.sync_step import SyncStep
 from attune.config import Config
 from attune.module import Modules
 
-ALWAYS_CONFIGURE = True
+ALWAYS_CONFIGURE = False
 
 
 class ConfigureAttuneStep(SyncStep):
