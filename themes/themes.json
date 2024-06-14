@@ -102,7 +102,7 @@
                     "extension": "pshershov.blueberry-banana"
                 },
                 "font": {
-                    "id": "FiraCode"
+                    "id": "CascadiaMono"
                 }
             },
             "terminal": {
@@ -111,7 +111,7 @@
                     "fileid": "blueberry-banana"
                 },
                 "font": {
-                    "id": "FiraCode"
+                    "id": "CascadiaMono"
                 }
             }
         },

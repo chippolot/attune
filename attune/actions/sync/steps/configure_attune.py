@@ -5,9 +5,15 @@ from attune.module import Modules
 
 
 class ConfigureAttuneStep(SyncStep):
+    reconfigure = False
+
     @staticmethod
-    def create():
-        return ConfigureAttuneStep()
+    def create(reconfigure):
+        return ConfigureAttuneStep(reconfigure)
+
+    def __init__(self, reconfigure) -> None:
+        super().__init__()
+        self.reconfigure = reconfigure
 
     def desc(self):
         return "Checking attune configuration"
@@ -16,7 +22,7 @@ class ConfigureAttuneStep(SyncStep):
         self.__runImpl()
 
     def run(self):
-        if Config.exists():
+        if Config.exists() and not self.reconfigure:
             print("Already configured!")
             return
         self.__runImpl()
@@ -41,14 +47,20 @@ class ConfigureAttuneStep(SyncStep):
             header="Which modules do you want to enable?",
             limit=None,
         )
-        if modules_to_enable is None:
-            return
         module.clear()
-        for m in modules_to_enable:
-            module.enable(m)
+        if modules_to_enable is not None:
+            for m in modules_to_enable:
+                module.enable(m)
 
         if module.is_enabled(Modules.GIT):
             config.set("git.name", gum.input(prompt="Enter your git name: "))
             config.set("git.email", gum.input(prompt="Enter your git email: "))
+
+        config.set(
+            "shell.default_dir",
+            gum.input(prompt="Enter your home directory: ", placeholder="~/"),
+        )
+
+        config.save()
 
         print("Configuration complete! Enjoy attuning!")

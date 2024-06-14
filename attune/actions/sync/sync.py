@@ -32,11 +32,11 @@ class SyncAction:
         print("\nSync complete!")
 
 
-def sync():
+def sync(reconfigure):
     action = SyncAction()
     action.register_step(GitPullStep.create())
     action.register_step(InstallGumStep.create())
-    action.register_step(ConfigureAttuneStep.create())
+    action.register_step(ConfigureAttuneStep.create(reconfigure))
     action.register_step(PatchDotfilesStep.create())
     action.register_step(CopyDotfilesStep.create())
     action.register_step(SetSystemSettingsStep.create())

@@ -4,7 +4,6 @@ import argparse
 
 from attune import gum
 from attune.actions.set_theme.set_theme import set_theme
-from attune.actions.sync.steps.configure_attune import ConfigureAttuneStep
 from attune.actions.sync.sync import sync
 from attune.config import Config
 from attune.themes import get_theme_names
@@ -21,6 +20,13 @@ def main():
     subparser = subparsers.add_parser(
         "sync", help="Syncs attune scripts and runs attune."
     )
+    subparser.add_argument(
+        "-r",
+        "--reconfigure",
+        action=argparse.BooleanOptionalAction,
+        default=False,
+        help="Shows attune configuration wizard during sync.",
+    )
     subparser.set_defaults(func=sync_cmd)
 
     # Cmd: theme
@@ -35,10 +41,6 @@ def main():
     )
     subparser.set_defaults(func=edit_config_cmd)
 
-    # Cmd: reconfigure
-    subparser = subparsers.add_parser("reconfigure", help="Reconfigures attune.")
-    subparser.set_defaults(func=reconfigure_cmd)
-
     args = parser.parse_args()
     if hasattr(args, "func"):
         args.func(args)
@@ -47,7 +49,7 @@ def main():
 
 
 def sync_cmd(args):
-    sync()
+    sync(reconfigure=args.reconfigure)
 
 
 def theme_cmd(args):
@@ -62,10 +64,6 @@ def edit_config_cmd(args):
         print("Cannot edit user config until sync has been run at least once!")
         return
     vscode_subprocess([Config.path()])
-
-
-def reconfigure_cmd(args):
-    ConfigureAttuneStep.create().forceRun()
 
 
 if __name__ == "__main__":
