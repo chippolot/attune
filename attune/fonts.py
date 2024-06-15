@@ -1,5 +1,6 @@
 import json
 
+from attune.config import Config
 from attune.paths import get_repo_file_path
 
 
@@ -25,4 +26,26 @@ def get_font_config(font_id, validate=False):
 
 def get_font_ids():
     fonts = get_fonts_config()
-    return fonts.keys()
+    return list(fonts.keys())
+
+
+def get_active_font_id():
+    config = Config.load()
+    return config.get("font.active")
+
+
+def set_active_font_id(font_id):
+    config = Config.load()
+    config.set("font.active", font_id)
+    config.save()
+
+
+def get_default_font_id():
+    config = Config.load()
+    return config.get("font.default")
+
+
+def set_default_font_id(font_id):
+    config = Config.load()
+    config.set("font.default", font_id)
+    config.save()

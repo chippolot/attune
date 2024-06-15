@@ -26,18 +26,12 @@
                 "color_theme": {
                     "name": "Material Theme DeepForest High Contrast",
                     "extension": "Equinusocio.vsc-material-theme"
-                },
-                "font": {
-                    "id": "CascadiaMono"
                 }
             },
             "terminal": {
                 "color_scheme": {
                     "name": "SeaShells",
                     "fileid": "seashells"
-                },
-                "font": {
-                    "id": "CascadiaMono"
                 }
             }
         },
@@ -49,18 +43,12 @@
                 "color_theme": {
                     "name": "Nord",
                     "extension": "arcticicestudio.nord-visual-studio-code"
-                },
-                "font": {
-                    "id": "FiraCode"
                 }
             },
             "terminal": {
                 "color_scheme": {
                     "name": "nord",
                     "fileid": "nord"
-                },
-                "font": {
-                    "id": "FiraCode"
                 }
             }
         },
@@ -72,9 +60,6 @@
                 "color_theme": {
                     "name": "Rosé Pine Dawn",
                     "extension": "mvllow.rose-pine"
-                },
-                "font": {
-                    "id": "Meslo"
                 }
             },
             "terminal": {
@@ -85,9 +70,6 @@
                 "theme": {
                     "name": "rose-pine-dawn",
                     "fileid": "rose-pine-dawn"
-                },
-                "font": {
-                    "id": "Meslo"
                 },
                 "opacity": 100
             }
@@ -100,18 +82,12 @@
                 "color_theme": {
                     "name": "Blueberry Banana",
                     "extension": "pshershov.blueberry-banana"
-                },
-                "font": {
-                    "id": "CascadiaMono"
                 }
             },
             "terminal": {
                 "color_scheme": {
                     "name": "Banana Blueberry",
                     "fileid": "blueberry-banana"
-                },
-                "font": {
-                    "id": "CascadiaMono"
                 }
             }
         },
@@ -123,18 +99,12 @@
                 "color_theme": {
                     "name": "Tokyo Night",
                     "extension": "enkia.tokyo-night"
-                },
-                "font": {
-                    "id": "CascadiaCode"
                 }
             },
             "terminal": {
                 "color_scheme": {
                     "name": "Tokyo Night",
                     "fileid": "tokyo-night"
-                },
-                "font": {
-                    "id": "CascadiaCode"
                 }
             }
         },
@@ -146,18 +116,12 @@
                 "color_theme": {
                     "name": "Kanagawa",
                     "extension": "qufiwefefwoyn.kanagawa"
-                },
-                "font": {
-                    "id": "CascadiaCode"
                 }
             },
             "terminal": {
                 "color_scheme": {
                     "name": "KanagawaWave",
                     "fileid": "kanagawa"
-                },
-                "font": {
-                    "id": "CascadiaCode"
                 }
             }
         }

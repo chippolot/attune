@@ -4,11 +4,6 @@
         "family": "MesloLGLDZ Nerd Font",
         "postscript": "MesloLGLDZNF-Regular"
     },
-    "CascadiaMono": {
-        "pkg": "CascadiaMono",
-        "family": "CaskaydiaMono NF",
-        "postscript": "CaskaydiaMonoNF-Regular"
-    },
     "CascadiaCode": {
         "pkg": "CascadiaCode",
         "family": "CaskaydiaCove NF",
@@ -19,14 +14,19 @@
         "family": "JetBrainsMono NFM",
         "postscript": "JetBrainsMonoNFM-Regular"
     },
-    "FiraMono": {
-        "pkg": "FiraMono",
-        "family": "FiraMono Nerd Font",
-        "postscript": "FiraMonoNF-Reg"
-    },
     "FiraCode": {
         "pkg": "FiraCode",
         "family": "FiraCode Nerd Font",
         "postscript": "FiraCodeNF-Reg"
+    },
+    "UbuntoMono": {
+        "pkg": "UbuntoMono",
+        "family": "UbuntoMono Nerd Font",
+        "postscript": "UbuntoMonoNFM"
+    },
+    "Inconsolata": {
+        "pkg": "Inconsolata",
+        "family": "Inconsolata Nerd Font",
+        "postscript": "InconsolataNFM-Regular"
     }
 }

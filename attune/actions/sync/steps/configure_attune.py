@@ -3,6 +3,7 @@ import platform
 from attune import gum, module
 from attune.actions.sync.steps.sync_step import SyncStep
 from attune.config import Config
+from attune.fonts import get_font_ids, set_active_font_id, set_default_font_id
 from attune.module import Modules
 from attune.themes import get_theme_names, set_active_theme_name, set_default_theme_name
 
@@ -67,6 +68,12 @@ class ConfigureAttuneStep(SyncStep):
         if default_theme_name is not None:
             set_default_theme_name(default_theme_name)
             set_active_theme_name(None)
+
+        # Let the user select a default font
+        default_font_id = gum.choose(get_font_ids(), header="Select a default font: ")
+        if default_font_id is not None:
+            set_default_font_id(default_font_id)
+            set_active_font_id(None)
 
         print("Configuration complete! Enjoy attuning!")
 

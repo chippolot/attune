@@ -6,8 +6,9 @@ from attune import gum
 from attune.actions.set_theme.set_theme import set_theme
 from attune.actions.sync.sync import sync
 from attune.config import Config
+from attune.fonts import get_font_ids
 from attune.terminal.terminal import get_terminal
-from attune.themes import get_theme_names
+from attune.themes import get_active_theme_name, get_theme_names
 from attune.vscode import vscode_subprocess
 
 
@@ -36,6 +37,12 @@ def main():
     )
     subparser.set_defaults(func=theme_cmd)
 
+    # Cmd: font
+    subparser = subparsers.add_parser(
+        "font", help="Selects a new attune font to apply system-wide."
+    )
+    subparser.set_defaults(func=font_cmd)
+
     # Cmd: config
     subparser = subparsers.add_parser(
         "config", help="Opens the user config file for editing."
@@ -59,10 +66,17 @@ def sync_cmd(args):
 
 
 def theme_cmd(args):
-    theme_name = gum.choose(get_theme_names())
+    theme_name = gum.choose(get_theme_names(), header="Select a theme: ")
     if theme_name is None:
         return
     set_theme(theme_name)
+
+
+def font_cmd(args):
+    font_id = gum.choose(get_font_ids(), header="Select a font: ")
+    if font_id is None:
+        return
+    set_theme(get_active_theme_name())
 
 
 def edit_config_cmd(args):
