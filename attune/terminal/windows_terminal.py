@@ -6,6 +6,8 @@ from attune.themes import get_theme_param
 
 
 class Terminal:
+    needs_restart = False
+
     def set_font(self, font_family, font_ps, font_size):
         self.__set_profile_param("font.face", font_family)
         self.__set_profile_param("font.size", font_size)

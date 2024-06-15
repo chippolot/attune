@@ -38,7 +38,7 @@ def template_apply(s):
 
     # Flatten the user config into replacement paths
     config = Config.load()
-    config_replacements = flatten_dict(config.cfg, "config")
+    config_replacements = flatten_dict(config._cfg, "config")
     replacements = {**replacements, **config_replacements}
 
     def replacer(match):

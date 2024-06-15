@@ -9,6 +9,8 @@ from attune.themes import get_theme_param
 
 
 class Terminal:
+    needs_restart = False
+
     def set_font(self, font_family, font_ps, font_size):
         plist_path = os.path.expanduser(
             "~/Library/Preferences/com.googlecode.iterm2.plist"
@@ -31,8 +33,8 @@ class Terminal:
         with open(plist_path, "wb") as f:
             plistlib.dump(plist_data, f)
 
-        # Restart iTerm2 to apply the changes
-        self._restart()
+        # Queue restart to apply changes
+        Terminal.needs_restart = True
 
     def set_theme(self, name, theme_path):
         plist_path = os.path.expanduser(
@@ -76,10 +78,10 @@ class Terminal:
         with open(plist_path, "wb") as f:
             plistlib.dump(plist_data, f)
 
-        # Restart iTerm2 to apply the changes
-        self._restart()
+        # Queue restart to apply changes
+        Terminal.needs_restart = True
 
-    def _restart(self):
+    def restart(self):
         # Fork a child process
         pid = os.fork()
         if pid > 0:

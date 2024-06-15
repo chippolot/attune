@@ -6,6 +6,7 @@ from attune import gum
 from attune.actions.set_theme.set_theme import set_theme
 from attune.actions.sync.sync import sync
 from attune.config import Config
+from attune.terminal.terminal import get_terminal
 from attune.themes import get_theme_names
 from attune.vscode import vscode_subprocess
 
@@ -46,6 +47,11 @@ def main():
         args.func(args)
     else:
         parser.print_help()
+
+    # Handle any queued requests
+    terminal = get_terminal()
+    if terminal.needs_restart:
+        terminal.restart()
 
 
 def sync_cmd(args):

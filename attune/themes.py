@@ -56,6 +56,12 @@ def get_default_theme_name():
     return config.get("theme.default")
 
 
+def set_default_theme_name(theme_name):
+    config = Config.load()
+    config.set("theme.default", theme_name)
+    config.save()
+
+
 def active_theme():
     active_theme_name = get_active_theme_name()
     if active_theme_name is not None:

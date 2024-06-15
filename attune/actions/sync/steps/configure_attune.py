@@ -1,8 +1,10 @@
+import platform
+
 from attune import gum, module
 from attune.actions.sync.steps.sync_step import SyncStep
 from attune.config import Config
 from attune.module import Modules
-from attune.themes import set_active_theme_name
+from attune.themes import get_theme_names, set_active_theme_name, set_default_theme_name
 
 
 class ConfigureAttuneStep(SyncStep):
@@ -42,7 +44,6 @@ class ConfigureAttuneStep(SyncStep):
 
         module.clear()
 
-        # TODO Make config a singleton to prevent saving-over
         config = Config.load()
         if self.__module_check(Modules.GIT):
             config.set("git.name", gum.input(prompt="Enter your git name: "))
@@ -50,13 +51,22 @@ class ConfigureAttuneStep(SyncStep):
 
         self.__module_check(Modules.VSCODE)
 
+        if platform.system() == "Darwin":
+            self.__module_check(Modules.CHATGPT)
+
         config.set(
             "shell.default_dir",
             gum.input(prompt="Enter your home directory: ", placeholder="~/"),
         )
         config.save()
 
-        set_active_theme_name(None)
+        # Let the user select a default theme
+        default_theme_name = gum.choose(
+            get_theme_names(), header="Select a default theme: "
+        )
+        if default_theme_name is not None:
+            set_default_theme_name(default_theme_name)
+            set_active_theme_name(None)
 
         print("Configuration complete! Enjoy attuning!")
 
