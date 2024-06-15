@@ -2,6 +2,7 @@ from attune import gum, module
 from attune.actions.sync.steps.sync_step import SyncStep
 from attune.config import Config
 from attune.module import Modules
+from attune.themes import set_active_theme_name
 
 
 class ConfigureAttuneStep(SyncStep):
@@ -28,8 +29,6 @@ class ConfigureAttuneStep(SyncStep):
         self.__runImpl()
 
     def __runImpl(self):
-        config = Config.load()
-
         gum.style(
             "Welcome to attue!\nLet's configure your experience!",
             foreground=212,
@@ -41,26 +40,28 @@ class ConfigureAttuneStep(SyncStep):
             padding="2 4",
         )
 
-        # Choose modules to enable
-        modules_to_enable = gum.choose(
-            choices=module.get_all(),
-            header="Which modules do you want to enable?",
-            limit=None,
-        )
         module.clear()
-        if modules_to_enable is not None:
-            for m in modules_to_enable:
-                module.enable(m)
 
-        if module.is_enabled(Modules.GIT):
+        # TODO Make config a singleton to prevent saving-over
+        config = Config.load()
+        if self.__module_check(Modules.GIT):
             config.set("git.name", gum.input(prompt="Enter your git name: "))
             config.set("git.email", gum.input(prompt="Enter your git email: "))
+
+        self.__module_check(Modules.VSCODE)
 
         config.set(
             "shell.default_dir",
             gum.input(prompt="Enter your home directory: ", placeholder="~/"),
         )
-
         config.save()
 
+        set_active_theme_name(None)
+
         print("Configuration complete! Enjoy attuning!")
+
+    def __module_check(self, m):
+        if gum.confirm(f"Do you want attune to manage {m} for you?"):
+            module.enable(m)
+            return True
+        return False

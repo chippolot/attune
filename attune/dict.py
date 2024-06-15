@@ -14,4 +14,7 @@ def set_dict_value(d, path, value):
         if key not in d or not isinstance(d[key], dict):
             d[key] = {}
         d = d[key]
-    d[keys[-1]] = value
+    if value is not None:
+        d[keys[-1]] = value
+    else:
+        d.pop(keys[-1], None)

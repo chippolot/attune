@@ -85,3 +85,14 @@ def style(
         command.append(texts)
 
     subprocess.run(command, text=True)
+
+
+def confirm(prompt):
+    # Run the gum confirm command
+    result = subprocess.run(["gum", "confirm", prompt], text=True)
+
+    # Check the result
+    if result.returncode == 0:
+        return True  # User confirmed
+    else:
+        return False  # User did not confirm

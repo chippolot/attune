@@ -10,7 +10,7 @@ class HomebrewPackageManager(PackageManager):
     def install_impl(self, package_name, *opts):
         try:
             result = subprocess.run(
-                ["brew", "install"] + [*opts],
+                ["brew", "install", package_name] + [*opts],
                 check=True,
                 text=True,
                 capture_output=True,
