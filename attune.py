@@ -6,7 +6,7 @@ from attune import gum
 from attune.actions.set_theme.set_theme import set_theme
 from attune.actions.sync.sync import sync
 from attune.config import Config
-from attune.fonts import get_font_ids
+from attune.fonts import get_font_ids, set_active_font_id
 from attune.terminal.terminal import get_terminal
 from attune.themes import get_active_theme_name, get_theme_names
 from attune.vscode import vscode_subprocess
@@ -76,6 +76,7 @@ def font_cmd(args):
     font_id = gum.choose(get_font_ids(), header="Select a font: ")
     if font_id is None:
         return
+    set_active_font_id(font_id)
     set_theme(get_active_theme_name())
 
 

@@ -1,15 +1,16 @@
 # TODO
 - [ ] README
-- [ ] Choose fonts separately from theme
 - [ ] Sync Command
     - [ ] Install recommended vscode extensions
         - [ ] How to make this generic?
     - [ ] Source bash_profile if it changed
-    - [ ] Patch default attune config on top of user config
-    - [ ] Support dotfile extensions
+    - [ ] Version config to determine how to add new configuration
+- [ ] Dotfile modules
+    - [ ] Create module
+    - [ ] Add module
+    - [ ] Remove module
 - [ ] Themes
-    - [ ] Add rider theme support
-    - [ ] Add rider font support
+    - [ ] Add rider theme + font support
 - [ ] Sync Config
     - [ ] Add ability to sync config up to repo (or other repo?)
 - [ ] General

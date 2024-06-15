@@ -1,4 +1,4 @@
-from attune import module
+from attune import features
 from attune.actions.set_theme.steps.set_theme_step import SetThemeStep
 from attune.fonts import get_active_font_id, get_font_config
 from attune.themes import get_theme_param
@@ -11,7 +11,7 @@ class SetVSCodeFontStep(SetThemeStep):
         return SetVSCodeFontStep()
 
     def run(self, theme_name):
-        if not module.is_enabled(module.Modules.VSCODE):
+        if not features.is_enabled(features.Features.VSCODE):
             return
         code_font_id = get_active_font_id()
         if code_font_id is not None:

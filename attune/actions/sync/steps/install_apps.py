@@ -1,6 +1,6 @@
 import platform
 
-from attune import module
+from attune import features
 from attune.actions.sync.steps.sync_step import SyncStep
 from attune.packages.packages import get_package_manager
 
@@ -25,7 +25,7 @@ class InstallAppsStep(SyncStep):
 class WindowsInstallAppsStep(InstallAppsStep):
     def run(self):
         package_manager = get_package_manager()
-        if module.is_enabled(module.Modules.VSCODE):
+        if features.is_enabled(features.Features.VSCODE):
             package_manager.install("Microsoft.VisualStudioCode")
         package_manager.install("Microsoft.WindowsTerminal")
         package_manager.install("JanDeDobbeleer.OhMyPosh")
@@ -34,10 +34,10 @@ class WindowsInstallAppsStep(InstallAppsStep):
 class MacInstallAppsStep(InstallAppsStep):
     def run(self):
         package_manager = get_package_manager()
-        if module.is_enabled(module.Modules.VSCODE):
+        if features.is_enabled(features.Features.VSCODE):
             package_manager.install("visual-studio-code", "--cask")
         package_manager.install("iterm2", "--cask")
-        if module.is_enabled(module.Modules.CHATGPT):
+        if features.is_enabled(features.Features.CHATGPT):
             package_manager.install("chatgpt", "--cask")
         package_manager.install("jandedobbeleer/oh-my-posh/oh-my-posh")
         package_manager.install("fontconfig")

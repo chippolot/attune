@@ -21,3 +21,5 @@ class SetTerminalFontStep(SetThemeStep):
                     f"Seting terminal font to: '{term_font_family}', size = {term_font_size}"
                 )
                 get_terminal().set_font(term_font_family, term_font_ps, term_font_size)
+            else:
+                raise Exception(f"Failed to find font config for font '{term_font_id}'")
