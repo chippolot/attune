@@ -18,7 +18,6 @@ export LANG="en_US"
 # Default editor VSCode
 export EDITOR="code"
 
-
 # Add to PATH
 export PATH="$PATH:$HOME/.local/bin:$HOME/AppData/Local/Programs/Microsoft VS Code/bin"
 

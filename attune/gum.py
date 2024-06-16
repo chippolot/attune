@@ -28,6 +28,7 @@ def input(
     prompt=None,
     width=None,
     value=None,
+    header=None,
 ):
     command = ["gum", "input"]
 
@@ -43,6 +44,38 @@ def input(
         command.extend(["--width", str(width)])
     if value:
         command.extend(["--value", value])
+    if header:
+        command.extend(["--header", header])
+
+    result = subprocess.run(command, stdout=subprocess.PIPE, text=True)
+    return result.stdout.strip()
+
+
+def write(
+    cursor_foreground=None,
+    prompt_foreground=None,
+    placeholder=None,
+    prompt=None,
+    width=None,
+    value=None,
+    header=None,
+):
+    command = ["gum", "write"]
+
+    if cursor_foreground:
+        command.extend(["--cursor.foreground", cursor_foreground])
+    if prompt_foreground:
+        command.extend(["--prompt.foreground", prompt_foreground])
+    if placeholder:
+        command.extend(["--placeholder", placeholder])
+    if prompt:
+        command.extend(["--prompt", prompt])
+    if width:
+        command.extend(["--width", str(width)])
+    if value:
+        command.extend(["--value", value])
+    if header:
+        command.extend(["--header", header])
 
     result = subprocess.run(command, stdout=subprocess.PIPE, text=True)
     return result.stdout.strip()

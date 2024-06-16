@@ -2,7 +2,7 @@
 
 import argparse
 
-from attune import gum
+from attune import gum, mods
 from attune.actions.set_theme.set_theme import set_theme
 from attune.actions.sync.sync import sync
 from attune.config import Config
@@ -122,7 +122,7 @@ def edit_config_cmd(args):
 
 
 def init_module_cmd(args):
-    # TODO Implement
+    mods.init()
     pass
 
 
