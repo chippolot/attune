@@ -82,7 +82,6 @@ def main():
     subparser.set_defaults(func=edit_config_cmd)
 
     args = parser.parse_args()
-    print(args)
     if "func" in args:
         args.func(args)
     elif args.command == "mod":

@@ -11,7 +11,7 @@ class SetVSCodeFontStep(SetThemeStep):
         return SetVSCodeFontStep()
 
     def run(self, theme_name):
-        if not features.is_enabled(features.Features.VSCODE):
+        if not features.is_enabled("VSCODE"):
             return
         code_font_id = get_active_font_id()
         if code_font_id is not None:

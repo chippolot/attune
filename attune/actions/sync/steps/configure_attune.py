@@ -1,9 +1,6 @@
-import platform
-
 from attune import features, gum
 from attune.actions.sync.steps.sync_step import SyncStep
 from attune.config import Config
-from attune.features import Features
 from attune.fonts import get_font_ids, set_active_font_id, set_default_font_id
 from attune.themes import get_theme_names, set_active_theme_name, set_default_theme_name
 
@@ -46,14 +43,9 @@ class ConfigureAttuneStep(SyncStep):
         features.clear()
 
         config = Config.load()
-        if self.__module_check(Features.GIT):
+        if self.feature_prompt("GIT"):
             config.set("git.name", gum.input(prompt="Enter your git name: "))
             config.set("git.email", gum.input(prompt="Enter your git email: "))
-
-        self.__module_check(Features.VSCODE)
-
-        if platform.system() == "Darwin":
-            self.__module_check(Features.CHATGPT)
 
         config.set(
             "shell.default_dir",
@@ -77,7 +69,7 @@ class ConfigureAttuneStep(SyncStep):
 
         print("Configuration complete! Enjoy attuning!")
 
-    def __module_check(self, m):
+    def feature_prompt(self, m):
         if gum.confirm(f"Do you want attune to manage {m} for you?"):
             features.enable(m)
             return True

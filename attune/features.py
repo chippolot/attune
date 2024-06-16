@@ -1,16 +1,4 @@
-from enum import StrEnum
-
 from attune.config import Config
-
-
-class Features(StrEnum):
-    GIT = "git"
-    VSCODE = "vscode"
-    CHATGPT = "chatgpt"
-
-
-def get_all():
-    return [e.value for e in Features]
 
 
 def is_enabled(feature):

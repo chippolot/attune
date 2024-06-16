@@ -24,10 +24,10 @@ class InstallGumStep(SyncStep):
 class WindowsInstallGumStep(InstallGumStep):
     def run(self):
         package_manager = get_package_manager()
-        package_manager.install("charmbracelet.gum")
+        package_manager.install_from_id("Gum", "charmbracelet.gum")
 
 
 class MacInstallGumStep(InstallGumStep):
     def run(self):
         package_manager = get_package_manager()
-        package_manager.install("gum")
+        package_manager.install_from_id("Gum", "gum")

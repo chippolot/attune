@@ -1,0 +1,70 @@
+[
+    {
+        "name": "Visual Studio Code",
+        "optional": true,
+        "feature": "VSCODE",
+        "packages": {
+            "winget": {
+                "id": "Microsoft.VisualStudioCode"
+            },
+            "brew": {
+                "id": "visual-studio-code",
+                "cask": true
+            }
+        }
+    },
+    {
+        "name": "Oh My Posh",
+        "packages": {
+            "winget": {
+                "id": "JanDeDobbeleer.OhMyPosh"
+            },
+            "brew": {
+                "id": "jandedobbeleer/oh-my-posh/oh-my-posh"
+            }
+        }
+    },
+    {
+        "name": "Terminal",
+        "packages": {
+            "winget": {
+                "id": "Microsoft.WindowsTerminal"
+            }
+        }
+    },
+    {
+        "name": "iTerm2",
+        "packages": {
+            "brew": {
+                "id": "iterm2",
+                "cask": true
+            }
+        }
+    },
+    {
+        "name": "ChatGPT",
+        "optional": true,
+        "packages": {
+            "brew": {
+                "id": "chatgpt",
+                "cask": true
+            }
+        }
+    },
+    {
+        "name": "Font Config",
+        "packages": {
+            "brew": {
+                "id": "fontconfig"
+            }
+        }
+    },
+    {
+        "name": "Dock Util",
+        "packages": {
+            "brew": {
+                "id": "dockutil"
+            }
+        }
+    }
+]

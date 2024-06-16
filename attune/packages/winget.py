@@ -7,10 +7,18 @@ class WinGetPackageManager(PackageManager):
     def name(self):
         return "winget"
 
-    def install_impl(self, package_name, *opts):
+    def _install_from_config(self, config):
+        name = config["name"]
+
+        homebrew_config = self._get_install_config()
+        id = homebrew_config["id"]
+
+        self._install(name, id, None)
+
+    def _install(self, name, id, args):
         try:
             result = subprocess.run(
-                ["winget", "install", "--id", package_name, "-e", "--source", "winget"],
+                ["winget", "install", "--id", id, "-e", "--source", "winget"],
                 check=True,
                 text=True,
                 capture_output=True,
@@ -19,5 +27,5 @@ class WinGetPackageManager(PackageManager):
                 print(result.stderr)
         except subprocess.CalledProcessError as e:
             print(
-                f"An error occurred while installing {self.name()} pkg '{package_name}': {e.stderr}"
+                f"An error occurred while installing {self.name()} pkg '{name}': {e.stderr}"
             )
