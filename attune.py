@@ -43,6 +43,38 @@ def main():
     )
     subparser.set_defaults(func=font_cmd)
 
+    # Cmd: mod
+    mod_parser = subparsers.add_parser("mod", help="Manage modules")
+    mod_subparsers = mod_parser.add_subparsers(
+        title="mod commands",
+        description="valid mod commands",
+        help="additional mod commands help",
+    )
+
+    # Cmd: mod init
+    mod_init_parser = mod_subparsers.add_parser(
+        "init", help="Initialize a new module directory structure in a fresh repo"
+    )
+    mod_init_parser.set_defaults(func=init_module_cmd)
+
+    # Cmd: mod install <git_url>
+    mod_install_parser = mod_subparsers.add_parser(
+        "install", help="Add a module from a git URL"
+    )
+    mod_install_parser.add_argument(
+        "git_url", type=str, help="The git URL of the module to install"
+    )
+    mod_install_parser.set_defaults(func=install_module_cmd)
+
+    # Cmd: mod uninstall <id>
+    mod_uninstall_parser = mod_subparsers.add_parser(
+        "uninstall", help="Remove a module by module ID"
+    )
+    mod_uninstall_parser.add_argument(
+        "id", type=str, help="The ID of the module to uninstall"
+    )
+    mod_uninstall_parser.set_defaults(func=uninstall_module_cmd)
+
     # Cmd: config
     subparser = subparsers.add_parser(
         "config", help="Opens the user config file for editing."
@@ -50,8 +82,11 @@ def main():
     subparser.set_defaults(func=edit_config_cmd)
 
     args = parser.parse_args()
-    if hasattr(args, "func"):
+    print(args)
+    if "func" in args:
         args.func(args)
+    elif args.command == "mod":
+        mod_parser.print_help()
     else:
         parser.print_help()
 
@@ -85,6 +120,21 @@ def edit_config_cmd(args):
         print("Cannot edit user config until sync has been run at least once!")
         return
     vscode_subprocess([Config.path()])
+
+
+def init_module_cmd(args):
+    # TODO Implement
+    pass
+
+
+def install_module_cmd(args):
+    # TODO Implement
+    pass
+
+
+def uninstall_module_cmd(args):
+    # TODO Implement
+    pass
 
 
 if __name__ == "__main__":
