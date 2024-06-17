@@ -1,7 +1,6 @@
 import os
 import re
 
-from attune.config import Config
 from attune.paths import get_attune_file_path, get_repo_file_path
 from attune.shell import get_profile_filename, get_shell_name
 
@@ -28,7 +27,7 @@ def flatten_dict(d, parent_key="", sep="."):
     return dict(items)
 
 
-def template_apply(s):
+def apply(s, config):
     replacements = {
         "paths.config": get_attune_file_path().replace("\\", "/"),
         "paths.repo": get_repo_file_path().replace("\\", "/"),
@@ -37,8 +36,7 @@ def template_apply(s):
     }
 
     # Flatten the user config into replacement paths
-    config = Config.load()
-    config_replacements = flatten_dict(config._cfg, "config")
+    config_replacements = flatten_dict(config, "config")
     replacements = {**replacements, **config_replacements}
 
     def replacer(match):

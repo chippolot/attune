@@ -1,9 +1,10 @@
 import os
 
+from attune import template
 from attune.actions.sync.steps.sync_step import SyncStep
+from attune.config import Config
 from attune.paths import get_repo_file_path
 from attune.shell import get_profile_filename
-from attune.template import template_apply
 
 
 class PatchDotfilesStep(SyncStep):
@@ -41,7 +42,7 @@ def patch_setup_block(file_to_patch, setup_block_file):
         setup_block = file.read()
 
     # Apply template replacements
-    setup_block = template_apply(setup_block)
+    setup_block = template.apply(setup_block, Config.load()._cfg)
 
     # Apply block markers
     setup_block = f"{block_start_marker}\n{setup_block}\n{block_end_marker}"

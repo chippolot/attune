@@ -16,3 +16,10 @@ def get_attune_file_path(relative_path=""):
     if not os.path.exists(attune_path):
         os.makedirs(attune_path)
     return os.path.join(attune_path, relative_path)
+
+
+def get_modules_file_path(relative_path=""):
+    path = os.path.join(get_attune_file_path(), "modules")
+    if not os.path.exists(path):
+        os.makedirs(path)
+    return os.path.join(path, relative_path)

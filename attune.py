@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
 import argparse
+import os
 
-from attune import gum, mods
+from attune import gum, modules
 from attune.actions.set_theme.set_theme import set_theme
 from attune.actions.sync.sync import sync
 from attune.config import Config
@@ -44,11 +45,11 @@ def main():
     subparser.set_defaults(func=font_cmd)
 
     # Cmd: mod
-    mod_parser = subparsers.add_parser("mod", help="Manage modules")
+    mod_parser = subparsers.add_parser("module", help="Manage modules")
     mod_subparsers = mod_parser.add_subparsers(
-        title="mod commands",
-        description="valid mod commands",
-        help="additional mod commands help",
+        title="modules commands",
+        description="valid module commands",
+        help="additional module commands help",
     )
 
     # Cmd: mod init
@@ -57,14 +58,18 @@ def main():
     )
     mod_init_parser.set_defaults(func=init_module_cmd)
 
-    # Cmd: mod install <git_url>
+    # Cmd: mod install <url>
     mod_install_parser = mod_subparsers.add_parser(
-        "install", help="Add a module from a git URL"
+        "install", help="Add a module from a URL"
     )
     mod_install_parser.add_argument(
-        "git_url", type=str, help="The git URL of the module to install"
+        "url", type=str, help="The URL of the module to install"
     )
     mod_install_parser.set_defaults(func=install_module_cmd)
+
+    # Cmd: mod list
+    mod_list_parser = mod_subparsers.add_parser("list", help="Lists installed modules")
+    mod_list_parser.set_defaults(func=list_module_cmd)
 
     # Cmd: mod uninstall <id>
     mod_uninstall_parser = mod_subparsers.add_parser(
@@ -84,7 +89,7 @@ def main():
     args = parser.parse_args()
     if "func" in args:
         args.func(args)
-    elif args.command == "mod":
+    elif args.command == "module":
         mod_parser.print_help()
     else:
         parser.print_help()
@@ -122,13 +127,23 @@ def edit_config_cmd(args):
 
 
 def init_module_cmd(args):
-    mods.init()
-    pass
+    modules.init()
 
 
 def install_module_cmd(args):
-    # TODO Implement
-    pass
+    modules.install(args.url)
+
+
+def list_module_cmd(args):
+    installed_modules = modules.get_installed_modules()
+    if len(installed_modules) == 0:
+        print("No installed modules.")
+        return
+    for m in installed_modules:
+        url = m.get("url")
+        module_path = modules.get_local_path(url)
+        m = modules.ModuleConfig.load(os.path.join(module_path, "config.json"))
+        print(f"{m.name()} -- {url}")
 
 
 def uninstall_module_cmd(args):

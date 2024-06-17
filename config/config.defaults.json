@@ -13,5 +13,11 @@
         "email": ""
     },
     "features": [],
-    "modules": []
+    "modules": [
+        
+        {
+            "url": "{{paths.repo}}/.attune-module",
+            "local_dir": "local@common"
+        }
+    ]
 }

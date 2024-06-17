@@ -1,7 +1,7 @@
 import json
 import os
-import shutil
 
+from attune import template
 from attune.dict import get_dict_value, set_dict_value
 from attune.paths import get_attune_file_path, get_repo_file_path
 
@@ -26,7 +26,11 @@ class Config:
             # Copy the default config file if the config file doesn't exist
             if not os.path.exists(config_path):
                 default_config_path = get_repo_file_path("config/config.defaults.json")
-                shutil.copy(default_config_path, config_path)
+                with open(default_config_path, "r", encoding="utf-8") as file:
+                    default_config = file.read()
+                default_config = template.apply(default_config, {})
+                with open(config_path, "w", encoding="utf-8") as file:
+                    file.write(default_config)
 
             # Load and initialize the config
             with open(config_path, "r", encoding="utf-8") as config_file:
