@@ -5,10 +5,11 @@
         - [ ] How to make this generic?
     - [ ] Source bash_profile if it changed
     - [ ] Version config to determine how to add new configuration
-- [ ] Dotfile modules
-    - [ ] Create module
-    - [ ] Add module
-    - [ ] Remove module
+- [ ] Modules
+    - [ ] Install should not sync modules
+    - [ ] Re-add copy dotfiles step 
+    - [ ] Install apps from modules
+    - [ ] Uninstall module
 - [ ] Themes
     - [ ] Add rider theme + font support
 - [ ] Sync Config
