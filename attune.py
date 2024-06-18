@@ -71,12 +71,12 @@ def main():
     mod_list_parser = mod_subparsers.add_parser("list", help="Lists installed modules")
     mod_list_parser.set_defaults(func=list_module_cmd)
 
-    # Cmd: mod uninstall <id>
+    # Cmd: mod uninstall <url>
     mod_uninstall_parser = mod_subparsers.add_parser(
-        "uninstall", help="Remove a module by module ID"
+        "uninstall", help="Remove a module by module url"
     )
     mod_uninstall_parser.add_argument(
-        "id", type=str, help="The ID of the module to uninstall"
+        "url", type=str, help="The URL of the module to uninstall"
     )
     mod_uninstall_parser.set_defaults(func=uninstall_module_cmd)
 
@@ -132,6 +132,7 @@ def init_module_cmd(args):
 
 def install_module_cmd(args):
     modules.install(args.url)
+    modules.rebuild_dotfiles()
 
 
 def list_module_cmd(args):
@@ -147,8 +148,8 @@ def list_module_cmd(args):
 
 
 def uninstall_module_cmd(args):
-    # TODO Implement
-    pass
+    modules.uninstall(args.url)
+    modules.rebuild_dotfiles()
 
 
 if __name__ == "__main__":

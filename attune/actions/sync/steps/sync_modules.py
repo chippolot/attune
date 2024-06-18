@@ -13,3 +13,4 @@ class SyncModulesStep(SyncStep):
     def run(self):
         for module in modules.get_installed_modules():
             modules.sync(module.get("url"))
+        modules.rebuild_dotfiles()

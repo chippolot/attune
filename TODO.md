@@ -6,9 +6,7 @@
     - [ ] Source bash_profile if it changed
     - [ ] Version config to determine how to add new configuration
 - [ ] Modules
-    - [ ] Install should not sync modules
-    - [ ] Re-add copy dotfiles step 
-    - [ ] Install apps from modules
+    - [ ] Applying module should combine dotfiles
     - [ ] Uninstall module
 - [ ] Themes
     - [ ] Add rider theme + font support

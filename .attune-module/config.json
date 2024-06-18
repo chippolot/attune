@@ -1,11 +1,12 @@
 {
+    "name": "Common",
     "description": "Common attune module.",
-    "files": {
-        ".shell_profile": "files/.shell_profile",
-        ".bash_profile": "files/.bash_profile",
-        ".zprofile": "files/.zprofile",
-        ".gitconfig": "files/.gitconfig",
-        ".aliases": "files/.aliases"
+    "dotfiles": {
+        ".shell_profile": "dotfiles/.shell_profile",
+        ".bash_profile": "dotfiles/.bash_profile",
+        ".zprofile": "dotfiles/.zprofile",
+        ".gitconfig": "dotfiles/.gitconfig",
+        ".aliases": "dotfiles/.aliases"
     },
     "packages": [
         {

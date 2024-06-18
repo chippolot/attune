@@ -26,8 +26,11 @@ class ModuleConfig:
     def id(self):
         return utils.snake_case(self.name())
 
-    def files(self):
-        return self.cfg.get("files", {})
+    def dotfiles(self):
+        return self.cfg.get("dotfiles", {})
+
+    def packages(self):
+        return self.cfg.get("packages", {})
 
 
 def init():
@@ -37,19 +40,19 @@ def init():
 
     # Define the directory structure
     attune_mod_dir = os.path.join(base_dir, ".attune-module")
-    attune_mod_files_dir = os.path.join(attune_mod_dir, "files")
+    attune_mod_dotfiles_dir = os.path.join(attune_mod_dir, "dotfiles")
     directories = [
         base_dir,
         attune_mod_dir,
-        attune_mod_files_dir,
+        attune_mod_dotfiles_dir,
     ]
 
     # Define a basic config.json content
-    files = {}
+    dotfiles = {}
     config_content = {
         "name": module_name,
         "description": module_desc,
-        "files": files,
+        "dotfiles": dotfiles,
     }
 
     # Create the directories
@@ -59,8 +62,8 @@ def init():
 
     def prompt_mod_file(filename):
         if gum.confirm(prompt=f"Should this mod contain a {filename} extension?"):
-            files[filename] = f"files/{filename}"
-            utils.touch(os.path.join(attune_mod_files_dir, filename))
+            dotfiles[filename] = f"dotfiles/{filename}"
+            utils.touch(os.path.join(attune_mod_dotfiles_dir, filename))
             print(f"Created file: {filename}")
 
     prompt_mod_file(".shell_profile")
@@ -79,6 +82,8 @@ def init():
 
 
 def install(url):
+    url = os.path.expanduser(url)
+
     config = Config.load()
     if __is_installed(url):
         print("Module is already installed.")
@@ -93,6 +98,45 @@ def install(url):
     config.save()
 
     print(f"Installed module from '{url}'.")
+
+
+def rebuild_dotfiles():
+    combined_files = {}
+
+    # Loop through all modules and collect the contents of each file
+    config = Config.load()
+    for module in get_installed_modules():
+        path_to_module = get_local_path(module.get("url"))
+        module_config = ModuleConfig.load(os.path.join(path_to_module, "config.json"))
+        for filename, relative_file_path in module_config.dotfiles().items():
+            full_file_path = os.path.join(path_to_module, relative_file_path)
+            if filename not in combined_files:
+                combined_files[filename] = ""
+            dotfile_contents = utils.read_file(full_file_path)
+            dotfile_contents = template.apply(dotfile_contents, config._cfg)
+            combined_files[filename] += dotfile_contents + "\n\n"
+
+    # Write the combined contents to the destination dotfiles
+    for filename, content in combined_files.items():
+        destination_path = get_attune_file_path(filename)
+        with open(destination_path, "w", encoding="utf-8") as dest_file:
+            dest_file.write(content)
+
+
+def uninstall(url):
+    url = os.path.expanduser(url)
+
+    config = Config.load()
+    if not __is_installed(url):
+        print(f"Module with url '{url}' is not installed.")
+        return
+
+    modules = config.get("modules", [])
+    modules = [m for m in modules if m.get("url").casefold() != url.casefold()]
+    config.set("modules", modules)
+    config.save()
+
+    print(f"Uninstalled module with url: '{url}'.")
 
 
 def sync(url):
@@ -113,10 +157,8 @@ def sync(url):
 
     # Apply module
     module_config = ModuleConfig.load(os.path.join(path_to_module, "config.json"))
-    __copy_dotfiles(path_to_module, module_config)
-    __install_packages(module_config)
 
-    print(f"Synced module '{module_config.name()}'.")
+    __install_packages(module_config)
 
 
 def get_local_path(url):
@@ -175,23 +217,13 @@ def __is_remote(url):
     )
 
 
-def __copy_dotfiles(path_to_module, module_config):
-    for filename, relative_file_path in module_config.files().items():
-        __copy_template(
-            os.path.join(path_to_module, relative_file_path),
-            get_attune_file_path(filename),
-        )
-
-
 def __install_packages(module_config):
+    packages = module_config.packages()
+    if len(packages) == 0:
+        return
+
+    print(f"Installing packages from module '{module_config.name()}'.")
+
     package_manager = get_package_manager()
-    for package_config in module_config.packages():
+    for package_config in packages:
         package_manager.install_from_config(package_config)
-
-
-def __copy_template(src, dst):
-    with open(src, "r", encoding="utf-8") as file:
-        src_content = file.read()
-    src_content = template.apply(src_content, Config.load()._cfg)
-    with open(dst, "w", encoding="utf-8") as file:
-        file.write(src_content)
