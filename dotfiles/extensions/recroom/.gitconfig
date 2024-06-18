@@ -1,5 +1,0 @@
-[alias]
-poi = "pull origin integration"
-clean-users = "!git branch | grep -E '^  users/' | grep -vE '^  users/ben/' | xargs -n 1 git branch -D;"
-clean-releases = "!git branch | grep -E '^  releases/' | xargs -n 1 git branch -D;"
-new-version = !sh -c 'git commit -am \"Overrides for $1\" && git push && git tag \"$1\" && git push --tags' -
