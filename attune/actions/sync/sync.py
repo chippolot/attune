@@ -2,7 +2,6 @@ from attune.actions.sync.steps.apply_default_theme import ApplyDefaultThemeStep
 from attune.actions.sync.steps.configure_attune import ConfigureAttuneStep
 from attune.actions.sync.steps.filter_dock_apps import FilterDockAppsStep
 from attune.actions.sync.steps.git_pull import GitPullStep
-from attune.actions.sync.steps.install_apps import InstallAppsStep
 from attune.actions.sync.steps.install_fonts import InstallFontsStep
 from attune.actions.sync.steps.install_gum import InstallGumStep
 from attune.actions.sync.steps.patch_dotfiles import PatchDotfilesStep
@@ -40,7 +39,6 @@ def sync(reconfigure):
     action.register_step(PatchDotfilesStep.create())
     action.register_step(SyncModulesStep.create())
     action.register_step(SetSystemSettingsStep.create())
-    action.register_step(InstallAppsStep.create())
     action.register_step(InstallFontsStep.create())
     action.register_step(FilterDockAppsStep.create())
     action.register_step(ApplyDefaultThemeStep.create())

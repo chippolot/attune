@@ -6,6 +6,7 @@ from urllib.parse import urlparse
 
 from attune import git, gum, template, utils
 from attune.config import Config
+from attune.packages.packages import get_package_manager
 from attune.paths import get_attune_file_path, get_modules_file_path
 
 
@@ -112,11 +113,8 @@ def sync(url):
 
     # Apply module
     module_config = ModuleConfig.load(os.path.join(path_to_module, "config.json"))
-    for filename, relative_file_path in module_config.files().items():
-        __copy_template(
-            os.path.join(path_to_module, relative_file_path),
-            get_attune_file_path(filename),
-        )
+    __copy_dotfiles(path_to_module, module_config)
+    __install_packages(module_config)
 
     print(f"Synced module '{module_config.name()}'.")
 
@@ -175,6 +173,20 @@ def __is_remote(url):
         "http",
         "https",
     )
+
+
+def __copy_dotfiles(path_to_module, module_config):
+    for filename, relative_file_path in module_config.files().items():
+        __copy_template(
+            os.path.join(path_to_module, relative_file_path),
+            get_attune_file_path(filename),
+        )
+
+
+def __install_packages(module_config):
+    package_manager = get_package_manager()
+    for package_config in module_config.packages():
+        package_manager.install_from_config(package_config)
 
 
 def __copy_template(src, dst):

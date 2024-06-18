@@ -3,9 +3,6 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# User config
-config.json
-
 # Mac files
 .DS_STORE
 
