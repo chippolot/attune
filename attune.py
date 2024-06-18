@@ -3,7 +3,7 @@
 import argparse
 import os
 
-from attune import gum, modules
+from attune import gum, modules, utils
 from attune.actions.set_theme.set_theme import set_theme
 from attune.actions.sync.sync import sync
 from attune.config import Config
@@ -140,11 +140,20 @@ def list_module_cmd(args):
     if len(installed_modules) == 0:
         print("No installed modules.")
         return
+
+    module_configs = []
     for m in installed_modules:
         url = m.get("url")
         module_path = modules.get_local_path(url)
-        m = modules.ModuleConfig.load(os.path.join(module_path, "config.json"))
-        print(f"{m.name()} -- {url}")
+        module_configs.append(
+            modules.ModuleConfig.load(os.path.join(module_path, "config.json"))
+        )
+
+    utils.print_table(
+        ["Name", "Url"],
+        [m.name() for m in module_configs],
+        [m.get("url") for m in installed_modules],
+    )
 
 
 def uninstall_module_cmd(args):
