@@ -131,6 +131,10 @@ def uninstall(url):
         print(f"Module with url '{url}' is not installed.")
         return
 
+    path_to_module = get_local_base_path(url)
+    if os.path.exists(path_to_module):
+        shutil.rmtree(path_to_module)
+
     modules = config.get("modules", [])
     modules = [m for m in modules if m.get("url").casefold() != url.casefold()]
     config.set("modules", modules)
@@ -140,7 +144,7 @@ def uninstall(url):
 
 
 def sync(url):
-    path_to_module = get_local_path(url)
+    path_to_module = get_local_base_path(url)
 
     # Update local module folder
     if __is_local(url):
@@ -156,13 +160,22 @@ def sync(url):
         raise Exception(f"Invalid module url: '{url}'.")
 
     # Apply module
+    path_to_module = get_local_path(url)
     module_config = ModuleConfig.load(os.path.join(path_to_module, "config.json"))
 
     __install_packages(module_config)
 
 
-def get_local_path(url):
+def get_local_base_path(url):
     return os.path.join(get_modules_file_path(), __get_local_module_folder_name(url))
+
+
+def get_local_path(url):
+    base_path = get_local_base_path(url)
+    for root, _, files in os.walk(base_path):
+        if "config.json" in files:
+            return root
+    return None
 
 
 def get_installed_modules():

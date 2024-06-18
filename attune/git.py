@@ -22,7 +22,7 @@ def clone(url, dst):
     try:
         result = subprocess.run(
             ["git", "clone", url, dst],
-            cwd=os.cwd(),
+            cwd=os.getcwd(),
             check=True,
             text=True,
             capture_output=True,

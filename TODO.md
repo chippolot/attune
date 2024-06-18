@@ -5,9 +5,6 @@
         - [ ] How to make this generic?
     - [ ] Source bash_profile if it changed
     - [ ] Version config to determine how to add new configuration
-- [ ] Modules
-    - [ ] Applying module should combine dotfiles
-    - [ ] Uninstall module
 - [ ] Themes
     - [ ] Add rider theme + font support
 - [ ] Sync Config

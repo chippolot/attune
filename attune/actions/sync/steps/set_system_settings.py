@@ -74,9 +74,20 @@ class MacSetSystemSettingsStep(SetSystemSettingsStep):
         )
         subprocess.run(
             [
+                "defaults",
+                "write",
+                "com.apple.finder",
+                "AppleShowAllFiles",
+                "true",
+            ],
+            check=True,
+        )
+        subprocess.run(
+            [
                 "/System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings",
                 "-u",
             ],
             check=True,
         )
         subprocess.run(["killall", "SystemUIServer"], check=True)
+        subprocess.run(["killall", "Finder"], check=True)
