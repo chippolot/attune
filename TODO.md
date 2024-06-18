@@ -7,8 +7,6 @@
     - [ ] Version config to determine how to add new configuration
 - [ ] Themes
     - [ ] Add rider theme + font support
-- [ ] Sync Config
-    - [ ] Add ability to sync config up to repo (or other repo?)
 - [ ] General
     - [ ] Release to public?
 - [ ] Uninstall
