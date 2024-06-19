@@ -5,16 +5,16 @@ An opinionated Windows/Mac dev environment setup tool inspired by [@dhh's](https
 To install, simply clone the attune repo into any local folder and then run the `install` shell script.
 
 ## Usage
-* `attune sync`
+* `attune sync`<br/>
 Syncs the attune git repo and applies any changes.
 
-* `attune theme`
+* `attune theme`<br/>
 Shows the theme select menu. Selecting a theme will update the system terminal, VSCode, the desktop wallpaper, and the system display mode (light mode / dark mode).
 
-* `attune font`
+* `attune font`<br/>
 Shows the font select menu. Selecting a font will update the font in the system terminal and VSCode.
 
-* `attune config`
+* `attune config`<br/>
 Opens the attune user config in VSCode.
 
 ## License
