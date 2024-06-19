@@ -3,7 +3,7 @@ An opinionated Windows/Mac dev environment setup tool inspired by [@dhh's Omakub
 
 ## Prereqs
 Attune can be used with either Windows or Mac.
-For Windows, you'll need to have Python3 installed.
+For Windows, you'll need to have Python3 installed.<br/>
 For Mac, you'll need homebrew and Python3 installed.
 
 ## Installation
