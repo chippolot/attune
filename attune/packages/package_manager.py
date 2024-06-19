@@ -6,6 +6,9 @@ from attune import features, gum
 
 class PackageManager(ABC):
     def install_from_id(self, name, id):
+        if self.is_installed(id):
+            print(f"'{name}' is already installed.")
+            return
         self._install(name, id, None)
 
     def install_from_config(self, config):

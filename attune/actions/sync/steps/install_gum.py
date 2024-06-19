@@ -1,7 +1,7 @@
 import platform
 
 from attune.actions.sync.steps.sync_step import SyncStep
-from attune.packages.packages import get_package_manager
+from attune.packages.packages import get_system_package_manager
 
 
 class InstallGumStep(SyncStep):
@@ -23,11 +23,11 @@ class InstallGumStep(SyncStep):
 
 class WindowsInstallGumStep(InstallGumStep):
     def run(self):
-        package_manager = get_package_manager()
+        package_manager = get_system_package_manager()
         package_manager.install_from_id("Gum", "charmbracelet.gum")
 
 
 class MacInstallGumStep(InstallGumStep):
     def run(self):
-        package_manager = get_package_manager()
+        package_manager = get_system_package_manager()
         package_manager.install_from_id("Gum", "gum")

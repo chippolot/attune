@@ -1,12 +1,6 @@
 # TODO
 - [ ] README
 - [ ] Sync Command
-    - [ ] Install recommended vscode extensions
-        - [ ] How to make this generic?
     - [ ] Source bash_profile if it changed
-    - [ ] Version config to determine how to add new configuration
-- [ ] Themes
-    - [ ] Add rider theme + font support
 - [ ] General
     - [ ] Release to public?
-- [ ] Uninstall

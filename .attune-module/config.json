@@ -76,6 +76,22 @@
                     "id": "dockutil"
                 }
             }
+        },
+        {
+            "name": "VSCode Extension: Ruff",
+            "packages": {
+                "vscode": {
+                    "id": "charliermarsh.ruff"
+                }
+            }
+        },
+        {
+            "name": "VSCode Extension: Python",
+            "packages": {
+                "vscode": {
+                    "id": "ms-python.python"
+                }
+            }
         }
     ]
 }

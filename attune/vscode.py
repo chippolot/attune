@@ -49,10 +49,6 @@ def save_settings(settings):
         json.dump(settings, file, indent=4)
 
 
-def install_vscode_extension(extension_name):
-    vscode_subprocess(["--install-extension", extension_name])
-
-
 def vscode_subprocess(args):
     if platform.system() == "Windows":
         cmd = "code.cmd"
@@ -70,15 +66,12 @@ def vscode_subprocess(args):
         )
         if result.stderr:
             print(result.stderr)
+        return result.stdout.strip()
     except subprocess.CalledProcessError as e:
         print(f"Failed to invoke vscode command: {e}")
 
 
-def set_vscode_theme(theme_name, extension_name=None):
-    # If an extension name is provided, install it first
-    if extension_name:
-        install_vscode_extension(extension_name)
-
+def set_vscode_theme(theme_name):
     # Set the color theme
     settings = get_settings()
     settings["workbench.colorTheme"] = theme_name

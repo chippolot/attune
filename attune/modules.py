@@ -6,7 +6,7 @@ from urllib.parse import urlparse
 
 from attune import git, gum, template, utils
 from attune.config import Config
-from attune.packages.packages import get_package_manager
+from attune.packages import packages
 from attune.paths import get_attune_file_path, get_modules_file_path
 
 
@@ -231,12 +231,11 @@ def __is_remote(url):
 
 
 def __install_packages(module_config):
-    packages = module_config.packages()
-    if len(packages) == 0:
+    packages_to_install = module_config.packages()
+    if len(packages_to_install) == 0:
         return
 
     print(f"Installing packages from module '{module_config.name()}'.")
 
-    package_manager = get_package_manager()
-    for package_config in packages:
-        package_manager.install_from_config(package_config)
+    for package_config in packages_to_install:
+        packages.install(package_config)
