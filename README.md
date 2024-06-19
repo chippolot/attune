@@ -1,6 +1,11 @@
 # Attune
 An opinionated Windows/Mac dev environment setup tool inspired by [@dhh's Omakub](https://github.com/basecamp/omakub).
 
+## Prereqs
+Attune can be used with either Windows or Mac.
+For Windows, you'll need to have Python3 installed.
+For Mac, you'll need homebrew and Python3 installed.
+
 ## Installation
 To install, simply clone the attune repo into any local folder and then run the `install` shell script.
 
