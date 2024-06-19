@@ -1,5 +1,5 @@
 # Attune
-An opinionated Windows/Mac dev environment setup tool inspired by [@dhh's](https://github.com/basecamp/omakub).
+An opinionated Windows/Mac dev environment setup tool inspired by [@dhh's Omakub](https://github.com/basecamp/omakub).
 
 ## Installation
 To install, simply clone the attune repo into any local folder and then run the `install` shell script.
