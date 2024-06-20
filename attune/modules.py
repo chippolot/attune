@@ -192,6 +192,15 @@ def __is_installed(url):
 
 
 def __get_local_module_folder_name(url):
+    def get_local_config_id(url):
+        config_path = os.path.join(url, "config.json")
+        if not os.path.exists(config_path):
+            config_path = os.path.join(url, ".attune-module", "config.json")
+            if not os.path.exists(config_path):
+                return None
+        config = ModuleConfig.load(config_path)
+        return config.id()
+
     # Git URL pattern
     github_pattern = (
         r"(?:https?://|git@)(?:www\.)?github\.com[:/]([^/]+)/([^/]+)(?:\.git)?"
@@ -205,18 +214,15 @@ def __get_local_module_folder_name(url):
 
     # If not a git URL, assume it's a local path
     if os.path.exists(url):
-        config_path = os.path.join(url, "config.json")
-        if os.path.exists(config_path):
-            config = ModuleConfig.load(config_path)
-            id = config.id()
+        id = get_local_config_id(url)
+        if id is not None:
             return f"local@{id}"
-        else:
-            raise Exception(
-                f"Failed to locate config.json file in local attune module path: '{config_path}'."
-            )
+        raise Exception(
+            f"Failed to locate config.json file in local attune module path: '{url}'."
+        )
 
     # If no match or valid local path found
-    return None
+    raise Exception(f"Module url '{url}' is not a valid github or local path!")
 
 
 def __is_local(url):

@@ -9,7 +9,7 @@ class VSCodePackageManager(PackageManager):
     def _install_from_config(self, config):
         name = config["name"]
 
-        id = self._get_install_config()["id"]
+        id = self._get_install_config(config)["id"]
 
         self._install(name, id, None)
 
