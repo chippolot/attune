@@ -1,6 +1,8 @@
 # TODO
 - [ ] README
-- [ ] Access issue when deleting module paths on windows
+- [ ] Windows
+    - [ ] Access issue when deleting local module paths
+    - [ ] Failing to detect installed fonts
 - [ ] Sync Command
     - [ ] Source bash_profile if it changed
 - [ ] General
