@@ -133,7 +133,7 @@ def uninstall(url):
 
     path_to_module = get_local_base_path(url)
     if os.path.exists(path_to_module):
-        shutil.rmtree(path_to_module)
+        utils.delete_directory_recursive(path_to_module)
 
     modules = config.get("modules", [])
     modules = [m for m in modules if m.get("url").casefold() != url.casefold()]
@@ -149,7 +149,7 @@ def sync(url):
     # Update local module folder
     if __is_local(url):
         if os.path.exists(path_to_module):
-            shutil.rmtree(path_to_module)
+            utils.delete_directory_recursive(path_to_module)
         shutil.copytree(url, path_to_module)
     elif __is_remote(url):
         if os.path.exists(path_to_module):

@@ -3,10 +3,53 @@ load_prompt() {
     eval "$(oh-my-posh init {{shell.name}} --config $OMP_THEME)"
 }
 attune() {
+    function file_changed() {
+        local file_path="$1"
+        local current_content=$(cat "$file_path" 2>/dev/null)
+
+        if [[ "$current_content" != "${last_content[$file_path]}" ]]; then
+            return 0
+        fi
+
+        return 1
+    }
+
+    declare -A last_content
+
+    files=(
+        "$HOME/.bash_profile"
+        "$HOME/.attune/.bash_profile"
+        "$HOME/.zprofile"
+        "$HOME/.attune/.zprofile"
+        "$HOME/.attune/.shell_profile"
+    )
+
+    # Store the initial content of the files
+    for file in "${files[@]}"; do
+        last_content[$file]=$(cat "$file" 2>/dev/null)
+    done
+
+    # Store the initial current working directory
+    initial_cwd=$(pwd)
+
     initial_omp_theme="$OMP_THEME"
     "{{paths.repo}}/attune.py" "$@"
     if [ -f "{{paths.config}}.env" ]; then . "{{paths.config}}.env"; fi
     if [ "$OMP_THEME" != "$initial_omp_theme" ]; then load_prompt; fi
+
+    # Re-source shell profile if it has changed
+    for file in "${files[@]}"; do
+        if file_changed "$file"; then
+            if [ -f $HOME/{{shell.profile_filename}} ]; then
+                . $HOME/{{shell.profile_filename}}
+            fi
+            # Check if the current working directory has changed
+            if [[ "$(pwd)" != "$initial_cwd" ]]; then
+                cd "$initial_cwd"
+            fi
+            break
+        fi
+    done
 }
 . "{{paths.config}}.shell_profile"
 load_prompt

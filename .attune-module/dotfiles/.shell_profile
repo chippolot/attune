@@ -21,6 +21,9 @@ export EDITOR="code"
 # Add to PATH
 export PATH="$PATH:$HOME/.local/bin:$HOME/AppData/Local/Programs/Microsoft VS Code/bin"
 
+# Disable full screen flashing for bell
+bind 'set bell-style none'
+
 # Aliases
 if [ -f {{paths.config}}.aliases ]; then
     . {{paths.config}}.aliases

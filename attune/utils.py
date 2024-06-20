@@ -1,5 +1,8 @@
 import os
+import platform
 from re import sub
+import shutil
+import subprocess
 
 
 def touch(path):
@@ -45,3 +48,12 @@ def print_table(headers, *columns):
     # Print each row of data
     for row in zip(*columns):
         print(" ".join(f"{item:{width}}" for item, width in zip(row, col_widths)))
+
+def delete_directory_recursive(path):
+    try:
+        shutil.rmtree(path)
+    except PermissionError:
+        if platform.system() == "Windows":
+            subprocess.run(['cmd', '/C', 'rmdir', '/S', '/Q', path], shell=True)
+        else:
+            raise
