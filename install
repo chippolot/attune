@@ -2,5 +2,5 @@
 
 from attune.actions.sync.sync import sync
 
-sync()
+sync(reconfigure=True)
 print("\nInstallation complete. Please restart for changes to take effect.")
