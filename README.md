@@ -4,10 +4,10 @@ An opinionated Windows/Mac dev environment setup tool inspired by [@dhh's Omakub
 
 ## 📋 Prerequisites
 
-### 🪟 Windows
+#### Windows
 * [Python3](https://www.python.org/downloads/)
 
-### 🍎 Mac
+#### Mac
 * [Python3](https://www.python.org/downloads/)
 * [Homebrew](https://brew.sh/)
   * Make sure to follow the post-install steps to add homebrew to your PATH!
@@ -24,28 +24,28 @@ git clone https://github.com/chippolot/attune.git
 
 ## 🚀 Usage
 
-### 🔄 Syncing
+### Syncing
 ```
 attune sync
 ```
 Keep Attune and its modules up-to-date with a single command.
 This will update the main Attune repo and all installed modules, applying configuration changes in the process.
 
-### 🎨 Themes
+### Themes
 ```
 attune theme
 ```
 Choose from a variety of pre-configured themes to customize your development environment.
 Themes will update the system terminal, VSCode, desktop wallpaper, and display mode.
 
-### 🖌️ Fonts
+### Fonts
 ```
 attune font
 ```
 Easily switch between programmer-friendly fonts.
 Changing the active font will update the font in VSCode and the terminal app.
 
-### 📦 Modules
+### Modules
 Attune manages dotfiles, packages, and app extensions via individual modules. A common module comes bundled with Attune and is automatically installed on first launch.
 
 #### Installing Modules
@@ -72,7 +72,7 @@ attune module uninstall <url>
 ```
 Remove modules from your Attune configuration.
 
-### ⚙️ User Config
+### User Config
 ```
 attune config
 ```
