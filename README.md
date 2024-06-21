@@ -1,57 +1,86 @@
-# Attune
+# 🔥 Attune
+
 An opinionated Windows/Mac dev environment setup tool inspired by [@dhh's Omakub](https://github.com/basecamp/omakub).
 
-## Prereqs
-### Windows
+## 📋 Prerequisites
+
+### 🪟 Windows
 * [Python3](https://www.python.org/downloads/)
-### Mac
+
+### 🍎 Mac
+* [Python3](https://www.python.org/downloads/)
 * [Homebrew](https://brew.sh/)
-    * Make sure that your PATH has been updated after installing homebrew (instructions can be found in installation output.)
-* [Python3](https://www.python.org/downloads/)
+  * Make sure to follow the post-install steps to add homebrew to your PATH!
 
-## Installation
-To install, simply clone the attune repo into any local folder and then run the `install` shell script.
+## 💿 Installation
+1. Clone the Attune repo into any local folder
+```
+git clone https://github.com/chippolot/attune.git
+```
+2. Run the `install` shell script in the main repo directory
+```
+./install
+```
 
-## Usage
-### Syncing
-Attune has the ability to update itself if it has been cloned directly from GitHub. Running `attune sync` will update the main attune repo as well as any modules which have been installed from git urls.
-After updating, syncing applies core attune configuration changes as well as changes associated with all installed modules.
+## 🚀 Usage
 
-### Themes
-Attune comes with several pre-configured themes. Themes update the system terminal, VSCode, the desktop wallpaper, and the system display mode (light mode / dark mode).
-Running the `attune theme` command shows a theme picker which can be used to set the active system theme.
+### 🔄 Syncing
+```
+attune sync
+```
+Keep Attune and its modules up-to-date with a single command.
+This will update the main Attune repo and all installed modules, applying configuration changes in the process.
 
-### Fonts
-* `attune font`<br/>
-Attune comes bundled with a font config which downloads several programmer-friendly fonts. Changing the active font will update the font in VSCode and the terminal app.
-Running the `attune font` command shows a font picker which can be used to set the active font.
+### 🎨 Themes
+```
+attune theme
+```
+Choose from a variety of pre-configured themes to customize your development environment.
+Themes will update the system terminal, VSCode, desktop wallpaper, and display mode.
 
-### Modules
-Attune manages dotfiles, packages, and app extensions via individual modules. A common module currently comes bundled with attune which is automatically installed on first launch.
+### 🖌️ Fonts
+```
+attune font
+```
+Easily switch between programmer-friendly fonts.
+Changing the active font will update the font in VSCode and the terminal app.
 
-#### Installing New Modules
-Modules can be installed from either a local directory or a github repo.
-Running `attune module install <url>` will register a local or remote module with your attune config and apply it immediately.
-For local modules, the `url` is the full local path to the folder containing the `.attune-module` folder.
-For remote modules, the `url` is the url of the github repo containing an `.attune-module` folder.
+### 📦 Modules
+Attune manages dotfiles, packages, and app extensions via individual modules. A common module comes bundled with Attune and is automatically installed on first launch.
 
-#### Viewing Installed Modules
-Running `attune module list` will list all currently installed modules.
+#### Installing Modules
+```
+attune module install <url>
+```
+Install modules from a local directory or GitHub repo.
+
+#### Initializing Modules
+```
+attune module init
+```
+Create a new module in the current directory with an `.attune-module` folder and a config file.
+
+#### Viewing Modules
+```
+attune module list
+```
+List all currently installed modules.
 
 #### Uninstalling Modules
-Modules can be uninstalled by running `attune module uninstall <url>`.
+```
+attune module uninstall <url>
+```
+Remove modules from your Attune configuration.
 
-#### Creating Your Own Modules
-Create a new module by running `attune module init` from any folder. Running this command creates an `.attune-module` folder in the current directory and initializes a config file w/ several optional dotfile extensions.
-You can initialize an empty github repo and push the changes to start a new remote module.
+### ⚙️ User Config
+```
+attune config
+```
+Open the Attune user config in VSCode to specify the active theme, font, and manage installed modules.
 
-### User Config
-`attune config`<br/>
-Opens the attune user config in VSCode. User config specfies the active theme, font, and contains a manifest of installed modules.
-
-## Known Issues
+## 🐛 Known Issues
 * Installation and syncing may need to be run multiple times due to issues with PATH and other environment variable changes being dependencies for subsequent steps.
-* Applying themes on MacOS first requires that the user set a static wallpaper which applies to all spaces before the wallpaper command can be run.
+* Applying themes on macOS first requires that the user set a static wallpaper which applies to all spaces before the wallpaper command can be run.
 
-## License
+## 📜 License
 Attune is released under the [MIT License](https://opensource.org/licenses/MIT).
