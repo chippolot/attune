@@ -33,21 +33,9 @@ class PackageManager(ABC):
         else:
             print(f"'{name}' is already installed.")
 
+    @abstractmethod
     def is_installed(self, package_name):
-        try:
-            result = subprocess.run(
-                [self.name(), "list", package_name],
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.PIPE,
-                text=True,
-            )
-            if result.returncode == 0:
-                return True
-            else:
-                return False
-        except FileNotFoundError:
-            print(f"{self.name()} is not installed or not found in the PATH.")
-            return False
+        pass
 
     @abstractmethod
     def name(self):

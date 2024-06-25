@@ -4,6 +4,8 @@ from attune.packages.package_manager import PackageManager
 
 
 class WinGetPackageManager(PackageManager):
+    installed_packages = None
+
     def name(self):
         return "winget"
 
@@ -29,3 +31,13 @@ class WinGetPackageManager(PackageManager):
             print(
                 f"An error occurred while installing {self.name()} pkg '{name}': {e.stderr}"
             )
+
+    def is_installed(self, package_name):
+        # Optimization on making multiple install checks per run
+        if WinGetPackageManager.installed_packages is None:
+            WinGetPackageManager.installed_packages = (
+                subprocess.run(["winget", "list"], text=True, capture_output=True)
+                .stdout.strip()
+                .splitlines()
+            )
+        return any(package_name in l for l in WinGetPackageManager.installed_packages)
