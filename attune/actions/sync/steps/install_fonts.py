@@ -35,7 +35,7 @@ def install_font_prereq(font_id):
     pkg_id = config.get("pkg")
     try:
         subprocess.run(
-            ["oh-my-posh", "font", "install", "--user", pkg_id],
+            ["oh-my-posh", "font", "install", pkg_id],
             stdout=subprocess.DEVNULL,
             check=True,
         )
