@@ -18,3 +18,6 @@ set -o noclobber
 for option in autocd globstar; do
 	shopt -s "$option" 2> /dev/null
 done
+
+# Disable full screen flashing for bell
+bind 'set bell-style none'

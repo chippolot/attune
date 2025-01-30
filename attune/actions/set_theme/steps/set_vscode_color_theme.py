@@ -18,5 +18,5 @@ class SetVSCodeColorThemeStep(SetThemeStep):
         if code_theme_name is not None:
             print(f"Seting vscode color theme to: '{code_theme_name}'")
             if code_theme_ext is not None:
-                VSCodePackageManager().install_from_id(code_theme_ext)
+                VSCodePackageManager().install_from_id(code_theme_name, code_theme_ext)
             set_vscode_theme(code_theme_name)

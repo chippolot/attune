@@ -20,3 +20,6 @@ setopt GLOBSTAR_SHORT
 setopt SHARE_HISTORY       # Share history across multiple zsh sessions
 setopt HIST_IGNORE_DUPS    # Don't record an entry that was just recorded again
 setopt HIST_REDUCE_BLANKS  # Remove superfluous blanks before recording entry
+
+# Disable terminal sounds
+unsetopt BEEP
