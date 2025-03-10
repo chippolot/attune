@@ -40,7 +40,7 @@
     lg = !"git lg1"
     clean-local = "!git fetch -p && for branch in `git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done"
     rmbr-local = "!git branch | grep -E '$1' | xargs -r -n 1 git branch -d;"
-    ammend = 'commit --amend --no-edit'
+    ammend = "commit --amend --no-edit"
 
 [difftool]
     prompt = false
